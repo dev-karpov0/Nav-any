@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script type="text/javascript" src="Plan_VVSU.js"></script>
+  <script type="text/javascript" src="../read_plan.js"></script>
+  <script type="text/javascript" src="../find_route.js"></script>
+</head>
+
+<body>
+  <center>
+
+  <h3>Навигатор ДВФУ</h3>
+  <form name="frm">
+      <p>Откуда: <input type="text" size="8" name="from" /></p>
+      <p>Куда: <input type="text" size="8" name="to" /></p>
+      <p><input type="button" value="Маршрут" onClick="showRoute();" /></p>
+  </form>
+
+  <p>&nbsp;</p>
+  <p>Справка:</p>
+  <p>Введите номера аудиторий</p>
+  <p>D1 - вход в корпус D, D950 - аудитория</p>  
+
+  <p>&nbsp;</p>
+  <p id="route_text"></p>
+
+  </center>
+
+  <script type="text/javascript">
+    function showRoute()
+    {
+        let from_point = parseInt(frm.from.value);
+        let to_point = parseInt(frm.to.value);
+        let route = findRoute(from_point, to_point);
+        let route_str = route.join("<br/>");
+        document.getElementById("route_text").innerHTML = route_str;
+    }
+  </script>
+</body>
+</html>
