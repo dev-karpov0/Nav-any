@@ -15,8 +15,8 @@ else  // Internet Explorer
 
 /*
     Структура данных "План здания":
-       points - массив пунктов (пункт: этаж, id, название, тип пункта)
-       paths - массив путей перемещения (путь: тип пути, направление перемещения)
+       points - массив пунктов (пункт: этаж, id, название, тип пункта, массив ребер)
+       paths - массив путей перемещения (путь: тип пути, направление перемещения, массив пунктов в пути)
        point_by_id - ассоциативный массив (ключ - строковый id, значение - индекс пункта)
 */
 let plan = {
@@ -84,6 +84,7 @@ function process_xml_node (xml_node, path_index, floor_num)
         type: "",
         location: ("location" in xml_node.attributes ? xml_node.attributes["location"].nodeValue : ""),
         hidden: (xml_node.attributes["show_name"] != "1"),
+        edges: [],
     };    
     // добавляем новый пункт
     let point_index;
@@ -154,7 +155,6 @@ function rotate_dir (dir, rotate_str)
 // преобразует информацию о пути из xml в нашу СД
 function read_path (xml_node, path_index, floor_num)
 {
-    // TODO: добавить обработку ошибок во входном файле
     for (node_child of xml_node.childNodes) {
         if (node_child.tagName == "Path") {
             // обрабатываем путь перемещения
@@ -181,6 +181,7 @@ function read_path (xml_node, path_index, floor_num)
 // строит структуру данных "План здания"
 function read_plan ()
 {
+    // TODO: добавить обработку ошибок во входном файле
     let root = xmlDoc.getElementsByTagName("Plan")[0];
     for (const plan_child of root.childNodes) {
         if (plan_child.tagName == "Exit") {
@@ -190,6 +191,8 @@ function read_plan ()
                 id: plan_child.attributes["id"].nodeValue,
                 name: ("name" in plan_child.attributes ? plan_child.attributes["name"].nodeValue : "Выход"),
                 type: "Exit",
+                hidden: false,
+                edges: [],
             };
             add_point(point_exit);
         }
