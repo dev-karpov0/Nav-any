@@ -57,23 +57,44 @@ function get_point_by_id (point_id, floor)
         point_index = plan.point_by_id.get(point_id);
 }
 
-// добавляет точку к плану
+// добавляет пункт к плану
+// возвращает индекс пункта
 function add_point (point)
 {
     plan.points.push(point);
     let point_index = plan.points.length - 1;
     plan.point_by_id.set(point.id, point_index);
+    return point_index;
 }
 
-// добавляет точку к пути
+// добавляет пункт к пути
 function add_point_to_path (point_index, path_index)
 {
     plan.paths[path_index].path_points.push(point_index);
 }
 
+// обрабатывает узел xml-дерева с пунктом
 function process_xml_node (xml_node, path_index, floor_num)
 {
-    // TODO
+    let point = {
+        floor: floor_num,
+        id: ("id" in xml_node.attributes ? xml_node.attributes["id"].nodeValue : ""),
+        name: ("name" in xml_node.attributes ? xml_node.attributes["name"].nodeValue : ""),
+        type: "",
+        location: ("location" in xml_node.attributes ? xml_node.attributes["location"].nodeValue : ""),
+        hidden: (xml_node.attributes["show_name"] != "1"),
+    };    
+    // добавляем новый пункт
+    let point_index;
+    if (point.id && plan.point_by_id.has(point.id)) {  // если пункт с таким id уже есть
+        point_index = get_point_by_id(point.id, floor_num);        
+    }
+    else {
+       // TODO
+    }
+    // добавляем пункт к пути
+    if (path_index != -1)
+        add_point_to_path(point_index, path_index);
 }
 
 // возвращает номер направления после поворота
@@ -109,7 +130,7 @@ function read_path (xml_node, path_index, floor_num)
             // добавляем путь
             plan.paths.push(path);
             let new_path_index = plan.paths.length - 1;
-            // читаем путь
+            // читаем путь, внутренний по отношению к текущему пути
             read_path(node_child, new_path_index, floor_num);
         }   
         else if (node_child.tagName)
@@ -147,9 +168,9 @@ function read_plan ()
                     // добавляем путь
                     plan.paths.push(path);
                     let path_index = plan.paths.length - 1;
-                    // добавляем начальную точку к пути
-                    // тут важно указать этаж, поскольку точка может оказаться
-                    //   лестницей или лифтом, для которой идентификатор один и тот же на разных этажах
+                    // добавляем начальный пункт к пути
+                    // тут важно указать этаж, поскольку пункт может оказаться
+                    //   лестницей или лифтом, для которых идентификатор один и тот же на разных этажах
                     let point_index = get_point_by_id(floor_child.attributes["start"].nodeValue, floor_num);
                     add_point_to_path(point_index, path_index);
                     // читаем путь
