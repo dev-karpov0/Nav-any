@@ -55,6 +55,7 @@ function get_point_by_id (point_id, floor)
         point_index = plan.point_by_id.get(elevator_point_id);
     else
         point_index = plan.point_by_id.get(point_id);
+    return point_index;
 }
 
 // добавляет пункт к плану
@@ -90,7 +91,45 @@ function process_xml_node (xml_node, path_index, floor_num)
         point_index = get_point_by_id(point.id, floor_num);        
     }
     else {
-       // TODO
+        let node_tag = xml_node.tagName;
+        point.type = node_tag;
+        if (node_tag == "Point") {
+            point_index = add_point(point);
+        }
+        else if (node_tag == "Room") {
+            if (point.name == "")
+                point.name = point.id;
+            point.hidden = false;
+            point_index = add_point(point);
+        }
+        else if (node_tag == "Stairs") {
+            let stairs_id = point.id;
+            let stairs_point_id = get_stairs_point_id(stairs_id, floor_num);
+            point.id = stairs_point_id;
+            point.name = "Stairs";
+            point.hidden = false;
+            point_index = add_point(point);
+            if (!plan.stairs_by_id.has(stairs_id))
+                plan.stairs_by_id.set(stairs_id, []);
+            plan.stairs_by_id.get(stairs_id).push(point_index);
+        } 
+        else if (node_tag == "Elevator") {
+            let elevator_id = point.id;
+            let elevator_point_id = get_elevator_point_id(elevator_id, floor_num);
+            point.id = elevator_point_id;
+            point.name = "Elevator";
+            point.hidden = false;
+            point.index = add_point(point);
+            if (!plan.elevator_by_id.has(elevator_id))
+                plan.elevators_by_id.set(elevator_id, []);
+            plan.elevators_by_id.get(elevator_id).push(point_index);
+        }
+        else if (node_tag == "Wall") {
+            point_index = add_point(point);
+        }
+        else if (node_tag = "Door") {
+            point_index = add_point(point);
+        }
     }
     // добавляем пункт к пути
     if (path_index != -1)
@@ -115,6 +154,7 @@ function rotate_dir (dir, rotate_str)
 // преобразует информацию о пути из xml в нашу СД
 function read_path (xml_node, path_index, floor_num)
 {
+    // TODO: добавить обработку ошибок во входном файле
     for (node_child of xml_node.childNodes) {
         if (node_child.tagName == "Path") {
             // обрабатываем путь перемещения
