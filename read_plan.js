@@ -121,8 +121,8 @@ function process_xml_node (xml_node, path_index, floor_num)
             point.hidden = false;
             point.index = add_point(point);
             if (!plan.elevator_by_id.has(elevator_id))
-                plan.elevators_by_id.set(elevator_id, []);
-            plan.elevators_by_id.get(elevator_id).push(point_index);
+                plan.elevator_by_id.set(elevator_id, []);
+            plan.elevator_by_id.get(elevator_id).push(point_index);
         }
         else if (node_tag == "Wall") {
             point_index = add_point(point);
