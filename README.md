@@ -1,5 +1,5 @@
 # Nav-any
-Indoor-navigator
+Indoor-навигатор
 
 Идея универсального навигатора внутри зданий описана [здесь](https://habr.com/ru/sandbox/171460/).
 

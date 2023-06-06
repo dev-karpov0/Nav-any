@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="Plan_VVSU.js"></script>
   <script type="text/javascript" src="../read_plan.js"></script>
   <script type="text/javascript" src="../find_route.js"></script>
@@ -30,8 +31,8 @@
   <script type="text/javascript">
     function showRoute()
     {
-        let from_point = parseInt(frm.from.value);
-        let to_point = parseInt(frm.to.value);
+        let from_point = frm.from.value;
+        let to_point = frm.to.value;
         let route = findRoute(from_point, to_point);
         let route_str = route.join("<br/>");
         document.getElementById("route_text").innerHTML = route_str;

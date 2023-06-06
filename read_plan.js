@@ -1,5 +1,5 @@
 // преобразуем строку с XML-файлом в дерево XML-документа
-// String planXML must be defined
+// строка planXML должна быть определена
 let xmlDoc;
 if (window.DOMParser)
 {
@@ -19,7 +19,6 @@ else  // Internet Explorer
        paths - массив путей перемещения (путь: тип пути, направление перемещения)
        point_by_id - ассоциативный массив (ключ - строковый id, значение - индекс пункта)
 */
-
 let plan = {
     points: [],
     paths: [],
@@ -28,7 +27,35 @@ let plan = {
     elevator_by_id: new Map()
 };
 
-const motionDir = { UP: "up", RIGHT: "right", DOWN: "down", LEFT: "left" };
+const motionDir = ["up", "right", "down", "left"];
+
+const motionDirForStr = str => {
+    return motionDir.indexOf(str);
+}
+
+function get_stairs_point_id (point_id, floor)
+{
+    return point_id + "_stairs_" + String(floor);
+}
+
+function get_elevator_point_id (point_id, floor)
+{
+    return point_id + "_elevator_" + String(floor);
+}
+
+// находит пункт по идентификатору, указанному во входном файле
+function get_point_by_id (point_id, floor)
+{
+    stairs_point_id = get_stairs_point_id(point_id, floor);
+    elevator_point_id = get_elevator_point_id(point_id, floor);
+    let point_index;
+    if (plan.point_by_id.has(stairs_point_id))
+        point_index = plan.point_by_id.get(stairs_point_id);
+    else if (plan.point_by_id.has(stairs_point_id))
+        point_index = plan.point_by_id.get(elevator_point_id);
+    else
+        point_index = plan.point_by_id.get(point_id);
+}
 
 // добавляет точку к плану
 function add_point (point)
@@ -38,12 +65,65 @@ function add_point (point)
     plan.point_by_id.set(point.id, point_index);
 }
 
+// добавляет точку к пути
+function add_point_to_path (point_index, path_index)
+{
+    plan.paths[path_index].path_points.push(point_index);
+}
+
+function process_xml_node (xml_node, path_index, floor_num)
+{
+    // TODO
+}
+
+// возвращает номер направления после поворота
+function rotate_dir (dir, rotate_str)
+{
+    let new_dir;
+    if (rotate_str == "forward")
+        new_dir = dir;
+    else if (rotate_str == "left")
+        new_dir = (dir + 3) % 4;
+    else if (rotate_str == "right")
+        new_dir = (dir + 1) % 4;
+    else if (rotate_str == "back")
+        new_dir = (dir + 2) % 4;
+    return new_dir;
+}
+
+// преобразует информацию о пути из xml в нашу СД
+function read_path (xml_node, path_index, floor_num)
+{
+    for (node_child of xml_node.childNodes) {
+        if (node_child.tagName == "Path") {
+            // обрабатываем путь перемещения
+            let point_index = get_point_by_id(node_child.attributes["start"].nodeValue, floor_num);
+            let rotate_str = node_child.attributes["rotate"].nodeValue;
+            let parent_path_dir = plan.paths[path_index].dir;
+            let dir = rotate_dir(parent_path_dir, rotate_str);
+            let path = {
+                type: node_child.attributes["type"].nodeValue,
+                dir: dir, 
+                path_points: [point_index],
+            };
+            // добавляем путь
+            plan.paths.push(path);
+            let new_path_index = plan.paths.length - 1;
+            // читаем путь
+            read_path(node_child, new_path_index, floor_num);
+        }   
+        else if (node_child.tagName)
+            process_xml_node(node_child, path_index, floor_num);
+    }
+}
+
 // строит структуру данных "План здания"
 function read_plan ()
 {
     let root = xmlDoc.getElementsByTagName("Plan")[0];
     for (const plan_child of root.childNodes) {
         if (plan_child.tagName == "Exit") {
+            // добавляем пункт типа "Выход"
             let point_exit = {
                 floor: plan_child.attributes["floor"].nodeValue,
                 id: plan_child.attributes["id"].nodeValue,
@@ -56,37 +136,26 @@ function read_plan ()
             floor_num = parseInt(plan_child.attributes["num"].nodeValue);
             for (floor_child of plan_child.childNodes) {
                 if (floor_child.tagName == "Path") {
-                    let dir_str = floor_child.attributes["dir"];
-                    let dir = function(dir_str) {
-                        switch (dir_str) {
-                            case "up":
-                                return UP;
-                                break;
-                            case "right":
-                                return RIGHT;
-                                break;
-                            case "down":
-                                return DOWN;
-                                break;
-                            case "left":
-                                return LEFT;
-                                break;
-                        }
-                    }
+                    // обрабатываем путь перемещения
+                    let dir_str = floor_child.attributes["dir"].nodeValue;
+                    let dir = motionDirForStr(dir_str);
                     let path = {
-                        type: floor_child.attributes["type"],
-                        dir: dir,                                               
+                        type: floor_child.attributes["type"].nodeValue,
+                        dir: dir, 
+                        path_points: [],
                     };
-                    // add path
+                    // добавляем путь
                     plan.paths.push(path);
                     let path_index = plan.paths.length - 1;
-                    // add starting point to path
-                    let point_index = get_point_by_id(floor_child.attributes["start"], floor_num);
+                    // добавляем начальную точку к пути
+                    // тут важно указать этаж, поскольку точка может оказаться
+                    //   лестницей или лифтом, для которой идентификатор один и тот же на разных этажах
+                    let point_index = get_point_by_id(floor_child.attributes["start"].nodeValue, floor_num);
                     add_point_to_path(point_index, path_index);
-                    // read path
+                    // читаем путь
                     read_path(floor_child, path_index, floor_num);
                 }
-                else
+                else if (floor_child.tagName)
                     process_xml_node(floor_child, -1, floor_num);
             }
         }
@@ -94,4 +163,4 @@ function read_plan ()
 }
 
 read_plan();
-// console.log(plan);
+//console.log(plan);
