@@ -8,9 +8,9 @@ function process_plan ()
             let point_index = plan.paths[path_index].path_points[i];
             let prev_point_index = plan.paths[path_index].path_points[i - 1];
             edge1 = { adj_point: point_index, path: path_index, reversed_path: false };
-            edge2 = { adj_point: prev_point_index, path: path_index, reversed_path: true };
             plan.points[prev_point_index].edges.push(edge1);
-            plan.points[prev_point_index].edges.push(edge2);
+            edge2 = { adj_point: prev_point_index, path: path_index, reversed_path: true };
+            plan.points[point_index].edges.push(edge2);
         }
         // перебираем все лестницы и лифты, проводим ребра
         for (let [stairs_id, stairs_list] of plan.stairs_by_id) {

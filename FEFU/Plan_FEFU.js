@@ -1,9 +1,9 @@
 let planXML = `
 <Plan object="FEFU">
-  <Exit id="1" name="Exit" floor="7" show_name="1" />
+  <Exit id="D1" name="Exit" floor="7" show_name="1" />
  
   <Floor num="7">
-    <Path start="1" type="no_walls" dir="up">
+    <Path start="D1" type="no_walls" dir="up">
       <Point id="near_exit1" name="у входа" />
       <Stairs id="enter1_6to9" location="along" />
       <Wall/>
