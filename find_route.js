@@ -36,8 +36,11 @@ function get_route (from_index, to_index)
 
 function get_route_text (route)
 {
-    console.log(route);
-    return ["test"];
+    route_text = [];
+    for (point_index of route) {
+        route_text.push(plan.points[point_index].name);
+    }
+    return route_text;
 }
 
 function findRoute (point_from, point_to)
