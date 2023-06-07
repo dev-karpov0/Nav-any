@@ -120,7 +120,7 @@ function process_xml_node (xml_node, path_index, floor_num)
             point.id = elevator_point_id;
             point.name = "Elevator";
             point.hidden = false;
-            point.index = add_point(point);
+            point_index = add_point(point);
             if (!plan.elevator_by_id.has(elevator_id))
                 plan.elevator_by_id.set(elevator_id, []);
             plan.elevator_by_id.get(elevator_id).push(point_index);
