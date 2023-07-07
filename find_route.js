@@ -51,7 +51,7 @@ function get_route_text (route)
     let edge = get_edge(plan.points[route[0]], route[1]);
     let path_index = edge.path;
     let reversed_path = edge.reversed_path;
-     while (i < route.length && j < route.length) {
+    while (i < route.length && j < route.length) {
         j = i + 1;
         let new_path_index;
         let reversed_new_path;
@@ -100,9 +100,9 @@ function get_route_text (route)
             route_text.push(text);
         }
         
-        if (path_index >= 0) {
-            let dir1 = plan.paths[path_index].dir;
-            if (reversed_path) {
+        if (new_path_index >= 0 && path_index >= 0) {
+            let dir1 = plan.paths[new_path_index].dir;
+            if (reversed_new_path) {
                 dir1 = rotate_dir(dir1, "back");
             }
             let dir2 = plan.paths[path_index].dir;
