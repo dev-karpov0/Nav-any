@@ -34,11 +34,99 @@ function get_route (from_index, to_index)
     return route;
 }
 
+function get_edge (point, adj_point_index)
+{
+    for (let i = 0; i < point.edges.length; i++) {
+        if (point.edges[i].adj_point == adj_point_index) {
+            return point.edges[i];
+        }
+    }   
+}
+
 function get_route_text (route)
 {
-    route_text = [];
-    for (point_index of route) {
-        route_text.push(plan.points[point_index].name);
+    let route_text = [];
+    let i = 0;
+    let j = 0;
+    let edge = get_edge(plan.points[route[0]], route[1]);
+    let path_index = edge.path;
+    let reversed_path = edge.reversed_path;
+     while (i < route.length && j < route.length) {
+        j = i + 1;
+        let new_path_index;
+        let reversed_new_path;
+        while (j < route.length) {
+            edge = get_edge(plan.points[route[j - 1]], route[j]);
+            new_path_index = edge.path;
+            reversed_new_path = edge.reversed_path;
+            if (new_path_index != path_index) {
+                j = j - 1;
+                break;
+            }
+            j = j + 1;
+        }
+        if (j == route.length) {
+            j = j - 1;
+        }
+        if (path_index == -1) {
+            route_text.push("Пройти по лестнице.");
+        } else if (path_index == -2) {
+            route_text.push("Проехать на лифте.");
+        } else {
+            let text = "Пройти от " + plan.points[route[i]].name + " до " + plan.points[route[j]].name;
+            if (j > i + 1) {
+                let hidden = true;
+                for (let k = i + 1; k < j; k++) {
+                    if (!plan.points[route[k]].hidden) {
+                        hidden = false;
+                        break;
+                    }
+                }
+                if (!hidden) {
+                    text += " мимо: ";
+                }
+                let flag = false;
+                for (let k = i + 1; k < j; k++) {
+                    if (!plan.points[route[k]].hidden) {
+                        if (flag) {
+                                text += ", ";
+                        }
+                        flag = true;
+                        text += plan.points[route[k]].name;
+                    }
+                }
+            }
+            text += ".";
+            route_text.push(text);
+        }
+        
+        if (path_index >= 0) {
+            let dir1 = plan.paths[path_index].dir;
+            if (reversed_path) {
+                dir1 = rotate_dir(dir1, "back");
+            }
+            let dir2 = plan.paths[path_index].dir;
+            if (reversed_path) {
+                dir2 = rotate_dir(dir2, "back");
+            }
+            let d = (dir1 - dir2 + 4) % 4;
+            if (d > motionDirForStr("up")) {
+                if (motionDir[d] == "left") {
+                    route_text.push("Поверните налево.");
+                } else if (motionDir[d] == "down") {
+                    route_text.push("Поверните назад.");
+                } else if (motionDir[d] == "right") {
+                    route_text.push("Поверните направо.");
+                }
+            }
+        }
+        
+        path_index = new_path_index;
+        reversed_path = reversed_new_path;
+        i = j;
+        if (i == route.length - 1) {
+            break;
+        }      
     }
     return route_text;
 }

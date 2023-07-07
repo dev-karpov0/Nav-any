@@ -55,6 +55,7 @@ function get_point_by_id (point_id, floor)
         point_index = plan.point_by_id.get(elevator_point_id);
     else
         point_index = plan.point_by_id.get(point_id);
+    if (point_index == undefined) { alert("Ошибка: точка с id " + point_id + " на этаже " + floor + " не найдена!"); }
     return point_index;
 }
 
