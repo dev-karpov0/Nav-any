@@ -108,7 +108,7 @@ function process_xml_node (xml_node, path_index, floor_num)
             let stairs_id = point.id;
             let stairs_point_id = get_stairs_point_id(stairs_id, floor_num);
             point.id = stairs_point_id;
-            point.name = "Stairs";
+            point.name = "Лестница";
             point.hidden = false;
             point_index = add_point(point);
             if (!plan.stairs_by_id.has(stairs_id))
@@ -119,7 +119,7 @@ function process_xml_node (xml_node, path_index, floor_num)
             let elevator_id = point.id;
             let elevator_point_id = get_elevator_point_id(elevator_id, floor_num);
             point.id = elevator_point_id;
-            point.name = "Elevator";
+            point.name = "Лифт";
             point.hidden = false;
             point_index = add_point(point);
             if (!plan.elevator_by_id.has(elevator_id))
