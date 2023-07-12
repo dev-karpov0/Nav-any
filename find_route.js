@@ -69,11 +69,12 @@ function get_route_text (route)
             j = j - 1;
         }
         if (path_index == -1) {
-            route_text.push("Пройти по лестнице.");
+            floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
+            route_text.push("Пройти по лестнице" + floorText);
         } else if (path_index == -2) {
             route_text.push("Проехать на лифте.");
         } else {
-            let text = "Пройти от " + plan.points[route[i]].name + " до " + plan.points[route[j]].name;
+            let text = "Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
             if (j > i + 1) {
                 let hidden = true;
                 for (let k = i + 1; k < j; k++) {
