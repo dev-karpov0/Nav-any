@@ -456,7 +456,7 @@ let planXML = `
     <Path start="stairs10" type="left_walls" dir="up"> 
       <Point id="near_stairs10_4" />
       <Stairs id="stairs10" name="Лестница" />
-      <Path start="near_stairs10" rotate="left" type="left_right_walls">  
+      <Path start="near_stairs10_4" rotate="left" type="left_right_walls">  
         <Room location="right" id="5406" />
         <Room location="right" id="5408" />
         <Room location="right" id="5412" />
@@ -476,7 +476,7 @@ let planXML = `
     <Path start="stairs10" type="left_walls" dir="up"> 
       <Point id="near_stairs10_5" />
       <Stairs id="stairs10" name="Лестница" />
-      <Path start="near_stairs10" rotate="left" type="left_right_walls"> 
+      <Path start="near_stairs10_5" rotate="left" type="left_right_walls"> 
         <Room location="right" id="5506" />
         <Room location="left" id="5511" />
         <Room location="right" id="5504" />
@@ -503,7 +503,7 @@ let planXML = `
     <Path start="stairs10" type="left_walls" dir="up"> 
       <Point id="near_stairs10_6" />
       <Stairs id="stairs10" name="Лестница" />
-      <Path start="near_stairs10" rotate="left" type="left_right_walls"> 
+      <Path start="near_stairs10_6" rotate="left" type="left_right_walls"> 
         <Room location="left" id="5613" />
         <Room location="right" id="5608" />
         <Room location="left" id="5611" />
@@ -546,7 +546,7 @@ let planXML = `
     <Path start="stairs10" type="left_walls" dir="up"> 
     <Point id="near_stairs10_7" />
     <Stairs id="stairs10" name="Лестница" />
-    <Path start="near_stairs10" rotate="forward" type="left_right_walls"> 
+    <Path start="near_stairs10_7" rotate="forward" type="left_right_walls"> 
       <Room location="right" id="5708" />
       <Room location="left" id="5709" />
       <Room location="right" id="5706" />
