@@ -132,6 +132,8 @@ function get_route_text (route)
     return route_text;
 }
 
+const RouteFinderStatus = {SUCCESS:0, INVALID_SOURCE: 1, INVALID_DESTINATION: 2};
+
 function findRoute (point_from, point_to)
 {
     if (!point_from || !point_to)
@@ -139,20 +141,22 @@ function findRoute (point_from, point_to)
     point_from = point_from.trim();
     point_to = point_to.trim();
 
+    let status = RouteFinderStatus.SUCCESS;
     let route_strs = [`Маршрут от ${point_from} до ${point_to}`];
 
     if (!plan.point_by_id.has(point_from)) {
-        route_strs.push(`Пункт ${point_from} отсутствует`);
-        return route_strs;
+        //route_strs.push(`Пункт ${point_from} отсутствует`);
+        status = RouteFinderStatus.INVALID_SOURCE;
     }
     if (!plan.point_by_id.has(point_to)) {
-        route_strs.push(`Пункт ${point_to} отсутствует`);
-        return route_strs;
+        //route_strs.push(`Пункт ${point_to} отсутствует`);
+        status = RouteFinderStatus.INVALID_DESTINATION;
     }
 
-    route = get_route(plan.point_by_id.get(point_from), plan.point_by_id.get(point_to));
-    route_text = get_route_text(route);
-    route_strs.push.apply(route_strs, route_text);  // добавить route_text к route_strs      
-    
-    return route_strs;
+    if (status === RouteFinderStatus.SUCCESS) {
+        route = get_route(plan.point_by_id.get(point_from), plan.point_by_id.get(point_to));
+        route_text = get_route_text(route);
+        route_strs.push.apply(route_strs, route_text);  // добавить route_text к route_strs
+    }
+    return {status: status, route_str_list: route_strs};
 }
