@@ -1,11 +1,12 @@
 
 
 html {
-    background-color: black;
+    background-color: transparent;
 }
 
 body {
-    /*background-color: #435757;*/
+    /*background-color: #435757;     */
+    background-color: transparent;
 }
 
 .background {
