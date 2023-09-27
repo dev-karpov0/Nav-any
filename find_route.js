@@ -132,7 +132,7 @@ function get_route_text (route)
     return route_text;
 }
 
-const RouteFinderStatus = {SUCCESS:0, INVALID_SOURCE: 1, INVALID_DESTINATION: 2};
+const RouteFinderStatus = {SUCCESS:0, INVALID_SOURCE: 1, INVALID_DESTINATION: 2, DEST_AND_SRC_EQUAL: 3};
 
 function findRoute (point_from, point_to)
 {
@@ -143,6 +143,10 @@ function findRoute (point_from, point_to)
 
     let status = RouteFinderStatus.SUCCESS;
     let route_strs = [`Маршрут от ${point_from} до ${point_to}`];
+
+    if (point_from === point_to) {
+        status = RouteFinderStatus.DEST_AND_SRC_EQUAL
+    }
 
     if (!plan.point_by_id.has(point_from)) {
         //route_strs.push(`Пункт ${point_from} отсутствует`);

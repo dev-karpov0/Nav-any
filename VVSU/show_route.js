@@ -24,6 +24,10 @@ function showRoute()
                 case RouteFinderStatus.INVALID_DESTINATION:
                     errorText.innerHTML = `Пункт ${to_point} отсутствует`;
                     break;
+
+                case RouteFinderStatus.DEST_AND_SRC_EQUAL:
+                    errorText.innerHTML = "Пункты отправления и назначения совпадают";
+                    break;
             }
             errorText.hidden = false;
             return;
