@@ -544,31 +544,32 @@ let planXML = `
   <Floor num="7.5">
     <Stairs id="stairs10" name="Лестница" />
     <Path start="stairs10" type="left_walls" dir="up"> 
-    <Point id="near_stairs10_7" />
-    <Stairs id="stairs10" name="Лестница" />
-    <Path start="near_stairs10_7" rotate="forward" type="left_right_walls"> 
-      <Room location="right" id="5708" />
-      <Room location="left" id="5709" />
-      <Room location="right" id="5706" />
-      <Room location="left" id="5707" />
-      <Room location="right" id="5704" />
-      <Room location="left" id="5705" />
-      <Room location="left" id="5703" />
-      <Room location="right" id="5702" />
-      <Path start="5708" rotate="right" type="left_right_walls">
-        <Room location="left" id="5710" />
-        <Room location="left" id="5712" />
-        <Room location="right" id="5713" />
-        <Room location="left" id="5714" />
-        <Room location="right" id="5719" />
-        <Room location="left" id="5716" />
-        <Room location="right" id="5721" />
-        <Room location="up" id="5718" />
-      </Path>
-      <Path start="5709" rotate="left" type="left_right_walls">
-        <Room location="right" id="5711" />
-        <Room location="up" id="5713" />
-      </Path>
+        <Point id="near_stairs10_7" />
+        <Stairs id="stairs10" name="Лестница" />
+        <Path start="near_stairs10_7" rotate="forward" type="left_right_walls"> 
+          <Room location="right" id="5708" />
+          <Room location="left" id="5709" />
+          <Room location="right" id="5706" />
+          <Room location="left" id="5707" />
+          <Room location="right" id="5704" />
+          <Room location="left" id="5705" />
+          <Room location="left" id="5703" />
+          <Room location="right" id="5702" />
+          <Path start="5708" rotate="right" type="left_right_walls">
+            <Room location="left" id="5710" />
+            <Room location="left" id="5712" />
+            <Room location="right" id="5713" />
+            <Room location="left" id="5714" />
+            <Room location="right" id="5719" />
+            <Room location="left" id="5716" />
+            <Room location="right" id="5721" />
+            <Room location="up" id="5718" />
+          </Path>
+          <Path start="5709" rotate="left" type="left_right_walls">
+            <Room location="right" id="5711" />
+            <Room location="up" id="5713" />
+          </Path>
+        </Path>
     </Path>
  </Floor>
 

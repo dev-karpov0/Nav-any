@@ -18,7 +18,7 @@ body {
     position: fixed;
     z-index: -1;
     width: 100vw;
-    height: 100vh;
+    height: 102vh;
 }
 
 .container {
@@ -26,6 +26,7 @@ body {
     /*background-color: #141718;*/
     background-color: transparent;
     margin: 0 auto;
+    padding: 0 0 5px 0;
 }
 
 .header {
