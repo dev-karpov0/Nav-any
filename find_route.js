@@ -135,24 +135,28 @@ function get_route_text (route)
 function findRoute (point_from, point_to)
 {
     if (!point_from || !point_to)
-        return [];
+        throw new Error('Пункты не могут быть пустыми');
+
     point_from = point_from.trim();
     point_to = point_to.trim();
 
-    let route_strs = [`Маршрут от ${point_from} до ${point_to}`];
+    //let route_strs = [`Маршрут от ${point_from} до ${point_to}`];
+
+    if (point_from === point_to) {
+        throw new Error('Пункты отправления и назначения совпадают');
+    }
 
     if (!plan.point_by_id.has(point_from)) {
-        route_strs.push(`Пункт ${point_from} отсутствует`);
-        return route_strs;
+        //route_strs.push(`Пункт ${point_from} отсутствует`);
+        throw new Error(`Пункт ${point_from} отсутствует`);
     }
     if (!plan.point_by_id.has(point_to)) {
-        route_strs.push(`Пункт ${point_to} отсутствует`);
-        return route_strs;
+        //route_strs.push(`Пункт ${point_to} отсутствует`);
+        throw new Error(`Пункт ${point_to} отсутствует`);
     }
 
-    route = get_route(plan.point_by_id.get(point_from), plan.point_by_id.get(point_to));
-    route_text = get_route_text(route);
-    route_strs.push.apply(route_strs, route_text);  // добавить route_text к route_strs      
-    
-    return route_strs;
+    let route = get_route(plan.point_by_id.get(point_from), plan.point_by_id.get(point_to));
+    let route_text = get_route_text(route);
+    //route_strs.push.apply(route_strs, route_text);  // добавить route_text к route_strs
+    return route_text;
 }

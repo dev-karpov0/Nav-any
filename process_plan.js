@@ -7,8 +7,10 @@ function process_plan ()
                 continue;
             let point_index = plan.paths[path_index].path_points[i];
             let prev_point_index = plan.paths[path_index].path_points[i - 1];
+
             edge1 = { adj_point: point_index, path: path_index, reversed_path: false };
             plan.points[prev_point_index].edges.push(edge1);
+
             edge2 = { adj_point: prev_point_index, path: path_index, reversed_path: true };
             plan.points[point_index].edges.push(edge2);
         }
