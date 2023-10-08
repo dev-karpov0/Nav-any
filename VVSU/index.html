@@ -17,9 +17,7 @@
 </head>
 
 <body>
-  <div class="background">
-
-  </div>
+  <div class="background"> </div>
   <div class="container">
     <div class="header">
       <div class="header__logo">
@@ -34,11 +32,22 @@
         <input type="text" id="to" placeholder="Куда" class="form__input"/>
         <button type="button" id="button" onclick="showRoute();" class="form__button">Проложить маршрут</button>
       </form>
-      <div id="route-text" hidden>123</div>
+      <div id="output" class="output" hidden>
+        <div class="output__header">
+          <div class="output__line"></div>
+          <div class="output__title">Маршрут</div>
+          <div class="output__item-container">
+            <div id="out-from" class="output__item">ауд. 4407</div>
+            ->
+            <div id="out-to" class="output__item">ауд. 4305</div>
+          </div>
+        </div>
+        <div id="output-container"></div>
+      </div>
+<!--      <div id="route-text" hidden>123</div>-->
       <div id="error-text" hidden></div>
     </div>
   </div>
-
 <!--  <center>-->
 
 <!--  <h3>ВВГУ.Ориентир</h3>-->
