@@ -73,6 +73,92 @@ body {
     color: white;
 }
 
+.content {
+
+}
+
+.navigator {
+    width: 100%;
+}
+
+/*Point references*/
+.swipe-button {
+
+}
+
+.references {
+    width: 100%;
+}
+
+.references__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px rgba(97, 189, 241, 0.77) solid;
+}
+
+.references__title {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0 0 4px 0;
+    margin: 0 auto;
+    color: white;
+}
+
+.references__back {
+    padding: 2px 0 0 0;
+    background: url('images/back.svg') center/100% no-repeat;
+    width: 25px;
+    height: 25px;
+}
+
+.references__floor-line {
+    display: flex;
+    align-items: start;
+}
+
+.references__floor-icon {
+    background: url('images/floor.png') center/100% no-repeat;
+    width: 25px;
+    height: 25px;
+    margin: 0 15px 0 0;
+}
+
+.references__floors {
+    margin: 0 auto;
+}
+
+.references__floors li {
+    border: 2px rgba(97, 189, 241, 0.77) solid;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1;
+    display: inline-block;
+    min-width: 20px;
+    color: #868686;
+    user-select: none;
+    margin: 0 2px;
+    font-size: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+li.references__floors_selected {
+    border: 2px rgba(255, 116, 51, 0.87) solid;
+    color: white;
+}
+
+.references__list {
+    margin: 20px 0 0 0;
+}
+
+.references__list li {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+/**/
 .container {
     max-width: 315px;
     margin: 0 auto;
@@ -80,8 +166,20 @@ body {
 }
 
 .header {
-    margin: 0 auto;
+    margin: 20px 0 auto;
     padding: 0 5px 5px;
+}
+
+.header__title-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__handbook {
+    background: url('images/handbook.svg') center/100% no-repeat;
+    width: 45px;
+    height: 45px;
 }
 
 .header__logo {/*383x815*/
@@ -97,7 +195,6 @@ body {
 }
 
 .header__title {
-    margin: 20px 0 0 0;
     font-size: 30px;
     text-align: left;
     color: white;
@@ -106,7 +203,7 @@ body {
 }
 
 .header__subtitle {
-    margin: 10px 0 0 0;
+    margin: 2px 0 0 0;
     font-size: 15px;
     text-align: left;
     color: white;
