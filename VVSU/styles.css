@@ -80,7 +80,7 @@ body {
     padding: 5px 5px;
     margin: 0 0;
     border-left: 2px rgba(97, 189, 241, 0.77) solid;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: white;
 }
 
@@ -88,7 +88,7 @@ body {
     padding: 5px 5px;
     margin: 0;
     border-left: 2px rgba(255, 116, 51, 0.87) solid;
-    font-size: 20px;
+    font-size: 1.1rem;
     color: white;
 }
 
@@ -195,6 +195,8 @@ li.references__floors_selected {
 
 /**/
 .container {
+    font-family: Roboto, sans-serif;
+    font-weight: 350;
     max-width: 315px;
     margin: 0 auto;
     padding: 0 0 5px 0;
