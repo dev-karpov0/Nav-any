@@ -326,11 +326,11 @@ let planXML = `
     <Room wall="right" id="1606" />
     <Room wall="right" id="1604" />
     <Joint to="угла" />
-    <Path rotate="left" walls="left_right">wall
+    <Path rotate="left" walls="left_right">
       <Room wall="right" id="1602" />
       <Room wall="left" id="1601" />
     </Path>
-  </Floor>
+</Floor>
 
 
 <Floor num="4.5">
@@ -358,7 +358,7 @@ let planXML = `
       <Room wall="left" id="5505" />
       <Room wall="left" id="5503" />
       <Room wall="left" id="5501" />
-      <Path start="5511" rotate="forward" type="left_right_walls">
+      <Path start="5511" rotate="forward" walls="left_right">
         <Room wall="left" id="5510" />
         <Room wall="left" id="5512" />
         <Room wall="right" id="5513" />
@@ -383,7 +383,7 @@ let planXML = `
       <Room wall="left" id="5605" />
       <Room wall="right" id="5602" />
       <Room wall="left" id="5603" />
-      <Path start="5511" rotate="right" type="left_right_walls">
+      <Path start="5511" rotate="right" walls="left_right">
         <Room wall="left" id="5612" />
         <Room wall="right" id="5624" name="Toilet" />
         <Room wall="left" id="5614" />
@@ -392,7 +392,7 @@ let planXML = `
         <Room wall="right" id="5620" />
         <Room wall="up" id="5618" />
       </Path>
-      <Path start="5613" rotate="forward" type="left_right_walls">
+      <Path start="5613" rotate="forward" walls="left_right">
         <Room wall="left" id="5628" />
         <Room wall="right" id="5615" />
         <Room wall="left" id="5630" />
@@ -418,7 +418,7 @@ let planXML = `
       <Room wall="left" id="5705" />
       <Room wall="left" id="5703" />
       <Room wall="right" id="5702" />
-      <Path start="5708" rotate="right" type="left_right_walls">
+      <Path start="5708" rotate="right" walls="left_right">
         <Room wall="left" id="5710" />
         <Room wall="left" id="5712" />
         <Room wall="right" id="5713" />
@@ -428,7 +428,7 @@ let planXML = `
         <Room wall="right" id="5721" />
         <Room wall="up" id="5718" />
       </Path>
-      <Path start="5709" rotate="left" type="left_right_walls">
+      <Path start="5709" rotate="left" walls="left_right">
         <Room wall="right" id="5711" />
         <Room wall="up" id="5713" />
       </Path>
