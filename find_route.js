@@ -156,10 +156,6 @@ function findRoute (point_from, point_to)
     }
 
     let route = get_route(plan.point_by_id.get(point_from), plan.point_by_id.get(point_to));
-    if (route.length == 0) {
-        throw new Error(`Пункт ${point_to} недостижим из пункта ${point_from}`);
-    }
-
     let route_text = get_route_text(route);
     //route_strs.push.apply(route_strs, route_text);  // добавить route_text к route_strs
     return route_text;
