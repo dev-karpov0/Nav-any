@@ -11,6 +11,28 @@ let outFrom = document.getElementById("out-from");
 let outTo = document.getElementById("out-to");
 let state = false;
 
+function getRouteStepComponentString(step_short_text, step_detail_text)
+{
+    let button = '';
+    let detail_text = '';
+    if (step_detail_text.length !== 0) {
+        button = '<div class="output__step-button-container"></div>';
+        detail_text = `<div class="output__step-detail-text" hidden>${step_detail_text}</div></div>`
+    }
+
+    return `
+        <div class="output__step-container">
+            <div class="output__step-line">
+                <div class="output__step-text">${step_short_text}</div>
+                ${button}
+            </div>
+            ${detail_text}`;//font-size: 1.25rem;
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 function showRoute()
 {
     if (!state) {
@@ -28,7 +50,7 @@ function showRoute()
 
         //let route_str = route.join("<br/>");
         let route_str = route.map((val, idx) => {
-            return `<div class="output__step">${val}</div>`;
+            return getRouteStepComponentString(val, getRandomInt(2) === 1 ? 'Пример текста' : '');
         }).join(' ');
 
         outputContainer.innerHTML = route_str;
@@ -67,6 +89,23 @@ function showRoute()
         state = false;
     }
 }
+
+outputContainer.addEventListener('click', function (e) {
+    //console.log('Click: ' + e.target.innerHTML + ' Parent: ' + e.target.parentElement.innerHTML)
+
+    let el = e.target;
+    if (el.classList.contains('output__step-button-container'))
+    {
+        let step_container = el.closest('.output__step-container');
+        if (step_container != null) {
+            let detail_text_elements = step_container.getElementsByClassName('output__step-detail-text');
+            if(detail_text_elements.length !== 0) {
+                let e = detail_text_elements[0];
+                e.hidden = !e.hidden;
+            }
+        }
+    }
+});
 
 /*При нажатии ENTER в текстовом поле*/
 const clickEvent = function(event) {

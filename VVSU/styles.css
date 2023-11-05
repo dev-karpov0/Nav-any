@@ -71,13 +71,41 @@ body {
     background: #002962;
 }
 
-.output__step {
+.output__step-container {
+    padding: 0;
+    margin: 15px 0;
+}
+
+.output__step-text {
     padding: 5px 5px;
-    margin: 5px 0;
-    border: 2px rgba(97, 189, 241, 0.77) solid;
-    border-radius: 5px;
+    margin: 0 0;
+    border-left: 2px rgba(97, 189, 241, 0.77) solid;
     font-size: 20px;
     color: white;
+}
+
+.output__step-detail-text {
+    padding: 5px 5px;
+    margin: 0;
+    border-left: 2px rgba(255, 116, 51, 0.87) solid;
+    font-size: 20px;
+    color: white;
+}
+
+.output__step-button-container {
+    margin: auto 0;
+    padding: 2px 5px;
+    min-height: 26px;
+    min-width: 24px;
+    text-align: center;
+    overflow: hidden;
+    background: url('images/dots.svg') center/100% no-repeat;
+}
+
+.output__step-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .content {
