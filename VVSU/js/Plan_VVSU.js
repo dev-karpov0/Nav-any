@@ -105,15 +105,21 @@ let planXML = `
           <Room wall="right" id="1117" />
         </Path>
         <Path rotate="forward" walls="left">
-          <Room id="1115" wall="left" />
-          <Room id="1113" wall="left" />
-          <Room id="1111" wall="left" />
-          <Room id="1114" wall="right" />
-          <Room id="1109" wall="left" />
-          <Room id="1107" wall="left" />
-          <Room id="1112" wall="right" />
-          <Room id="1105" wall="left" />
-          <Room id="1102" wall="right" />
+          <Stairs id="big_stairs" />
+          <Path rotate="right" start="big_stairs" walls="left_right">
+            <Point id="corridor_1_near_stairs" />
+            <Path rotate="left" start="corridor_1_near_stairs" walls="left_right">
+              <Room id="1115" wall="left" />
+              <Room id="1113" wall="left" />
+              <Room id="1111" wall="left" />
+              <Room id="1114" wall="right" />
+              <Room id="1109" wall="left" />
+              <Room id="1107" wall="left" />
+              <Room id="1112" wall="right" />
+              <Room id="1105" wall="left" />
+              <Room id="1102" wall="right" />
+            </Path>
+          </Path>
         </Path>
       </Path>
     </Path>
@@ -121,191 +127,236 @@ let planXML = `
 
 
   <Floor num="2">
-    <Path rotate="forward" walls="left">
+    <Stairs id="stairs5" name="Лестница" />
+    <Joint />
+    <Path start="stairs5" walls="left_right" dir="up"> 
+      <Point id="near_stairs5.2" />
       <Room wall="left" name="Библиотека" to="библиотеки" />
     </Path>
-    <Room wall="right" id="1236" />
-    <Room wall="left" id="1233" />
-    <Room wall="right" id="1234" />
-    <Room wall="left" id="1231" />
-    <Room wall="right" id="1232" />
-    <Room wall="left" id="1229" />
-    <Room wall="right" id="1230" />
-    <Room wall="right" id="1228" />
-    <Room wall="left" id="1227" />
-    <Room wall="right" id="1226" />
-    <Room wall="right" id="1224" />
-    <Room wall="left" id="1225" />
-    <Room wall="right" id="1222" />
-    <Room wall="left" id="1223" />
-    <Joint to="угла" />
-    <Path rotate="left" walls="left_right">
-      <Room wall="left" id="1221" />
-      <Room wall="right" id="1218" />
-      <Room wall="left" id="1219" />
-    </Path>
-    <Path rotate="forward" walls="left">
-      <Room id="1216" wall="right" />
-      <Room id="1214" wall="right" />
-      <Room id="1215" wall="left" />
-      <Room id="1212" wall="right" />
-      <Room id="1210" wall="right" />
-      <Room id="1213" wall="left" />
-      <Room id="1208" wall="right" />
-      <Room id="1211" wall="left" />
-      <Room id="1206" wall="right" />
-      <Room id="1209" wall="left" />
-      <Room id="1204" wall="right" />
-      <Room id="1207" wall="left" />
-      <Room id="1205" wall="left" />
-      <Room id="1203" wall="left" />
-      <Room id="1202" wall="right" />
-      <Room id="1201" wall="left" />
+    <Path rotate="right" walls="left_right">
+      <Room wall="right" id="1236" />
+      <Room wall="left" id="1233" />
+      <Room wall="right" id="1234" />
+      <Room wall="left" id="1231" />
+      <Room wall="right" id="1232" />
+      <Room wall="left" id="1229" />
+      <Room wall="right" id="1230" />
+      <Room wall="right" id="1228" />
+      <Room wall="left" id="1227" />
+      <Room wall="right" id="1226" />
+      <Room wall="right" id="1224" />
+      <Room wall="left" id="1225" />
+      <Room wall="right" id="1222" />
+      <Room wall="left" id="1223" />
+      <Joint to="угла" /> 
+      <Point id="near_big_stairs_2" />
+      <Path rotate="left" start="near_big_stairs_2" walls="left_right">
+        <Room wall="left" id="1221" />
+        <Room wall="right" id="1218" />
+        <Room wall="left" id="1219" />
+      </Path>
+       <Path rotate="forward" start="near_big_stairs_2" walls="left">
+          <Stairs id="big_stairs" />
+          <Path rotate="right" start="big_stairs" walls="left_right">
+            <Point id="corridor_2_near_stairs" />
+            <Path rotate="left" walls="left_right">
+              <Room id="1216" wall="right" />
+              <Room id="1214" wall="right" />
+              <Room id="1215" wall="left" />
+              <Room id="1212" wall="right" />
+              <Room id="1210" wall="right" />
+              <Room id="1213" wall="left" />
+              <Room id="1208" wall="right" />
+              <Room id="1211" wall="left" />
+              <Room id="1206" wall="right" />
+              <Room id="1209" wall="left" />
+              <Room id="1204" wall="right" />
+              <Room id="1207" wall="left" />
+              <Room id="1205" wall="left" />
+              <Room id="1203" wall="left" />
+              <Room id="1202" wall="right" />
+              <Room id="1201" wall="left" />
+            </Path>
+          </Path>
+        </Path>
+      </Path>
     </Path>
   </Floor>    
 
   <Floor num="4">
-    <Path rotate="forward" walls="left">
-      <Room wall="left" id="1457" />
-    </Path>                                                         
-    <Room wall="right" id="1448" />
-    <Room wall="left" id="1453" />
-    <Room wall="right" id="1446" />
-    <Room wall="left" id="1451" />
-    <Room wall="right" id="1444" />
-    <Room wall="left" id="1449" />
-    <Room wall="right" id="1442" />
-    <Room wall="left" id="1447" />
-    <Room wall="right" id="1440" />
-    <Room wall="left" id="1445" />
-    <Room wall="left" id="1443" />
-    <Room wall="right" id="1438" />
-    <Room wall="right" id="1436" />
-    <Room wall="left" id="1441" />
-    <Room wall="right" id="1434" />
-    <Room wall="right" id="1432" />
-    <Room wall="left" id="1439" />
-    <Room wall="right" id="1430" />
-    <Room wall="left" id="1437" />
-    <Room wall="left" id="1435" />
-    <Room wall="right" id="1426" />
-    <Joint to="угла" />
-    <Path rotate="left" walls="left_right">
-      <Room wall="left" id="1424" />
-      <Room wall="right" id="1433" />
-      <Room wall="left" id="1431" />
-    </Path> 
-    <Path rotate="forward" walls="left">
-      <Room id="1416" wall="right" />
-      <Room id="1414" wall="right" />
-      <Room id="1429" wall="left" />
-      <Room id="1427" wall="left" />
-      <Room id="1425" wall="left" />
-      <Room id="1423" wall="left" />
-      <Room id="1421" wall="left" />
-      <Room id="1412" wall="right" />
-      <Room id="1419" wall="left" />
-      <Room id="1410" wall="right" />
-      <Room id="1417" wall="left" />
-      <Room id="1415" wall="left" />
-      <Room id="1408" wall="right" />
-      <Room id="1411" wall="left" />
-      <Room id="1406" wall="right" />
-      <Room id="1405" wall="left" />
-      <Room id="1404" wall="right" />
-      <Room id="1403" wall="left" />
-      <Room id="1402" wall="right" />
-      <Room id="1401" wall="left" />
+    <Stairs id="stairs5" name="Лестница" />
+    <Path start="stairs5" walls="left" dir="up"> 
+      <Point id="near_stairs5.4" />
+      <Room wall="left" name="1457" to="1457" />
+    </Path>   
+    <Path start="near_stairs5.4" rotate="right" walls="left_right">
+      <Room wall="right" id="1448" />
+      <Room wall="left" id="1453" />
+      <Room wall="right" id="1446" />
+      <Room wall="left" id="1451" />
+      <Room wall="right" id="1444" />
+      <Room wall="left" id="1449" />
+      <Room wall="right" id="1442" />
+      <Room wall="left" id="1447" />
+      <Room wall="right" id="1440" />
+      <Room wall="left" id="1445" />
+      <Room wall="left" id="1443" />
+      <Room wall="right" id="1438" />
+      <Room wall="right" id="1436" />
+      <Room wall="left" id="1441" />
+      <Room wall="right" id="1434" />
+      <Room wall="right" id="1432" />
+      <Room wall="left" id="1439" />
+      <Room wall="right" id="1430" />
+      <Room wall="left" id="1437" />
+      <Room wall="left" id="1435" />
+      <Room wall="right" id="1426" />
+      <Joint to="угла" />
+      <Point id="near_big_stairs_4" />
+      <Path rotate="left" start="near_big_stairs_4" walls="left_right">
+        <Room wall="left" id="1424" />
+        <Room wall="right" id="1433" />
+        <Room wall="left" id="1431" />
+      </Path> 
+      <Path rotate="forward" start="near_big_stairs_4" walls="left">
+        <Stairs id="big_stairs" />
+        <Path rotate="right" start="big_stairs" walls="left_right">
+          <Point id="corridor_4_near_stairs" />
+          <Path rotate="left" start="corridor_4_near_stairs" walls="left_right">
+            <Room id="1416" wall="right" />
+            <Room id="1414" wall="right" />
+            <Room id="1429" wall="left" />
+            <Room id="1427" wall="left" />
+            <Room id="1425" wall="left" />
+            <Room id="1423" wall="left" />
+            <Room id="1421" wall="left" />
+            <Room id="1412" wall="right" />
+            <Room id="1419" wall="left" />
+            <Room id="1410" wall="right" />
+            <Room id="1417" wall="left" />
+            <Room id="1415" wall="left" />
+            <Room id="1408" wall="right" />
+            <Room id="1411" wall="left" />
+            <Room id="1406" wall="right" />
+            <Room id="1405" wall="left" />
+            <Room id="1404" wall="right" />
+            <Room id="1403" wall="left" />
+            <Room id="1402" wall="right" />
+            <Room id="1401" wall="left" />
+          </Path>
+        </Path>
+      </Path>
     </Path>
   </Floor> 
 
-<Floor num="5">
-    <Path rotate="forward" walls="left">
+  <Floor num="5">
+    <Stairs id="stairs5" name="Лестница" />
+    <Path start="stairs5" walls="left" dir="up"> 
+      <Point id="near_stairs5.5" />
       <Room wall="left" name="1533" to="1533" />
-        wall<Room wall="left" name="1631" to="1531" />
-    </Path>                                                           
-    <Room wall="right" id="1536" />
-    <Room wall="left" id="1529" />
-    <Room wall="right" id="1534" />
-    <Room wall="right" id="1532" />
-    <Room wall="left" id="1527" />
-    <Room wall="right" id="1530" />
-    <Room wall="left" id="1525" />
-    <Room wall="right" id="1528" />
-    <Room wall="left" id="1523" />
-    <Room wall="right" id="1526" />
-    <Room wall="right" id="1524" />
-    <Room wall="left" id="1521" />
-    <Room wall="right" id="1522" />
-    <Room wall="left" id="1519" />
-    <Joint to="угла" />
-    <Path rotate="left" walls="left_right">
-      <Room wall="left" id="1517" />
-      <Room wall="right" id="1518" />
-      <Room wall="left" id="1515" />
-    </Path>
-    <Path rotate="forward" walls="left">
-      <Room id="1516" wall="right" />
-      <Room id="1514" wall="right" />
-      <Room id="1513" wall="left" />
-      <Room id="1511" wall="left" />
-      <Room id="1509" wall="left" />
-      <Room id="1512" wall="right" />
-      <Room id="1507" wall="left" />
-      <Room id="1510" wall="right" />
-      <Room id="1508" wall="right" />
-      <Room id="1505" wall="left" />
-      <Room id="1506" wall="right" />
-      <Room id="1503" wall="left" />
-      <Room id="1504" wall="right" />
-      <Path rotate="forward" walls="left">
-        <Room wall="left" name="1501" to="1501" />
-      </Path> 
-      <Path rotate="forward" walls="right">
-        <Room wall="left" id="1625" />
-        <Room wall="left" id="1627" />
-        <Room wall="right" id="1626" />
-        <Room wall="left" id="1629" />
+      <Room wall="left" name="1631" to="1531" />
+    </Path>  
+    <Path start="near_stairs5.5" rotate="right" walls="left_right">                                                        
+      <Room wall="right" id="1536" />
+      <Room wall="left" id="1529" />
+      <Room wall="right" id="1534" />
+      <Room wall="right" id="1532" />
+      <Room wall="left" id="1527" />
+      <Room wall="right" id="1530" />
+      <Room wall="left" id="1525" />
+      <Room wall="right" id="1528" />
+      <Room wall="left" id="1523" />
+      <Room wall="right" id="1526" />
+      <Room wall="right" id="1524" />
+      <Room wall="left" id="1521" />
+      <Room wall="right" id="1522" />
+      <Room wall="left" id="1519" />
+      <Joint to="угла" />
+      <Point id="near_big_stairs_5" />
+        <Path rotate="left" start="near_big_stairs_5" walls="left_right">
+        <Room wall="left" id="1517" />
+        <Room wall="right" id="1518" />
+        <Room wall="left" id="1515" />
+      </Path>
+      <Path rotate="forward" start="near_big_stairs_5" walls="left">
+        <Stairs id="big_stairs" />
+        <Path rotate="right" start="big_stairs" walls="left_right">
+          <Point id="corridor_5_near_stairs" />
+          <Path rotate="left" start="corridor_5_near_stairs" walls="left_right">
+            <Room id="1516" wall="right" />
+            <Room id="1514" wall="right" />
+            <Room id="1513" wall="left" />
+            <Room id="1511" wall="left" />
+            <Room id="1509" wall="left" />
+            <Room id="1512" wall="right" />
+            <Room id="1507" wall="left" />
+            <Room id="1510" wall="right" />
+            <Room id="1508" wall="right" />
+            <Room id="1505" wall="left" />
+            <Room id="1506" wall="right" />
+            <Room id="1503" wall="left" />
+            <Room id="1504" wall="right" />
+            <Point id="near_small_stairs" />
+              <Path rotate="right" start="near_small_stairs" walls="left_right">
+              <Room wall="left" name="1501" to="1501" />
+            </Path> 
+            <Path rotate="forward" start="near_small_stairs" walls="left">
+              <Stairs id="small_stairs" name="Лестница" />
+              <Path rotate="right" start="small_stairs" walls="left_right">
+                <Point id="corridor_6.1_near_stairs" />
+                <Path rotate="left" start="corridor_6.1_near_stairs" walls="left_right">
+                  <Room wall="left" id="1625" />
+                  <Room wall="left" id="1627" />
+                  <Room wall="right" id="1626" />
+                  <Room wall="left" id="1629" />
 
-        <Room wall="right" id="1628" />
-        <Room wall="left" id="1631" />
-        <Room wall="right" id="1630" />
-        <Room wall="left" id="1633" />
+                  <Room wall="right" id="1628" />
+                  <Room wall="left" id="1631" />
+                  <Room wall="right" id="1630" />
+                  <Room wall="left" id="1633" />
 
-        <Room wall="right" id="1632" />
-        <Room wall="left" id="1635" />
-        <Room wall="right" id="1634" />
-        <Room wall="left" id="1637" />
+                  <Room wall="right" id="1632" />
+                  <Room wall="left" id="1635" />
+                  <Room wall="right" id="1634" />
+                  <Room wall="left" id="1637" />
 
-        <Room wall="right" id="1636" />
-        <Room wall="left" id="1639" />
-        <Room wall="right" id="1638" />
-        <Room wall="left" id="1641" />
+                  <Room wall="right" id="1636" />
+                  <Room wall="left" id="1639" />
+                  <Room wall="right" id="1638" />
+                  <Room wall="left" id="1641" />
 
-        <Room wall="right" id="1640" />
-        <Room wall="left" id="1643" />
-        <Room wall="right" id="1642" />
-        <Room wall="left" id="1645" />
+                  <Room wall="right" id="1640" />
+                  <Room wall="left" id="1643" />
+                  <Room wall="right" id="1642" />
+                  <Room wall="left" id="1645" />
 
-        <Room wall="right" id="1644" />
-        <Room wall="left" id="1647" />
-        <Room wall="right" id="1646, 1648" />
-        <Room wall="left" id="1649" />
+                  <Room wall="right" id="1644" />
+                  <Room wall="left" id="1647" />
+                  <Room wall="right" id="1646, 1648" />
+                  <Room wall="left" id="1649" />
 
-        <Room wall="right" id="1650" />
-        <Room wall="left" id="1651" />
-        <Room wall="right" id="1652" />
-        <Room wall="left" id="1653" />
-      </Path>         
+                  <Room wall="right" id="1650" />
+                  <Room wall="left" id="1651" />
+                  <Room wall="right" id="1652" />
+                  <Room wall="left" id="1653" />
+                </Path> 
+              </Path> 
+            </Path> 
+          </Path> 
+        </Path>         
+      </Path>
     </Path>
   </Floor>
 
 
 <Floor num="6">
-   <Path rotate="forward" walls="left">
-      <Room wall="left" name="1623" to="1623" />
-      <Room wall="left" name="1624" to="1624" />
-    </Path>                                                            
+  <Stairs id="stairs5" name="Лестница" />
+  <Path start="stairs5" walls="left" dir="up"> 
+    <Point id="near_stairs5.6" />
+    <Room wall="left" name="1623" to="1623" />
+    <Room wall="left" name="1624" to="1624" />
+  </Path> 
+  <Path start="near_stairs5.6" rotate="forward" walls="left_right">                                                            
     <Room wall="right" id="1622" />
     <Room wall="left" id="1621" />
     <Room wall="right" id="1620" />
@@ -326,30 +377,41 @@ let planXML = `
     <Room wall="right" id="1606" />
     <Room wall="right" id="1604" />
     <Joint to="угла" />
-    <Path rotate="left" walls="left_right">
-      <Room wall="right" id="1602" />
-      <Room wall="left" id="1601" />
-    </Path>
-</Floor>
+    <Point id="near_big_stairs_6" />
+      <Path rotate="left" start="near_big_stairs_6" walls="left_right">
+        <Room wall="right" id="1602" />
+        <Room wall="left" id="1601" />
+      </Path>
+  </Path>
+  </Floor>
 
 
 <Floor num="4.5">
-  <Path rotate="forward" walls="left">
-    <Room wall="right" id="5406" />
-    <Room wall="right" id="5408" />
-    <Room wall="right" id="5412" />
-    <Room wall="left" id="5411" />
-    <Room wall="left" id="5413" />
-    <Room wall="left" id="4400" />
-    <Room wall="left" id="5405" />
-    <Room wall="left" id="5409" />
-    <Room wall="left" id="5403" />
-    <Room wall="left" id="5401" />
-  </Path>
+   <Stairs id="stairs10" name="Лестница"/>
+    <Path start="stairs10" walls="left" dir="up"> 
+      <Point id="near_stairs10" />
+      <Stairs id="stairs10" name="Лестница" />
+      <Path start="near_stairs10" rotate="left" walls="left_right"> 
+        <Room wall="right" id="5406" />
+        <Room wall="right" id="5408" />
+        <Room wall="right" id="5412" />
+        <Room wall="left" id="5411" />
+        <Room wall="left" id="5413" />
+        <Room wall="left" id="4400" />
+        <Room wall="left" id="5405" />
+        <Room wall="left" id="5409" />
+        <Room wall="left" id="5403" />
+        <Room wall="left" id="5401" />
+      </Path>
+    </Path>
 </Floor>    
 
   <Floor num="5.5">
-    <Path rotate="forward" walls="left">
+    <Stairs id="stairs10" name="Лестница" />
+    <Path start="stairs10" walls="left" dir="up"> 
+      <Point id="near_stairs10" />
+      <Stairs id="stairs10" name="Лестница" />
+      <Path start="near_stairs10" rotate="left" walls="left_right"> 
       <Room wall="right" id="5506" />
       <Room wall="left" id="5511" />
       <Room wall="right" id="5504" />
@@ -366,12 +428,17 @@ let planXML = `
         <Room wall="left" id="5516" />
         <Room wall="right" id="5517" />
         <Room wall="up" id="5518" />
-      </Path>
+       </Path>
     </Path>
+  </Path>
   </Floor>
 
   <Floor num="6.5">
-    <Path rotate="forward" walls="left">
+    <Stairs id="stairs10" name="Лестница" />
+    <Path start="stairs10" walls="left" dir="up"> 
+      <Point id="near_stairs10" />
+      <Stairs id="stairs10" name="Лестница" />
+      <Path start="near_stairs10" rotate="left" walls="left_right"> 
       <Room wall="left" id="5613" />
       <Room wall="right" id="5608" />
       <Room wall="left" id="5611" />
@@ -404,34 +471,40 @@ let planXML = `
         <Room wall="right" id="5623" />
         <Room wall="up" id="5625" />
       </Path>
+      </Path>
     </Path>
   </Floor>
 
 
   <Floor num="7.5">
-    <Path rotate="forward" walls="left">
-      <Room wall="right" id="5708" />
-      <Room wall="left" id="5709" />
-      <Room wall="right" id="5706" />
-      <Room wall="left" id="5707" />
-      <Room wall="right" id="5704" />
-      <Room wall="left" id="5705" />
-      <Room wall="left" id="5703" />
-      <Room wall="right" id="5702" />
-      <Path start="5708" rotate="right" walls="left_right">
-        <Room wall="left" id="5710" />
-        <Room wall="left" id="5712" />
-        <Room wall="right" id="5713" />
-        <Room wall="left" id="5714" />
-        <Room wall="right" id="5719" />
-        <Room wall="left" id="5716" />
-        <Room wall="right" id="5721" />
-        <Room wall="up" id="5718" />
-      </Path>
-      <Path start="5709" rotate="left" walls="left_right">
-        <Room wall="right" id="5711" />
-        <Room wall="up" id="5713" />
-      </Path>
+    <Stairs id="stairs10" name="Лестница" />
+    <Path start="stairs10" walls="left" dir="up"> 
+      <Point id="near_stairs10" />
+      <Stairs id="stairs10" name="Лестница" />
+        <Path start="near_stairs10" rotate="forward" walls="left_right">
+          <Room wall="right" id="5708" />
+          <Room wall="left" id="5709" />
+          <Room wall="right" id="5706" />
+          <Room wall="left" id="5707" />
+          <Room wall="right" id="5704" />
+          <Room wall="left" id="5705" />
+          <Room wall="left" id="5703" />
+          <Room wall="right" id="5702" />
+          <Path start="5708" rotate="right" walls="left_right">
+            <Room wall="left" id="5710" />
+            <Room wall="left" id="5712" />
+            <Room wall="right" id="5713" />
+            <Room wall="left" id="5714" />
+            <Room wall="right" id="5719" />
+            <Room wall="left" id="5716" />
+            <Room wall="right" id="5721" />
+            <Room wall="up" id="5718" />
+          </Path>
+          <Path start="5709" rotate="left" walls="left_right">
+            <Room wall="right" id="5711" />
+            <Room wall="up" id="5713" />
+          </Path>
+        </Path>
     </Path>
  </Floor>
 
