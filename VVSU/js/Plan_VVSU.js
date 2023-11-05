@@ -155,28 +155,27 @@ let planXML = `
         <Room wall="right" id="1218" />
         <Room wall="left" id="1219" />
       </Path>
-       <Path rotate="forward" start="near_big_stairs_2" walls="left">
-          <Stairs id="big_stairs" />
-          <Path rotate="right" start="big_stairs" walls="left_right">
-            <Point id="corridor_2_near_stairs" />
-            <Path rotate="left" walls="left_right">
-              <Room id="1216" wall="right" />
-              <Room id="1214" wall="right" />
-              <Room id="1215" wall="left" />
-              <Room id="1212" wall="right" />
-              <Room id="1210" wall="right" />
-              <Room id="1213" wall="left" />
-              <Room id="1208" wall="right" />
-              <Room id="1211" wall="left" />
-              <Room id="1206" wall="right" />
-              <Room id="1209" wall="left" />
-              <Room id="1204" wall="right" />
-              <Room id="1207" wall="left" />
-              <Room id="1205" wall="left" />
-              <Room id="1203" wall="left" />
-              <Room id="1202" wall="right" />
-              <Room id="1201" wall="left" />
-            </Path>
+      <Path rotate="forward" start="near_big_stairs_2" walls="left">
+        <Stairs id="big_stairs" />
+        <Path rotate="right" start="big_stairs" walls="left_right">
+          <Point id="corridor_2_near_stairs" />
+          <Path rotate="left" walls="left_right">
+            <Room id="1216" wall="right" />
+            <Room id="1214" wall="right" />
+            <Room id="1215" wall="left" />
+            <Room id="1212" wall="right" />
+            <Room id="1210" wall="right" />
+            <Room id="1213" wall="left" />
+            <Room id="1208" wall="right" />
+            <Room id="1211" wall="left" />
+            <Room id="1206" wall="right" />
+            <Room id="1209" wall="left" />
+            <Room id="1204" wall="right" />
+            <Room id="1207" wall="left" />
+            <Room id="1205" wall="left" />
+            <Room id="1203" wall="left" />
+            <Room id="1202" wall="right" />
+            <Room id="1201" wall="left" />
           </Path>
         </Path>
       </Path>
