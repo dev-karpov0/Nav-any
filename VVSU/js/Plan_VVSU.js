@@ -128,12 +128,11 @@ let planXML = `
 
   <Floor num="2">
     <Stairs id="stairs5" name="Лестница" />
-    <Joint />
     <Path start="stairs5" walls="left_right" dir="up"> 
       <Point id="near_stairs5.2" />
       <Room wall="left" name="Библиотека" to="библиотеки" />
     </Path>
-    <Path rotate="right" walls="left_right">
+    <Path start="stairs5" rotate="right" walls="left_right" dir="up">
       <Room wall="right" id="1236" />
       <Room wall="left" id="1233" />
       <Room wall="right" id="1234" />
@@ -188,7 +187,7 @@ let planXML = `
       <Point id="near_stairs5.4" />
       <Room wall="left" name="1457" to="1457" />
     </Path>   
-    <Path start="near_stairs5.4" rotate="right" walls="left_right">
+    <Path start="near_stairs5.4" rotate="right" walls="left_right" dir="up">
       <Room wall="right" id="1448" />
       <Room wall="left" id="1453" />
       <Room wall="right" id="1446" />
@@ -255,7 +254,7 @@ let planXML = `
       <Room wall="left" name="1533" to="1533" />
       <Room wall="left" name="1631" to="1531" />
     </Path>  
-    <Path start="near_stairs5.5" rotate="right" walls="left_right">                                                        
+    <Path start="near_stairs5.5" rotate="right" walls="left_right" dir="up">
       <Room wall="right" id="1536" />
       <Room wall="left" id="1529" />
       <Room wall="right" id="1534" />
@@ -355,7 +354,7 @@ let planXML = `
     <Room wall="left" name="1623" to="1623" />
     <Room wall="left" name="1624" to="1624" />
   </Path> 
-  <Path start="near_stairs5.6" rotate="forward" walls="left_right">                                                            
+  <Path start="near_stairs5.6" rotate="forward" walls="left_right" dir="up">
     <Room wall="right" id="1622" />
     <Room wall="left" id="1621" />
     <Room wall="right" id="1620" />
