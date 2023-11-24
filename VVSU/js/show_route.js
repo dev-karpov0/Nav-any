@@ -50,7 +50,7 @@ function showRoute()
 
         //let route_str = route.join("<br/>");
         let route_str = route.map((val, idx) => {
-            return getRouteStepComponentString(val, getRandomInt(2) === 1 ? 'Пример текста' : '');
+            return getRouteStepComponentString(val.route, val.detailed_route);
         }).join(' ');
 
         outputContainer.innerHTML = route_str;
