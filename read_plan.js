@@ -210,6 +210,9 @@ function read_plan ()
             for (floor_child of plan_child.childNodes) {
                 if (floor_child.tagName == "Path") {
                     // обрабатываем путь перемещения
+                    if (!("dir" in floor_child.attributes)) {
+                        alert("Поле dir отсутствует в корневом теге <Path>");
+                    }
                     let dir_str = floor_child.attributes["dir"].nodeValue;
                     let dir = motionDirForStr(dir_str);
                     let path = {
@@ -223,6 +226,9 @@ function read_plan ()
                     // добавляем начальный пункт к пути
                     // тут важно указать этаж, поскольку пункт может оказаться
                     //   лестницей или лифтом, для которых идентификатор один и тот же на разных этажах
+                    if (!("start" in floor_child.attributes)) {
+                        alert("Поле start отсутствует в корневом теге <Path>");
+                    }
                     let point_index = get_point_by_id(floor_child.attributes["start"].nodeValue, floor_num);
                     add_point_to_path(point_index, path_index);
                     // читаем путь
