@@ -7,7 +7,7 @@ let planXML = `
     <Path start="2" walls="left_right" dir="right">
       <Joint to="поворота на Андеграунд" />
       <Path rotate="left" walls="no">
-        <Room name="Андеграунд" to="Андеграунда" fav="1" />
+        <Room name="Андеграунд" to="Андеграунда" fav="1" id="UND" />
       </Path>
       <Path rotate="forward" walls="left_right">
         <Room name="Кофейня" wall="left" fav="1" />

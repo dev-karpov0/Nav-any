@@ -36,8 +36,8 @@ function getRandomInt(max) {
 function showRoute()
 {
     if (!state) {
-        let from_point = fromField.value;
-        let to_point = toField.value;
+        let from_point = fromField.value.toLowerCase();
+        let to_point = toField.value.toLowerCase();
 
         let route = '';
         try {
