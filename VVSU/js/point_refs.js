@@ -49,7 +49,8 @@ function createFloorMenuItems(floor_array)
     const len = floor_array.length;
     let e = document.createElement('li');
     e.setAttribute('data-floor', 'fav');
-    e.innerHTML = '&#9734;';
+   // e.innerHTML = '&#9734;';
+    e.innerHTML = '&#10029;';
     referencesFloorMenu.appendChild(e);
     for(let i=0; i<len; i++) {
         let e = document.createElement('li');
