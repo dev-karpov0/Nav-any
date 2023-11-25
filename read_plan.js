@@ -86,7 +86,8 @@ function process_xml_node (xml_node, path_index, floor_num)
         wall: ("wall" in xml_node.attributes ? xml_node.attributes["wall"].nodeValue : ""),
         hidden: false,  //(xml_node.attributes["show_name"] != "1"),
         edges: [],
-        to: ("to" in xml_node.attributes ? xml_node.attributes["to"].nodeValue : "")
+        to: ("to" in xml_node.attributes ? xml_node.attributes["to"].nodeValue : ""),
+        fav: ("fav" in xml_node.attributes)
     };    
     // добавляем новый пункт
     let point_index;

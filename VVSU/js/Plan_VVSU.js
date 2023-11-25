@@ -7,12 +7,12 @@ let planXML = `
     <Path start="2" walls="left_right" dir="right">
       <Joint to="поворота на Андеграунд" />
       <Path rotate="left" walls="no">
-        <Room name="Андеграунд" to="Андеграунда" />
+        <Room name="Андеграунд" to="Андеграунда" fav="1" />
       </Path>
       <Path rotate="forward" walls="left_right">
-        <Room name="Кофейня" wall="left" />
+        <Room name="Кофейня" wall="left" fav="1" />
         <Door />
-        <Joint name="Турникет" to="турникета" />
+        <Joint name="Турникет" to="турникета" fav="1" />
         <Path rotate="left" walls="left">
           <Joint to="угла" />
           <Path rotate="right" walls="left">
@@ -32,7 +32,7 @@ let planXML = `
                   <Room wall="left" id="1308" name="Женский туалет" to="женского туалета" />
                   <Joint to="перехода в 4 корпус" />
                   <Path rotate="forward">
-                    <Room wall="right" name="Блинная" />
+                    <Room wall="right" name="Блинная" fav="1" />
                     <Door name="Кафедра маркетинга и торговли" to="кафедры маркетинга и торговли" />
                     <Path rotate="forward" walls="left_right">
                       <Room id="4301" wall="right" />
@@ -85,10 +85,10 @@ let planXML = `
     <Path start="1" walls="right" dir="up">
       <Joint name="Турникет" to="турникета" />
       <Path rotate="forward" walls="right">
-        <Room wall="right" name="Лотос" to="Лотоса" />
+        <Room wall="right" name="Лотос" to="Лотоса" fav="1" />
       </Path>
       <Path rotate="left" walls="right">
-        <Room wall="right" name="Гардероб" to="гардероба" />
+        <Room wall="right" name="Гардероб" to="гардероба" fav="1" />
         <Room wall="right" id="1140" />
         <Room wall="left" id="1131" />
         <Room wall="left" id="1129" />
