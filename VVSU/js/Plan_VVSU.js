@@ -1,8 +1,7 @@
 let planXML = `
-<Plan name="VVSU">
-  <Exit id="2" floor="3" name="Вход 2" />
-  <Exit id="1" floor="1" name="Вход 1" />
-
+<Plan object="VVSU">
+  <Exit id="2" name="Вход 2" floor="3" show_name="1" />
+ 
   <Floor num="3">
     <Path start="2" walls="left_right" dir="right">
       <Joint to="поворота на Андеграунд" />
@@ -140,12 +139,13 @@ let planXML = `
               </Path>     
             </Path>
           </Path>
-        </Path>        
+        </Path>
       </Path>
     </Path>
   </Floor>
+ 
 
-
+  <Exit id="1" name="Вход 1" floor="1" show_name="1" />
   <Floor num="1">
     <Stairs id="stairs5" name="Лестница" />
     <Path start="1" walls="right" dir="up">
@@ -191,7 +191,6 @@ let planXML = `
       </Path>
     </Path>
   </Floor>
-
 
   <Floor num="2">
     <Stairs id="stairs5" name="Лестница" />
@@ -248,6 +247,9 @@ let planXML = `
       </Path>
     </Path>
   </Floor>    
+
+  
+
 
   <Floor num="4">
     <Stairs id="stairs5" name="Лестница" />
