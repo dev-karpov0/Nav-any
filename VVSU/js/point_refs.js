@@ -18,6 +18,7 @@ function getFloorArray() {
     let floorSet = new Set()
 
     const len = plan.points.length;
+    pointsHTMLByFloor['fav'] = '';
     for (let i = 0; i < len; i++) {
         //console.log(plan.points[i].floor)
         let point = plan.points[i];
@@ -32,6 +33,10 @@ function getFloorArray() {
                 pointsHTMLByFloor[floorNumber] += str;
             }
         }
+
+        if (point.fav) {
+            pointsHTMLByFloor['fav'] += pointNameToHTML(point.name, point.id);
+        }
     }
 
     return Array.from(floorSet).sort();
@@ -42,8 +47,13 @@ function createFloorMenuItems(floor_array)
     referencesFloorMenu.innerHTML = '';
 
     const len = floor_array.length;
+    let e = document.createElement('li');
+    e.setAttribute('data-floor', 'fav');
+   // e.innerHTML = '&#9734;';
+    e.innerHTML = '&#10029;';
+    referencesFloorMenu.appendChild(e);
     for(let i=0; i<len; i++) {
-        let e= document.createElement('li');
+        let e = document.createElement('li');
         e.setAttribute('data-floor', floor_array[i].toString());
         e.innerHTML = floor_array[i].toString();
         referencesFloorMenu.appendChild(e);
@@ -60,7 +70,11 @@ function selectFloor(element) {
     element.classList.add('references__floors_selected')
     selectedFloorElement = element;
 
-    let floorNumber = Number(element.getAttribute('data-floor'));
+    let floorNumber;
+    if (element.getAttribute('data-floor') == 'fav')
+        floorNumber = 'fav';
+    else
+        floorNumber = Number(element.getAttribute('data-floor'));
     referencesList.innerHTML = pointsHTMLByFloor[floorNumber];
 }
 

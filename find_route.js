@@ -46,6 +46,7 @@ function get_edge (point, adj_point_index)
 function get_route_text (route)
 {
     let route_text = [];
+    // let detailed_route_text = [];
     let i = 0;
     let j = 0;
     let edge = get_edge(plan.points[route[0]], route[1]);
@@ -70,11 +71,15 @@ function get_route_text (route)
         }
         if (path_index == -1) {
             floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
-            route_text.push("Пройти по лестнице" + floorText);
+            route_text.push({route: "Пройти по лестнице" + floorText,
+                detailed_route: ""});
+            // detailed_route_text.push("");
         } else if (path_index == -2) {
-            route_text.push("Проехать на лифте.");
+            route_text.push({route: "Проехать на лифте.",
+                detailed_route: ""});
         } else {
             let text = "Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
+            let detailed_text = "";
             if (j > i + 1) {
                 let hidden = true;
                 for (let k = i + 1; k < j; k++) {
@@ -84,21 +89,21 @@ function get_route_text (route)
                     }
                 }
                 if (!hidden) {
-                    text += " мимо: ";
+                    detailed_text += " мимо: ";
                 }
                 let flag = false;
                 for (let k = i + 1; k < j; k++) {
                     if (!plan.points[route[k]].hidden) {
                         if (flag) {
-                                text += ", ";
+                                detailed_text += ", ";
                         }
                         flag = true;
-                        text += plan.points[route[k]].name;
+                        detailed_text += plan.points[route[k]].name;
                     }
                 }
             }
             text += ".";
-            route_text.push(text);
+            route_text.push({route: text, detailed_route: detailed_text});
         }
         
         if (new_path_index >= 0 && path_index >= 0) {
@@ -113,11 +118,14 @@ function get_route_text (route)
             let d = (dir1 - dir2 + 4) % 4;
             if (d > motionDirForStr("up")) {
                 if (motionDir[d] == "left") {
-                    route_text.push("Поверните налево.");
+                    route_text.push({route: "Поверните налево.",
+                        detailed_route: "аккуратно"});
                 } else if (motionDir[d] == "down") {
-                    route_text.push("Поверните назад.");
+                    route_text.push({route: "Поверните назад.",
+                        detailed_route: "внимательно"});
                 } else if (motionDir[d] == "right") {
-                    route_text.push("Поверните направо.");
+                    route_text.push({route: "Поверните направо.",
+                        detailed_route: "осторожно"});
                 }
             }
         }
@@ -129,7 +137,7 @@ function get_route_text (route)
             break;
         }      
     }
-    return route_text;
+    return route_text;  // { route: route_text,  detailed_route: detailed_route_text };
 }
 
 function findRoute (point_from, point_to)

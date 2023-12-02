@@ -36,8 +36,8 @@ function getRandomInt(max) {
 function showRoute()
 {
     if (!state) {
-        let from_point = fromField.value;
-        let to_point = toField.value;
+        let from_point = fromField.value.toLowerCase();
+        let to_point = toField.value.toLowerCase();
 
         let route = '';
         try {
@@ -50,7 +50,7 @@ function showRoute()
 
         //let route_str = route.join("<br/>");
         let route_str = route.map((val, idx) => {
-            return getRouteStepComponentString(val, getRandomInt(2) === 1 ? 'Пример текста' : '');
+            return getRouteStepComponentString(val.route, val.detailed_route);
         }).join(' ');
 
         outputContainer.innerHTML = route_str;
