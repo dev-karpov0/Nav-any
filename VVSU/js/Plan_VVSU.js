@@ -54,7 +54,7 @@ let planXML = `
                         <Path rotate="right">
                           <Stairs id="stairs2" />
                         </Path>
-                        <Path rotate="left">
+                        <Path rotate="left" walls="left_right">
                           <Room wall="left" id="4302" />
                         </Path>
                       </Path>
@@ -314,6 +314,25 @@ let planXML = `
         </Path>
       </Path>
     </Path>
+    <Stairs id="stairs2" name="Лестница" />
+    <Path dir="up" walls="left_right" start="stairs2">
+      <Path rotate="right" walls="left_right">
+        <Point id="corridor_4.2_near_stairs" />
+        <Path rotate="left" start="corridor_4.2_near_stairs" walls="left_right">
+          <Room wall="left" id="4401" />
+          <Room wall="left" id="4403" />
+          <Room wall="left" id="4405" />
+          <Room wall="right" id="4402" />
+          <Room wall="left" id="4407" />
+          <Room wall="left" id="4409" /> 
+          <Room wall="left" id="4411" />
+          <Room wall="left" id="4413" />
+          <Room wall="right" id="4404" />
+          <Room wall="right" id="4406" />
+        </Path>
+      </Path>
+    </Path>
+
   </Floor> 
 
   <Floor num="5">
