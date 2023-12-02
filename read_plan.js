@@ -55,7 +55,7 @@ function get_point_by_id (point_id, floor)
         point_index = plan.point_by_id.get(elevator_point_id);
     else
         point_index = plan.point_by_id.get(point_id);
-    if (point_index == undefined) { alert("Ошибка: точка с id " + point_id + " на этаже " + floor + " не найдена!"); }
+    if (point_index == undefined) { alert("Ошибка: пункт с id " + point_id + " на этаже " + floor + " не найден!"); }
     return point_index;
 }
 
@@ -83,8 +83,8 @@ function process_xml_node (xml_node, path_index, floor_num)
         id: ("id" in xml_node.attributes ? xml_node.attributes["id"].nodeValue : ""),
         name: ("name" in xml_node.attributes ? xml_node.attributes["name"].nodeValue : ""),
         type: "",
-        location: ("location" in xml_node.attributes ? xml_node.attributes["location"].nodeValue : ""),
-        hidden: (xml_node.attributes["show_name"] != "1"),
+        wall: ("wall" in xml_node.attributes ? xml_node.attributes["wall"].nodeValue : ""),
+        hidden: false,  //(xml_node.attributes["show_name"] != "1"),
         edges: [],
         to: ("to" in xml_node.attributes ? xml_node.attributes["to"].nodeValue : ""),
         fav: ("fav" in xml_node.attributes)
@@ -131,8 +131,14 @@ function process_xml_node (xml_node, path_index, floor_num)
         else if (node_tag == "Wall") {
             point_index = add_point(point);
         }
-        else if (node_tag = "Door") {
+        else if (node_tag == "Door") {
             point_index = add_point(point);
+        }
+        else if (node_tag == "Joint") {
+            point_index = add_point(point);            
+        }
+        else {
+            alert(node_tag);
         }
     }
     // добавляем пункт к пути
@@ -161,12 +167,14 @@ function read_path (xml_node, path_index, floor_num)
     for (node_child of xml_node.childNodes) {
         if (node_child.tagName == "Path") {
             // обрабатываем путь перемещения
-            let point_index = get_point_by_id(node_child.attributes["start"].nodeValue, floor_num);
+            // let point_index = get_point_by_id(node_child.attributes["start"].nodeValue, floor_num);
+            // в качестве стартового пункта пути -- пункт родительского пути перед новым путем
+            let point_index = plan.paths[path_index].path_points[plan.paths[path_index].path_points.length - 1];
             let rotate_str = node_child.attributes["rotate"].nodeValue;
             let parent_path_dir = plan.paths[path_index].dir;
             let dir = rotate_dir(parent_path_dir, rotate_str);
             let path = {
-                type: node_child.attributes["type"].nodeValue,
+                walls: ("walls" in node_child.attributes ? node_child.attributes["walls"].nodeValue : "no"),
                 dir: dir, 
                 path_points: [point_index],
             };
@@ -210,7 +218,7 @@ function read_plan ()
                     let dir_str = floor_child.attributes["dir"].nodeValue;
                     let dir = motionDirForStr(dir_str);
                     let path = {
-                        type: floor_child.attributes["type"].nodeValue,
+                        walls: ("walls" in floor_child.attributes ? floor_child.attributes["walls"].nodeValue : "no"),
                         dir: dir, 
                         path_points: [],
                     };
