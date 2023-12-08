@@ -54,7 +54,7 @@ function get_route_text (route)
     let reversed_path = edge.reversed_path;
 	let d = -1;  // направление движения
 	// TODO: вставить начальное направление -- в зависимости
-	//  от направления движения и с какой стенки комната
+	//  от направления движения и с какой стенки комната	
     while (i < route.length && j < route.length) {
         j = i + 1;
         let new_path_index;
@@ -81,6 +81,10 @@ function get_route_text (route)
             route_text.push({route: "Проехать на лифте.",
                 detailed_route: ""});
         } else {
+			
+			//console.log(plan.points[route[i]]);
+			//console.log(plan.points[route[j]]);
+			
 			let last_point_str = "";
 			let pred_last_point_str = "";
 			if (plan.points[route[j]].type == "Joint") {
@@ -95,12 +99,16 @@ function get_route_text (route)
 				}
 			}
 			else {
-				if (i < j - 1) {
+				/*if (i < j - 1) {
 					if (plan.points[route[j-1]].to)
 						last_point_str = plan.points[route[j-1]].to;
 					else if (plan.points[route[j-1]].name)
 						last_point_str = plan.points[route[j-1]].name;
-				}				
+				}*/
+				if (plan.points[route[j]].to)
+					last_point_str = plan.points[route[j]].to;
+				else if (plan.points[route[j]].name)
+					last_point_str = plan.points[route[j]].name;				
 			}
 			let start_point_str = "";
 			if (plan.points[route[i]].to)
