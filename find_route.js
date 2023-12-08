@@ -52,6 +52,9 @@ function get_route_text (route)
     let edge = get_edge(plan.points[route[0]], route[1]);
     let path_index = edge.path;
     let reversed_path = edge.reversed_path;
+	let d = -1;  // направление движения
+	// TODO: вставить начальное направление -- в зависимости
+	//  от направления движения и с какой стенки комната
     while (i < route.length && j < route.length) {
         j = i + 1;
         let new_path_index;
@@ -78,7 +81,57 @@ function get_route_text (route)
             route_text.push({route: "Проехать на лифте.",
                 detailed_route: ""});
         } else {
-            let text = "Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
+			let last_point_str = "";
+			let pred_last_point_str = "";
+			if (plan.points[route[j]].type == "Joint") {
+				if (plan.points[route[j]].to) {
+					last_point_str = plan.points[route[j]].to;
+				}
+				if (i < j - 1) {
+					if (plan.points[route[j-1]].to)
+						pred_last_point_str = plan.points[route[j-1]].to;
+					else if (plan.points[route[j-1]].name)
+						pred_last_point_str = plan.points[route[j-1]].name;
+				}
+			}
+			else {
+				if (i < j - 1) {
+					if (plan.points[route[j-1]].to)
+						last_point_str = plan.points[route[j-1]].to;
+					else if (plan.points[route[j-1]].name)
+						last_point_str = plan.points[route[j-1]].name;
+				}				
+			}
+			let start_point_str = "";
+			if (plan.points[route[i]].to)
+				start_point_str = plan.points[route[i]].to;
+			else if (plan.points[route[i]].name)
+				start_point_str = plan.points[route[i]].name;
+			
+			let text0 = "";
+            if (d > motionDirForStr("up")) {
+                if (motionDir[d] == "left") {
+					text0 = "Поверните налево";
+                } else if (motionDir[d] == "down") {
+					text0 = "Поверните назад";
+                } else if (motionDir[d] == "right") {
+					text0 = "Поверните направо";
+                }
+            }			
+			if (text0)
+				text0 += " и пройдите";
+			else
+				text0 = "Пройдите";
+			text0 += " от " + start_point_str + " до ";
+			let text1 = "";
+			if (last_point_str && pred_last_point_str)
+				text1 = pred_last_point_str + " и " + last_point_str;
+			else if (last_point_str && !pred_last_point_str)
+				text1 = last_point_str;
+			else if (!last_point_str && pred_last_point_str)
+				text1 = pred_last_point_str;
+						
+            let text = text0 + text1;  //"Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
             let detailed_text = "";
             if (j > i + 1) {
                 let hidden = true;
@@ -115,19 +168,7 @@ function get_route_text (route)
             if (reversed_path) {
                 dir2 = rotate_dir(dir2, "back");
             }
-            let d = (dir1 - dir2 + 4) % 4;
-            if (d > motionDirForStr("up")) {
-                if (motionDir[d] == "left") {
-                    route_text.push({route: "Поверните налево.",
-                        detailed_route: "аккуратно"});
-                } else if (motionDir[d] == "down") {
-                    route_text.push({route: "Поверните назад.",
-                        detailed_route: "внимательно"});
-                } else if (motionDir[d] == "right") {
-                    route_text.push({route: "Поверните направо.",
-                        detailed_route: "осторожно"});
-                }
-            }
+            d = (dir1 - dir2 + 4) % 4;
         }
         
         path_index = new_path_index;
