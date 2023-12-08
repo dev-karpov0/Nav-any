@@ -280,13 +280,12 @@ let planXML = `
         <Room wall="left" id="1435" />
         <Room wall="right" id="1426" />
         <Joint to="угла" />
-        <Point id="near_big_stairs_4" />
-        <Path rotate="left" start="near_big_stairs_4" walls="left_right">
+        <Path rotate="left" walls="left_right">
           <Room wall="left" id="1424" />
           <Room wall="right" id="1433" />
           <Room wall="left" id="1431" />
         </Path> 
-        <Path rotate="forward" start="near_big_stairs_4" walls="left">
+        <Path rotate="forward" walls="left">
           <Stairs id="big_stairs" />
           <Path rotate="right" start="big_stairs" walls="left_right">
             <Point id="corridor_4_near_stairs" />
