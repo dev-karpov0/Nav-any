@@ -70,7 +70,7 @@ function get_route_text (route)
     }
 
     // let start = true;
-    route_text.push({route: "Начните движение с " + plan.points[route[0]].name, detailed_route: ""});
+    route_text.push({route: "Начните движение с " + plan.points[route[0]].name + ".", detailed_route: ""});
     while (i < route.length && j < route.length) {
         j = i + 1;
         let new_path_index;
@@ -90,7 +90,8 @@ function get_route_text (route)
         }
         if (path_index == -1) {
             floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
-            route_text.push({route: "Пройти по лестнице" + floorText,
+            let stairs_up = (plan.points[route[i]].floor < plan.points[route[j]].floor);
+            route_text.push({route: (stairs_up ? "Поднимитесь" : "Спуститесь") + " по лестнице" + floorText,
                 detailed_route: ""});
             // detailed_route_text.push("");
         } else if (path_index == -2) {
