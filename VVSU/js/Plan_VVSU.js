@@ -286,7 +286,7 @@ let planXML = `
           <Room wall="left" id="1431" />
         </Path> 
         <Path rotate="forward" walls="left">
-          <Stairs id="big_stairs" />
+          <Stairs id="big_stairs" to="лестницы" />
           <Path rotate="right" start="big_stairs" walls="left_right">
             <Point id="corridor_4_near_stairs" />
             <Path rotate="left" start="corridor_4_near_stairs" walls="left_right">
@@ -366,10 +366,9 @@ let planXML = `
           <Room wall="left" id="1515" />
         </Path>
         <Path rotate="forward" start="near_big_stairs_5" walls="left">
-          <Stairs id="big_stairs" />
+          <Stairs id="big_stairs" to="лестницы" />
           <Path rotate="right" start="big_stairs" walls="left_right">
-            <Point id="corridor_5_near_stairs" />
-            <Path rotate="left" start="corridor_5_near_stairs" walls="left_right">
+            <Path rotate="left" walls="left_right">
               <Room id="1516" wall="right" />
               <Room id="1514" wall="right" />
               <Room id="1513" wall="left" />
@@ -383,15 +382,14 @@ let planXML = `
               <Room id="1506" wall="right" />
               <Room id="1503" wall="left" />
               <Room id="1504" wall="right" />
-              <Point id="near_small_stairs" />
-              <Path rotate="right" start="near_small_stairs" walls="left_right">
+              <Joint to="угла" />
+              <Path rotate="right" walls="left_right">
                 <Room wall="left" name="1501" to="1501" />
               </Path> 
               <Path rotate="forward" start="near_small_stairs" walls="left">
-                <Stairs id="small_stairs" name="Лестница" />
+                <Stairs id="small_stairs" name="Лестница" to="лестницы" />
                 <Path rotate="right" start="small_stairs" walls="left_right">
-                  <Point id="corridor_6.1_near_stairs" />
-                  <Path rotate="left" start="corridor_6.1_near_stairs" walls="left_right">
+                  <Path rotate="left" walls="left_right">
                     <Room wall="left" id="1625" />
                     <Room wall="left" id="1627" />
                     <Room wall="right" id="1626" />
