@@ -440,8 +440,8 @@ let planXML = `
   <Stairs id="stairs5" name="Лестница" />
   <Path start="stairs5" walls="left" dir="up"> 
     <Point id="near_stairs5.6" />
-    <Room wall="left" name="1623" to="1623" />
-    <Room wall="left" name="1624" to="1624" />
+    <Room wall="left" id="1623" />
+    <Room wall="left" id="1624" />
   
     <Path start="near_stairs5.6" rotate="forward" walls="left_right" dir="up">
       <Room wall="right" id="1622" />
