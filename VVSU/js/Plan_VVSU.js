@@ -103,10 +103,9 @@ let planXML = `
                 <Room wall="right" id="1329" />
                 <Room wall="left" id="1334" />
                 <Path rotate="forward" walls="right">
-                  <Stairs id="big_stairs" name="Большая лестница" />
+                  <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
                   <Path rotate="right" start="big_stairs" walls="left_right">
-                    <Point id="near_big_stairs_3" />
-                    <Path rotate="left" start="near_big_stairs_2" walls="left_right">
+                    <Path rotate="left" walls="left_right">
                       <Room wall="left" id="1336" />
                       <Room wall="right" id="1333" />
                       <Room wall="right" id="1335" />
@@ -214,8 +213,7 @@ let planXML = `
         <Room wall="right" id="1222" />
         <Room wall="left" id="1223" />
         <Joint to="угла" /> 
-        <Point id="near_big_stairs_2" />
-        <Path rotate="left" start="near_big_stairs_2" walls="left_right">
+        <Path rotate="left" walls="left_right">
           <Room wall="left" id="1221" />
           <Room wall="right" id="1218" />
           <Room wall="left" id="1219" />
