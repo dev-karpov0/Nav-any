@@ -286,8 +286,7 @@ let planXML = `
         <Path rotate="forward" walls="left">
           <Stairs id="big_stairs" to="лестницы" />
           <Path rotate="right" start="big_stairs" walls="left_right">
-            <Point id="corridor_4_near_stairs" />
-            <Path rotate="left" start="corridor_4_near_stairs" walls="left_right">
+            <Path rotate="left" walls="left_right">
               <Room id="1416" wall="right" />
               <Room id="1414" wall="right" />
               <Room id="1429" wall="left" />
