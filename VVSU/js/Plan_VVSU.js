@@ -11,7 +11,7 @@ let planXML = `
       <Path rotate="forward" walls="left_right">
         <Room name="Точка кипения" wall="left" fav="1" id="1305"/>
         <Room name="Кофейня" wall="left" fav="1" id="коф" />
-        <Door />
+        <Door name="дверь" to="двери" />
         <Joint name="Турникет" to="турникета" />
         <Path rotate="left" walls="left">
           <Joint to="угла" />
