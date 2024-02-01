@@ -1,4 +1,3 @@
-let planXML = `
 <Plan object="FEFU">
   <Exit id="d1" name="Вход 1 в корпус D" floor="7" to="входа 1 в D" />
  
@@ -103,4 +102,3 @@ let planXML = `
     </Path>
   </Floor>  
 </Plan>
-`

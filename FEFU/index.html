@@ -1,48 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-  <title>Навигатор ДВФУ</title>
+  <title>ДВФУ.Ориентир</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+  <link rel="stylesheet" href="../VVSU/nullstyle.css">
+  <link rel="stylesheet" href="../VVSU/styles.css">
+
   <script type="text/javascript" src="Plan_FEFU.js"></script>
   <script type="text/javascript" src="../read_plan.js"></script>
   <script type="text/javascript" src="../process_plan.js"></script>
   <script type="text/javascript" src="../find_route.js"></script>
+  <script type="text/javascript" src="../VVSU/js/show_route.js" defer></script>
+  <script type="text/javascript" src="../VVSU/js/point_refs.js" defer></script>
 </head>
 
 <body>
-  <center>
+  <div class="background"> </div>
+  <div class="container">
+    <div class="header__logo">
+      <span style="font-family: Arial Black; color: white; font-size:35pt">ДВФУ</span>
+    </div>
+    <div class="content">
+      <div class="references" hidden>
+        <div class="references__header">
+          <div class="references__back swipe-button"></div>
+          <div class="references__title">Справочник</div>
+        </div>
+        <div class="references__floor-line">
+          <div class="references__floor-icon"></div>
+          <ul class="references__floors">
+<!--            <li>1</li>-->
+<!--            <li>2</li>-->
+<!--            <li>3</li>-->
+<!--            <li>4</li>-->
+<!--            <li>1</li>-->
+<!--            <li>2</li>-->
+<!--            <li>3</li>-->
+<!--            <li>4</li>-->
+          </ul>
+        </div>
+        <ul class="references__list">
+<!--          <li>Вход 1</li>-->
+<!--          <li>Андерграунд</li>-->
+<!--          <li>ауд. 1301</li>-->
+        </ul>
+      </div>
 
-  <h3>ДВФУ.Ориентир</h3>
-  <center>
-      <img src="compass.png" />
-  </center>
-  <form name="frm">
-      <p>Откуда: <input type="text" size="8" name="from" /></p>
-      <p>Куда: <input type="text" size="8" name="to" /></p>
-      <p><input type="button" value="Маршрут" onClick="showRoute();" /></p>
-  </form>
-
-  <p>&nbsp;</p>
-  <p>Справка:</p>
-  <p>Введите номера аудиторий</p>
-  <p>D1 - вход в корпус D, D950 - аудитория</p>  
-
-  <p>&nbsp;</p>
-  <p id="route_text"></p>
-
-  </center>
-
-  <script type="text/javascript">
-    function showRoute()
-    {
-        let from_point = frm.from.value;
-        let to_point = frm.to.value;
-        let route = findRoute(from_point, to_point);
-        let route_str = route.join("<br/>");
-        document.getElementById("route_text").innerHTML = route_str;
-    }
-  </script>
+      <div class="navigator">
+        <div class="header">
+          <div class="header__title-line">
+            <div class="header__title">Ориентир</div>
+            <div class="header__handbook swipe-button"></div>
+          </div>
+          <div class="header__subtitle">Упрощенный навигатор по университету</div>
+        </div>
+        <div class="form">
+          <form name="frm">
+            <input type="text" id="from" placeholder="Откуда" class="form__input"/>
+            <input type="text" id="to" placeholder="Куда" class="form__input"/>
+            <button type="button" id="button" onclick="showRoute();" class="form__button">Проложить маршрут</button>
+          </form>
+          <div id="output" class="output" hidden>
+            <div class="output__header">
+              <div class="output__line"></div>
+              <div class="output__title">Маршрут</div>
+              <div class="output__item-container">
+                <div id="out-from" class="output__item">ауд. 4407</div>
+                <img src="../VVSU/images/arrow-icon.svg">
+                <div id="out-to" class="output__item">ауд. 4305</div>
+              </div>
+            </div>
+            <div id="output-container"></div>
+          </div>
+          <div id="error-text" hidden></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

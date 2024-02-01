@@ -134,6 +134,9 @@ function process_xml_node (xml_node, path_index, floor_num)
         else if (node_tag == "Door") {
             point_index = add_point(point);
         }
+        else if (node_tag == "Toilet") {
+            point_index = add_point(point);
+        }
         else if (node_tag == "Joint") {
             point_index = add_point(point);            
         }
