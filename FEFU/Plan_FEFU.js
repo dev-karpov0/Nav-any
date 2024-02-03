@@ -109,7 +109,7 @@ let planXML = `
       <Stairs id="stairs6" to="лестница" />
       <Room id="d931" wall="right" />
       <Room id="d930" wall="right" />
-      <Elevator id="elevators_1_2" wall="right" to="лифта" />
+      <Elevator id="elevators_1_2" wall="left" to="лифта" />
       <Room id="d929" wall="right" />
       <Toilet id="d901_904" wall="left" name="Туалет" to="туалета" />
       <Room id="d928" wall="right" />
@@ -167,6 +167,40 @@ let planXML = `
       <Room id="d948" wall="right" />
       <Room id="d946" wall="left" />
       <Room id="d947" wall="left" />
+      <Stairs id="stairs4" wall="right" to="лестницы" />       
+    </Path>
+  </Floor>  
+
+  <Floor num="8">
+    <Point id="p2" name="площадка" to="площадки" />
+    <Path start="p1" walls="left_right" dir="right">
+      <Stairs id="stairs6" to="лестница" />
+      <Room id="d814" wall="right" />
+      <Room id="d813" wall="right" />
+      <Elevator id="elevators_1_2" wall="left" to="лифта" />
+      <Toilet id="d802_805" wall="left" name="Туалет" to="туалета" />
+      <Room id="d801" wall="left" />
+      <Room id="d806" wall="left" />
+      <Room id="d807" wall="left" />
+      <Room id="d808" wall="left" />
+      <Room id="d809" wall="left" />
+      <Room id="d810" wall="left" />
+      <Room id="d811" wall="left" />
+      <Room id="d812" wall="left" />
+      <Stairs id="stairs10" to="лестницы" wall="left" />      
+    </Path>
+    <Path start="p1" walls="left_right" dir="left">
+      <Room id="d815" wall="left" />
+      <Room id="d829" wall="right" />
+      <Room id="d828" wall="right" />
+      <Elevator id="elevators_3_4" wall="right" />
+      <Toilet id="d822_827" wall="right" name="Туалет" to="туалета" />
+      <Room id="d821" wall="right" />
+      <Room id="d820" wall="right" />
+      <Room id="d819" wall="right" />
+      <Room id="d818" wall="right" />
+      <Room id="d817" wall="right" />
+      <Room id="d816" wall="right" />
       <Stairs id="stairs4" wall="right" to="лестницы" />       
     </Path>
   </Floor>  
