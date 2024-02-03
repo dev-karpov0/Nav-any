@@ -413,5 +413,91 @@ let planXML = `
     </Path>
   </Floor>  
 
+  <Floor num="4">
+    <Point id="p5" name="площадка" to="площадки" />
+    <Path start="p5" walls="left_right" dir="right">
+      <Stairs id="stairs5" to="лестница" wall="right" />
+      <Elevator id="elevator_9" wall="left" />
+      <Joint to="развилки" />
+      <Path rotate="forward" walls="left_right">
+        <Room id="d457" wall="right" />
+        <Room id="d458" wall="right" />
+        <Room id="d459" wall="right" />
+        <Toilet id="d454_456" wall="right" name="Туалет" to="туалета" />
+        <Room id="d453" wall="right" />
+        <Room id="d452" wall="right" />
+        <Room id="d451" wall="right" />
+        <Room id="d450" wall="right" />
+        <Room id="d449" wall="right" />
+        <Room id="d448" wall="right" />
+        <Room id="d447" wall="right" />
+        <Stairs id="stairs7" wall="right" to="лестницы" />                
+      </Path>
+      <Path rotate="right">
+        <Room id="d460" wall="left" />
+        <Room id="d461" wall="left" />
+        <Joint to="двери" />
+        <Path rotate="forward">
+          <Stairs id="stairs8" wall="left" to="лестницы" />
+          <Joint to="угла" />
+          <Path rotate="left" walls="left_right">
+            <Elevator id="elevators_5_6" to="лифта" wall="left" />
+            <Room id="d411" wall="left" />
+            <Room id="d410" wall="left" />
+            <Toilet id="d406_409" wall="left" name="Туалет" to="туалета" />
+            <Room id="d405" wall="left" />
+            <Room id="d404" wall="left" />
+            <Room id="d403" wall="left" />
+            <Room id="d402" wall="left" />
+            <Room id="d401" wall="left" />
+            <Stairs id="stairs9" wall="left" to="лестницы" />                    
+          </Path>
+        </Path>
+      </Path>
+    </Path>
+    <Path start="p5" walls="left_right" dir="left">
+      <Room id="d446" wall="right" />
+      <Room id="d426" wall="left" />
+      <Room id="d427" wall="left" />
+      <Room id="d445" wall="right" />
+      <Toilet id="d428_431" wall="left" name="Туалет" to="туалета" />
+      <Room id="d444" wall="right" />
+      <Room id="d432" wall="left" />
+      <Room id="d443" wall="right" />
+      <Room id="d433" wall="left" />
+      <Room id="d442" wall="right" />
+      <Room id="d434" wall="left" />
+      <Room id="d441" wall="right" />
+      <Room id="d435" wall="left" />
+      <Room id="d440" wall="right" />
+      <Room id="d436" wall="left" />
+      <Room id="d439" wall="right" />
+      <Room id="d437" wall="left" />
+      <Elevator id="elevator_17" wall="right" />
+      <Stairs id="stairs1" wall="right" to="лестницы" />
+      <Room id="d438" wall="left" />   
+    </Path>
+
+    <Point id="p6" name="площадка" to="площадки" />
+    <Path start="p6" walls="left_right" dir="left">
+      <Stairs id="stairs3" to="лестница" wall="right" />
+      <Elevator id="elevators_7_8" wall="right" to="лифта" />
+      <Toilet id="d422_425" wall="right" name="Туалет" to="туалета" />
+      <Room id="d421" wall="right" />
+      <Room id="d420" wall="right" />
+      <Room id="d419" wall="right" />
+      <Room id="d418" wall="right" />
+      <Room id="d417" wall="right" />
+      <Room id="d416" wall="right" />
+      <Room id="d415" wall="right" />
+      <Room id="d414" wall="right" />
+      <Stairs id="stairs2" wall="right" to="лестницы" />
+      <Room id="d413" wall="right" />
+    </Path>
+    <Path start="p6" walls="left_right" dir="down">
+      <Room id="d412" wall="right" />      
+    </Path>
+  </Floor>  
+
 </Plan>
 `
