@@ -1,6 +1,7 @@
 let planXML = `
 <Plan object="FEFU">
   <Exit id="d1" name="Вход 1 в корпус D" floor="7" to="входа 1 в D" />
+  <Exit id="d2" name="Вход 2 в корпус D" floor="2" to="входа 2 в D" />
  
   <Floor num="7">
     <Path start="d1" walls="no" dir="up">
@@ -579,5 +580,57 @@ let planXML = `
     </Path>
   </Floor>  
 
+  <Floor num="2">
+    <Point id="p8" name="площадка" to="площадки" />
+    <Path start="p8" walls="left_right" dir="right">
+      <Stairs id="stairs5" to="лестница" wall="right" />
+      <Room id="d201" wall="left" />
+      <Elevator id="elevator_9" wall="left" />
+      <Joint to="развилки" />
+      <Path rotate="forward" walls="left_right">
+        <Room id="d202" wall="left" />
+        <Room id="d203" wall="left" />
+        <Room id="d204" wall="left" />
+        <Toilet id="d216_219" wall="right" name="Туалет" to="туалета" />
+        <Room id="d205" wall="left" />
+        <Room id="d206" wall="left" />
+        <Joint to="коридора" />
+        <Path rotate="left" walls="left_right">
+          <Room id="d207" wall="left" />
+          <Room id="d208" wall="right" />
+        </Path>
+        <Path rotate="forward" walls="left_right">
+          <Room id="d209" wall="left" />
+          <Room id="d210" wall="left" />          
+          <Room id="d211" wall="left" />
+          <Joint to="коридора" />
+          <Path rotate="left">
+            <Room id="d212" wall="right" />
+          </Path>
+          <Path rotate="forward">
+            <Room id="d213" wall="left" />
+            <Room id="d214" wall="left" />          
+            <Room id="d215" wall="left" />            
+          </Path>
+        </Path>
+      </Path>
+    </Path>
+    <Path start="d2" dir="down">
+      <Point id="p8" name="площадка" to="площадки" />
+    </Path>
+    <Path start="p8" walls="left_right" dir="left"> 
+      <Room id="d231" name="Гардероб" fav="1" wall="right" />
+      <Room id="d220" wall="left" />
+      <Room id="d230" wall="right" />
+      <Room id="d229" wall="right" />
+      <Toilet id="d221_224" wall="left" name="Туалет" to="туалета" />
+      <Room id="d228" wall="right" />
+      <Room id="d227" wall="right" />
+      <Room id="d226" wall="right" />
+      <Room id="d225" wall="right" />
+      <Elevator id="elevator_17" wall="right" />
+      <Stairs id="stairs1" wall="right" to="лестницы" />
+    </Path>
+  </Floor>  
 </Plan>
 `
