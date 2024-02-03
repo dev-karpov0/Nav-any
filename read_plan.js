@@ -207,6 +207,7 @@ function read_plan ()
                 type: "Exit",
                 hidden: false,
                 edges: [],
+                fav: true
             };
             add_point(point_exit);
         }
