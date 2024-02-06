@@ -26,6 +26,7 @@ let planXML = `
                 <Joint to="развилки" />
                 <Path rotate="right">
                   <Point id="corner2" />
+                  <Stairs id="stairs10" to="лестницы" />
                 </Path>
                 <Path rotate="forward">
                   <Room wall="left" id="1306" name="Мужской туалет" to="мужского туалета" />
@@ -306,7 +307,6 @@ let planXML = `
               <Room id="1403" wall="left" />
               <Room id="1402" wall="right" />
               <Room id="1401" wall="left" />
-              <Door id="to5" />
             </Path>
           </Path>
         </Path>
@@ -484,7 +484,6 @@ let planXML = `
         <Room wall="left" id="5409" />
         <Room wall="left" id="5403" />
         <Room wall="left" id="5401" />
-        <Door id="to5" />
       </Path>
     </Path>
 </Floor>    
