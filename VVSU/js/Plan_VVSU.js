@@ -153,8 +153,8 @@ let planXML = `
       <Joint name="Турникет" to="турникета" />
       <Path rotate="forward" walls="right">
         <Room wall="right" name="Лотос" to="Лотоса" fav="1" id="лотос" />
-      
-          <Path rotate="left" walls="right">
+      </Path>
+      <Path rotate="left" walls="right">
           <Room wall="right" name="Гардероб" to="гардероба" fav="1" id="гард" />
           <Room wall="right" id="1140" />
           <Room wall="left" id="1131" />
@@ -188,7 +188,6 @@ let planXML = `
             </Path>
           </Path>
         </Path>
-      </Path>
     </Path>
   </Floor>
 
