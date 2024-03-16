@@ -31,6 +31,7 @@
           <Path rotate="left">
             <Room name="Точка кипения" wall="left" fav="1" id="1305"/>
             <Path rotate="left">
+              <Pass text="Выйдите из-за угла" rtext="Зайдите за угол" />
               <Point id="square1" />
             </Path>            
           </Path>
