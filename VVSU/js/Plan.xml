@@ -5,6 +5,8 @@
     <Path start="2" walls="left_right" dir="right">
       <Joint text_forward="Вы в тамбуре" text_backward="Вы в тамбуре" photo_forward="floor3/tambur_forward.jpg" photo_left="floor3/tambur_left.jpg"
         photo_backward="floor3/tambur_backward.jpg" photo_right="floor3/tambur_right.jpg" />  <!-- text - вперед, rtext - назад (если rtext отсутствует, то копируется text) -->
+<!-- еще смотря по какому пути пришли в этот пункт - если от андеграунда, то получается, ни спереди, ни сзади - 
+       поэтому надо добавить еще атрибуты  -->
 <!-- photo_backward - как идти к выходу через тамбур, photo_right - как выходить из андеграунда - кофейный автомат -->
 <!-- должен быть тег для "не-пунктов" типа кофейного автомата - <Object type="..." /> -->
 <!--      <Joint to="поворота на Андеграунд" /> -->
