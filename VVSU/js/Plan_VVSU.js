@@ -1,24 +1,47 @@
 let planXML = `
 <Plan object="VVSU">
-  <Exit id="2" name="Вход 2" floor="3" show_name="1" />
+  <Exit id="2" name="Вход 2" floor="3" />
  
   <Floor num="3">
     <Path start="2" walls="left_right" dir="right">
-      <Joint to="поворота на Андеграунд" />
+      <Joint text_forward="Зайдите в тамбур" text_right="Выйдите в тамбур" text_backward="Зайдите в тамбур"
+        photo_forward="1/3/tambur_forward.jpg" photo_left="1/3/tambur_left.jpg"
+        photo_backward="1/3/tambur_backward.jpg" photo_right="1/3/tambur_right.jpg" />  
+<!-- атрибут walls тега Path - устарел -->
+<!-- text - вперед, rtext - назад (если rtext отсутствует, то копируется text) -->
+<!-- еще смотря по какому пути пришли в этот пункт - если от андеграунда, то получается, ни спереди, ни сзади - 
+       поэтому надо добавить еще атрибуты  -->
+<!-- photo_backward - как идти к выходу через тамбур, photo_right - как выходить из андеграунда - кофейный автомат -->
+<!-- должен быть тег для "не-пунктов" типа кофейного автомата - <Object type="..." /> -->
+<!--      <Joint to="поворота на Андеграунд" /> -->
+    <!--   <Path rotate="left" walls="no" text="Пройдите" rtext=""> --> <!-- Если поле text отсутствует, выводится по умолчанию, если присутствует - выводится текст, когда пользователь проходит по всему пути -->
+    <!-- Еще пример:
+       <Joint text="Пройдите мимо скамеек" photo="floor4/chairs1.jpg" /> - текст будет выведен отдельным блоком с лупой
+    -->
+
       <Path rotate="left" walls="no">
         <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" />
       </Path>
       <Path rotate="forward" walls="left_right">
-        <Room name="Точка кипения" wall="left" fav="1" id="1305"/>
-        <Room name="Кофейня" wall="left" fav="1" id="коф" />
-        <Door name="дверь" to="двери" />
+        <Room name="Кофейня" wall="left" fav="1" id="коф" to="кофейни" />
+  <!--      <Door name="дверь" to="двери" />  -->
         <Joint name="Турникет" to="турникета" />
-        <Path rotate="left" walls="left">
-          <Joint to="угла" />
-          <Path rotate="right" walls="left">
+        <Path rotate="right" walls="right">
+          <Point name="Фотозона" wall="right" />
+          <Point name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" />
+          <Path rotate="left">
+            <Room name="Точка кипения" wall="left" fav="1" id="1305"/>
+            <Path rotate="left">
+              <Point id="square1" />
+            </Path>            
+          </Path>
+        </Path>
+        <Path rotate="forward">
             <Room name="Лестница" to="лестницы" wall="left" />
             <Room name="Буфет" to="буфета" wall="left" fav="1" id="буф" />
+            <Point id="square1" />
             <Room name="Голубиная падь" to="Голубиной пади" wall="left" />
+            <Point wall="right" name="Яма" fav="1" />
             <Joint to="развилки" />
             <Path rotate="left" walls="left_right">
               <Joint to="поворота направо" />
@@ -142,11 +165,10 @@ let planXML = `
           </Path>
         </Path>
       </Path>
-    </Path>
   </Floor>
  
 
-  <Exit id="1" name="Вход 1" floor="1" show_name="1" />
+  <Exit id="1" name="Вход 1" floor="1" />
   <Floor num="1">
     <Stairs id="stairs5" name="Лестница" />
     <Path start="1" walls="right" dir="up">
