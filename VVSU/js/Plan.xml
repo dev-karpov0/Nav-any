@@ -29,29 +29,30 @@
           <Point name="Фотозона" wall="right" />
           <Point name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" />
           <Path rotate="left">
-            <Room name="Точка кипения" wall="left" fav="1" id="1305"/>
-            <Path rotate="left">
-              <Pass text="Выйдите из-за угла" rtext="Зайдите за угол" />
-              <Point id="square1" />
+            <Room name="Точка кипения" wall="left" fav="1" id="1305" to="Точки кипения" />
+<!--             <Path rotate="left" text_forward="Двигайтесь налево, выйдите из-за угла." text_backward="Зайдите за угол"> -->
+            <!-- Скрипт должен заменить текст по умолчанию на текст, указанный в атрибуте -->
+         <!--     <Pass text="Выйдите из-за угла" rtext="Зайдите за угол" />   -->
+              <Point id="square1" text_forward="зайдите за угол" text_backward="выйдите из-за угла" />
             </Path>            
           </Path>
         </Path>
         <Path rotate="forward">
             <Room name="Лестница" to="лестницы" wall="left" />
             <Room name="Буфет" to="буфета" wall="left" fav="1" id="буф" />
-            <Point id="square1" />
+            <Point id="square1" text_right="зайдите за угол" />
             <Room name="Голубиная падь" to="Голубиной пади" wall="left" />
             <Point wall="right" name="Яма" fav="1" />
-            <Joint to="развилки" />
-            <Path rotate="left" walls="left_right">
-              <Joint to="поворота направо" />
-              <Path rotate="right">                
+            <Joint to="экрана" name="Экран" fav="1" />
+            <Path rotate="left">
+              <Joint to="студотрядов" />
+              <Path rotate="forward">                
                 <Joint to="развилки" />
                 <Path rotate="right">
                   <Point id="corner2" />
                   <Stairs id="stairs10" to="лестницы" />
                 </Path>
-                <Path rotate="forward">
+                <Path rotate="right">
                   <Room wall="left" id="1306" name="Мужской туалет" to="мужского туалета" />
                   <Room wall="left" id="1308" name="Женский туалет" to="женского туалета" />
                   <Joint to="перехода в 4 корпус" />
