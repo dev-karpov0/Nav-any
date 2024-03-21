@@ -103,7 +103,19 @@ function get_route_text (route)
             
             let last_point_str = "";
             let pred_last_point_str = "";
+            let block_text = "";
             if (plan.points[route[j]].type == "Joint") {
+                //console.log(plan.points[route[j]]);
+                if (plan.points[route[j]].path == path_index) {  // тег Joint в конце текущего пути
+                    //console.log("в конце пути");
+                    if (plan.points[route[j]].text_forward) {
+                        block_text = plan.points[route[j]].text_forward;
+                    }
+                }
+                else {  // с тега Joint начинается путь
+                    
+                }
+
                 if (plan.points[route[j]].to) {
                     last_point_str = plan.points[route[j]].to;
                 }
@@ -182,6 +194,8 @@ function get_route_text (route)
             }
             text += ".";
             route_text.push({route: text, detailed_route: detailed_text});
+            if (block_text)
+                route_text.push({route: block_text, detailed_route: ""});
         }
         
         if (new_path_index >= 0 && path_index >= 0) {
