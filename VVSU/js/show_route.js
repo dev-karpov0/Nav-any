@@ -11,11 +11,14 @@ let outFrom = document.getElementById("out-from");
 let outTo = document.getElementById("out-to");
 let state = false;
 
-function getRouteStepComponentString(step_short_text, step_detail_text)
+function getRouteStepComponentString(step_short_text, step_detail_text, route_card=false)
 {
     let button = '';
     let detail_text = '';
-    if (step_detail_text.length !== 0) {
+    if (route_card) {
+        button = '<div class="">+</div>';
+    }
+    else if (step_detail_text.length !== 0) {
         button = '<div class="output__step-button-container"></div>';
         detail_text = `<div class="output__step-detail-text" hidden>${step_detail_text}</div></div>`
     }
@@ -50,7 +53,7 @@ function showRoute()
 
         //let route_str = route.join("<br/>");
         let route_str = route.map((val, idx) => {
-            return getRouteStepComponentString(val.route, val.detailed_route);
+            return getRouteStepComponentString(val.route, val.detailed_route, val.route_card);
         }).join(' ');
 
         outputContainer.innerHTML = route_str;
