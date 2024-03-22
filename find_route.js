@@ -113,7 +113,25 @@ function get_route_text (route)
                     }
                 }
                 else {  // с тега Joint начинается путь
-                    
+                    cur_dir = plan.paths[path_index].dir;
+                    new_dir = plan.paths[plan.points[route[j]].path].dir;
+                   // console.log(plan.points[route[j]]);
+                   // console.log(cur_dir);
+                   // console.log(new_dir);
+                    let rotate_dir = (new_dir - cur_dir + 4) % 4;
+                   // console.log(motionDir[rotate_dir]);
+                    if (motionDir[rotate_dir] == "left") {
+                        block_text = plan.points[route[j]].text_left;
+                    }
+                    else if (motionDir[rotate_dir] == "right") {
+                        block_text = plan.points[route[j]].text_right;
+                    }
+                    else if (motionDir[rotate_dir] == "up") {
+                        block_text = plan.points[route[j]].text_forward;
+                    }
+                    else {
+                        block_text = plan.points[route[j]].text_backward;
+                    }
                 }
 
                 if (plan.points[route[j]].to) {
@@ -124,6 +142,11 @@ function get_route_text (route)
                         pred_last_point_str = plan.points[route[j-1]].to;
                     else if (plan.points[route[j-1]].name)
                         pred_last_point_str = plan.points[route[j-1]].name;
+                }
+
+                if (block_text) {
+                    last_point_str = pred_last_point_str;
+                    pred_last_point_str = "";
                 }
             }
             else {

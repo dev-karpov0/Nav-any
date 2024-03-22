@@ -143,11 +143,11 @@ function process_xml_node (xml_node, path_index, floor_num)
             if ("text_forward" in xml_node.attributes)
                 point.text_forward = xml_node.attributes["text_forward"].nodeValue;
             if ("text_backward" in xml_node.attributes)
-                point.text_forward = xml_node.attributes["text_backward"].nodeValue;
+                point.text_backward = xml_node.attributes["text_backward"].nodeValue;
             if ("text_left" in xml_node.attributes)
-                point.text_forward = xml_node.attributes["text_left"].nodeValue;
+                point.text_left = xml_node.attributes["text_left"].nodeValue;
             if ("text_right" in xml_node.attributes)
-                point.text_forward = xml_node.attributes["text_right"].nodeValue;
+                point.text_right = xml_node.attributes["text_right"].nodeValue;
         }
         else {
             alert(node_tag);
