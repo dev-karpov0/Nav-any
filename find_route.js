@@ -182,7 +182,6 @@ function get_route_text (route)
             else
                 text0 = "Пройдите прямо";
             // text0 += " от " + start_point_str + " до ";
-            text0 += " до ";
             let text1 = "";
             if (last_point_str && pred_last_point_str)
                 text1 = pred_last_point_str + " и " + last_point_str;
@@ -190,8 +189,15 @@ function get_route_text (route)
                 text1 = last_point_str;
             else if (!last_point_str && pred_last_point_str)
                 text1 = pred_last_point_str;
-                        
-            let text = text0 + text1;  //"Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
+
+            let text;
+            if (text1) {
+                text0 += " до ";
+                text = text0 + text1;  //"Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
+            }
+            else {
+              text = text0;
+            }
             let detailed_text = "";
             if (j > i + 1) {
                 let hidden = true;
