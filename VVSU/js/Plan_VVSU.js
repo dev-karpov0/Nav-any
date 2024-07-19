@@ -5,8 +5,7 @@ let planXML = `
   <Floor num="3">
     <Path start="2" walls="left_right" dir="right">
       <Joint text_forward="Зайдите в тамбур." text_right="Выйдите в тамбур." text_backward="Зайдите в тамбур."
-        photo_forward="1/3/tambur_forward.jpg" photo_left="1/3/tambur_left.jpg"
-        photo_backward="1/3/tambur_backward.jpg" photo_right="1/3/tambur_right.jpg" />  
+        photo_right="3/tambur_right.jpg" />  
 <!-- атрибут walls тега Path - устарел -->
 <!-- text - вперед, rtext - назад (если rtext отсутствует, то копируется text) -->
 <!-- еще смотря по какому пути пришли в этот пункт - если от андеграунда, то получается, ни спереди, ни сзади - 
@@ -18,6 +17,8 @@ let planXML = `
     <!-- Еще пример:
        <Joint text="Пройдите мимо скамеек" photo="floor4/chairs1.jpg" /> - текст будет выведен отдельным блоком с лупой
     -->
+
+
 
       <Path rotate="left" walls="no">
         <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" />

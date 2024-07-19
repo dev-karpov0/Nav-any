@@ -104,12 +104,17 @@ function get_route_text (route)
             let last_point_str = "";
             let pred_last_point_str = "";
             let block_text = "";
+            let photo_uri = "";
             if (plan.points[route[j]].type == "Joint") {
                 //console.log(plan.points[route[j]]);
                 if (plan.points[route[j]].path == path_index) {  // тег Joint в конце текущего пути
                     //console.log("в конце пути");
                     if (plan.points[route[j]].text_forward) {
                         block_text = plan.points[route[j]].text_forward;
+                    }
+
+                    if (plan.points[route[j]].photo_forward) {
+                        photo_uri = plan.points[route[j]].photo_forward;
                     }
                 }
                 else {  // с тега Joint начинается путь
@@ -119,18 +124,24 @@ function get_route_text (route)
                    // console.log(cur_dir);
                    // console.log(new_dir);
                     let rotate_dir = (new_dir - cur_dir + 4) % 4;
+                    let dir_text = motionDir[rotate_dir];
+                    let pt = plan.points[route[j]];
                    // console.log(motionDir[rotate_dir]);
-                    if (motionDir[rotate_dir] == "left") {
-                        block_text = plan.points[route[j]].text_left;
+                    if (dir_text == "left") {
+                        block_text = pt.text_left;
+                        photo_uri = pt.photo_left;
                     }
-                    else if (motionDir[rotate_dir] == "right") {
-                        block_text = plan.points[route[j]].text_right;
+                    else if (dir_text == "right") {
+                        block_text = pt.text_right;
+                        photo_uri = pt.photo_right;
                     }
-                    else if (motionDir[rotate_dir] == "up") {
-                        block_text = plan.points[route[j]].text_forward;
+                    else if (dir_text == "up") {
+                        block_text = pt.text_forward;
+                        photo_uri = pt.photo_forward;
                     }
                     else {
-                        block_text = plan.points[route[j]].text_backward;
+                        block_text = pt.text_backward;
+                        photo_uri = pt.photo_backward;
                     }
                 }
 
@@ -221,10 +232,11 @@ function get_route_text (route)
                     }
                 }
             }
+            
             text += ".";
             route_text.push({route: text, detailed_route: detailed_text});
             if (block_text)
-                route_text.push({route: block_text, detailed_route: ""});
+                route_text.push({route: block_text, detailed_route: photo_uri, route_card: photo_uri !== ""});
         }
         
         if (new_path_index >= 0 && path_index >= 0) {
@@ -248,7 +260,7 @@ function get_route_text (route)
 
         // start = false;       
     }
-    route_text.push({route: "Вы на месте!", detailed_route: ""});
+    route_text.push({route: "Вы на месте!", detailed_route: "", route_card: false});
     return route_text;  // { route: route_text,  detailed_route: detailed_route_text };
 }
 

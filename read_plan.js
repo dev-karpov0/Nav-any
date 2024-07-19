@@ -148,6 +148,15 @@ function process_xml_node (xml_node, path_index, floor_num)
                 point.text_left = xml_node.attributes["text_left"].nodeValue;
             if ("text_right" in xml_node.attributes)
                 point.text_right = xml_node.attributes["text_right"].nodeValue;
+
+            if ("photo_forward" in xml_node.attributes)
+                point.photo_forward = xml_node.attributes["photo_forward"].nodeValue;
+            if ("photo_backward" in xml_node.attributes)
+                point.photo_backward = xml_node.attributes["photo_backward"].nodeValue;
+            if ("photo_left" in xml_node.attributes)
+                point.photo_left = xml_node.attributes["photo_left"].nodeValue;
+            if ("photo_right" in xml_node.attributes)
+                point.photo_right = xml_node.attributes["photo_right"].nodeValue;
         }
         else {
             alert(node_tag);
