@@ -11,13 +11,20 @@ let outFrom = document.getElementById("out-from");
 let outTo = document.getElementById("out-to");
 let state = false;
 
-function getRouteStepComponentString(step_short_text, step_detail_text)
+function getRouteStepComponentString(step_short_text, step_detail_text, route_card=false)
 {
     let button = '';
     let detail_text = '';
-    if (step_detail_text.length !== 0) {
+    if (route_card) {
+        // button = '<div class="">+</div>';
+        button = '<div class="output__step-loupe-container"></div>';
+        detail_text = ` <div class="output__step-detail-text" hidden>
+                            <img src="images/plan/${step_detail_text}" alt=""/>
+                        </div>`
+    }
+    else if (step_detail_text.length !== 0) {
         button = '<div class="output__step-button-container"></div>';
-        detail_text = `<div class="output__step-detail-text" hidden>${step_detail_text}</div></div>`
+        detail_text = `<div class="output__step-detail-text" hidden>${step_detail_text}</div>`
     }
 
     return `
@@ -26,7 +33,8 @@ function getRouteStepComponentString(step_short_text, step_detail_text)
                 <div class="output__step-text">${step_short_text}</div>
                 ${button}
             </div>
-            ${detail_text}`;//font-size: 1.25rem;
+            ${detail_text}
+        </div>`;//font-size: 1.25rem;
 }
 
 function getRandomInt(max) {
@@ -50,7 +58,7 @@ function showRoute()
 
         //let route_str = route.join("<br/>");
         let route_str = route.map((val, idx) => {
-            return getRouteStepComponentString(val.route, val.detailed_route);
+            return getRouteStepComponentString(val.route, val.detailed_route, val.route_card);
         }).join(' ');
 
         outputContainer.innerHTML = route_str;
@@ -94,7 +102,7 @@ outputContainer.addEventListener('click', function (e) {
     //console.log('Click: ' + e.target.innerHTML + ' Parent: ' + e.target.parentElement.innerHTML)
 
     let el = e.target;
-    if (el.classList.contains('output__step-button-container'))
+    if (el.classList.contains('output__step-button-container') || el.classList.contains('output__step-loupe-container'))
     {
         let step_container = el.closest('.output__step-container');
         if (step_container != null) {
