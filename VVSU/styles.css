@@ -117,6 +117,16 @@ body {
     background: url('images/loupe.png') center/100% no-repeat;
 }
 
+.output__step-scheme-container {
+    margin: auto 0;
+    padding: 2px 5px;
+    min-height: 26px;
+    min-width: 24px;
+    text-align: center;
+    overflow: hidden;
+    background: url('images/map.svg') center/100% no-repeat;
+}
+
 .output__step-line {
     display: flex;
     justify-content: space-between;

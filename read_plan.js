@@ -199,6 +199,15 @@ function read_path (xml_node, path_index, floor_num)
                 dir: dir, 
                 path_points: [point_index],
             };
+
+            if ("scheme_text_backward" in node_child.attributes)
+                path.scheme_text_backward = node_child.attributes["scheme_text_backward"].nodeValue;
+            if ("scheme_text_forward" in node_child.attributes)
+                path.scheme_text_forward = node_child.attributes["scheme_text_forward"].nodeValue;
+
+            if ("scheme_photo" in node_child.attributes)
+                path.scheme_photo = node_child.attributes["scheme_photo"].nodeValue;
+    
             // добавляем путь
             plan.paths.push(path);
             let new_path_index = plan.paths.length - 1;

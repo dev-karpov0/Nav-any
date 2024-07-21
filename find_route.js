@@ -69,6 +69,7 @@ function get_route_text (route)
             d = motionDirForStr("right");       
     }
 
+    //console.log(plan.points);
     // let start = true;
     route_text.push({route: "Начните движение с " + plan.points[route[0]].name + ".", detailed_route: ""});
     while (i < route.length && j < route.length) {
@@ -88,6 +89,7 @@ function get_route_text (route)
         if (j == route.length) {
             j = j - 1;
         }
+       // console.log(plan.paths[path_index]);
         if (path_index == -1) {
             floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
             let stairs_up = (plan.points[route[i]].floor < plan.points[route[j]].floor);
@@ -98,6 +100,13 @@ function get_route_text (route)
             route_text.push({route: "Проехать на лифте.",
                 detailed_route: ""});
         } else {
+            // заглушка
+            if (plan.paths[path_index].scheme_text_backward) {
+                route_text.push({route: plan.paths[path_index].scheme_text_backward,
+                    detailed_route: plan.paths[path_index].scheme_photo, route_scheme: true, scheme_detail_text: ""});
+                // еще добавить scheme_detail_text - например, "мимо ..." как доп. текст в путевой схеме
+            }
+
             //console.log(plan.points[route[i]]);
             //console.log(plan.points[route[j]]);
             
@@ -225,7 +234,7 @@ function get_route_text (route)
                 for (let k = i + 1; k < j; k++) {
                     if (!plan.points[route[k]].hidden) {
                         if (flag) {
-                                detailed_text += ", ";
+                            detailed_text += ", ";
                         }
                         flag = true;
                         detailed_text += plan.points[route[k]].name;

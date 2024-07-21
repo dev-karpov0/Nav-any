@@ -20,7 +20,8 @@ let planXML = `
 
 
 
-      <Path rotate="left" walls="no">
+      <Path rotate="left" walls="no" scheme_text_forward="пройдите прямо" scheme_text_backward="пройдите назад"
+            scheme_photo="3/underground.jpg">
         <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" />
       </Path>
       <Path rotate="forward" walls="left_right">
