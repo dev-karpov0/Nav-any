@@ -21,13 +21,14 @@ let planXML = `
 
 
       <Path rotate="left" walls="no" scheme_text_forward="пройдите прямо" scheme_text_backward="пройдите назад"
-            scheme_photo="3/underground.jpg">
+            scheme_photo="3/underground.jpg">  <!-- заменить на scheme_photo_forward и scheme_photo_backward -->
         <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" />
       </Path>
       <Path rotate="forward" walls="left_right">
         <Room name="Кофейня" wall="left" fav="1" id="коф" to="кофейни" />
   <!--      <Door name="дверь" to="двери" />  -->
-        <Joint name="Турникет" to="турникета" />
+        <Joint name="Турникет" to="турникета" text_forward="Пройдите через турникет." photo_forward="3/turniket_forward.jpg"
+            text_backward="Выйдите через турникет." photo_backward="3/turniket_backward.jpg"  />
         <Path rotate="right" walls="right">
           <Point name="Фотозона" wall="right" />
           <Point name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" />
