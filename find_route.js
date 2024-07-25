@@ -118,12 +118,23 @@ function get_route_text (route)
                 //console.log(plan.points[route[j]]);
                 if (plan.points[route[j]].path == path_index) {  // тег Joint в конце текущего пути
                     //console.log("в конце пути");
-                    if (plan.points[route[j]].text_forward) {
-                        block_text = plan.points[route[j]].text_forward;
-                    }
+                    if (!reversed_new_path) {
+                        if (plan.points[route[j]].text_forward) {
+                            block_text = plan.points[route[j]].text_forward;
+                        }
 
-                    if (plan.points[route[j]].photo_forward) {
-                        photo_uri = plan.points[route[j]].photo_forward;
+                        if (plan.points[route[j]].photo_forward) {
+                            photo_uri = plan.points[route[j]].photo_forward;
+                        }
+                    }
+                    else {
+                        if (plan.points[route[j]].text_backward) {
+                            block_text = plan.points[route[j]].text_backward;
+                        }
+
+                        if (plan.points[route[j]].photo_backward) {
+                            photo_uri = plan.points[route[j]].photo_backward;
+                        }
                     }
                 }
                 else {  // с тега Joint начинается путь
@@ -133,6 +144,10 @@ function get_route_text (route)
                    // console.log(cur_dir);
                    // console.log(new_dir);
                     let rotate_dir = (new_dir - cur_dir + 4) % 4;
+
+                    if (reversed_new_path)
+                        rotate_dir = (rotate_dir + 2) % 4;
+
                     let dir_text = motionDir[rotate_dir];
                     let pt = plan.points[route[j]];
                    // console.log(motionDir[rotate_dir]);
