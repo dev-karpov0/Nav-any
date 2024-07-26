@@ -32,7 +32,8 @@ let planXML = `
 
           <Path rotate="right" walls="right">
             <Point name="Фотозона" wall="right" />
-            <Point name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" />
+            <Joint name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" text_forward="Пройдите до кофейни."
+                 text_right="Продвигайтесь к выходу." />
             <Path rotate="left">
               <Room name="Точка кипения" wall="left" fav="1" id="1305" to="Точки кипения" />
   <!--             <Path rotate="left" text_forward="Двигайтесь налево, выйдите из-за угла." text_backward="Зайдите за угол"> -->
