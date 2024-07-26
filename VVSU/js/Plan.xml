@@ -4,7 +4,7 @@
   <Floor num="3">
     <Path start="2" walls="left_right" dir="right">
       <Joint text_forward="Зайдите в тамбур." text_right="Выйдите в тамбур." text_backward="Зайдите в тамбур."
-        photo_right="3/tambur_right.jpg" />  
+        photo_right="3/tambur_right.jpg" photo_backward="3/tambur_backward.jpg" />  
 <!-- атрибут walls тега Path - устарел -->
 <!-- text - вперед, rtext - назад (если rtext отсутствует, то копируется text) -->
 <!-- еще смотря по какому пути пришли в этот пункт - если от андеграунда, то получается, ни спереди, ни сзади - 

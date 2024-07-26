@@ -76,19 +76,26 @@ function get_route_text (route)
         j = i + 1;
         let new_path_index;
         let reversed_new_path;
+        let reversed_path;
         while (j < route.length) {
             edge = get_edge(plan.points[route[j - 1]], route[j]);
             new_path_index = edge.path;
             reversed_new_path = edge.reversed_path;
-            if (new_path_index != path_index) {
+            if (new_path_index != path_index) { // && !(reversed_new_path && plan.points[route[j]].type == "Joint")) {
                 j = j - 1;
                 break;
             }
             j = j + 1;
+            reversed_path = reversed_new_path;
         }
         if (j == route.length) {
             j = j - 1;
         }
+        console.log(plan.points[route[i]]);
+        console.log(plan.points[route[j]]);
+        console.log(i + " " + j);
+        console.log("reversed_new_path = " + reversed_new_path);
+        console.log("reversed_path = " + reversed_path);
        // console.log(plan.paths[path_index]);
         if (path_index == -1) {
             floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
@@ -106,7 +113,7 @@ function get_route_text (route)
                     detailed_route: plan.paths[path_index].scheme_photo, route_scheme: true, scheme_detail_text: ""});
                 // еще добавить scheme_detail_text - например, "мимо ..." как доп. текст в путевой схеме
             }
-
+                	
             //console.log(plan.points[route[i]]);
             //console.log(plan.points[route[j]]);
             
@@ -115,10 +122,11 @@ function get_route_text (route)
             let block_text = "";
             let photo_uri = "";
             if (plan.points[route[j]].type == "Joint") {
-                //console.log(plan.points[route[j]]);
-                if (plan.points[route[j]].path == path_index) {  // тег Joint в конце текущего пути
-                    //console.log("в конце пути");
-                    if (!reversed_new_path) {
+                console.log(plan.points[route[j]].path + " " + path_index + " " + plan.points[route[j]].name);
+                //console.log(reversed_new_path);
+                if (plan.points[route[j]].path == path_index) {  // && !reversed_path) {  // тег Joint в конце текущего пути
+                    console.log("в конце пути");
+//                    if (!reversed_new_path) {
                         if (plan.points[route[j]].text_forward) {
                             block_text = plan.points[route[j]].text_forward;
                         }
@@ -126,27 +134,45 @@ function get_route_text (route)
                         if (plan.points[route[j]].photo_forward) {
                             photo_uri = plan.points[route[j]].photo_forward;
                         }
-                    }
-                    else {
+//                    }
+//                    else {
+  /*                      console.log("test");
+                        console.log(plan.points[route[j]]);
                         if (plan.points[route[j]].text_backward) {
                             block_text = plan.points[route[j]].text_backward;
                         }
 
                         if (plan.points[route[j]].photo_backward) {
                             photo_uri = plan.points[route[j]].photo_backward;
-                        }
-                    }
+//                        } 
+                    }*/
                 }
                 else {  // с тега Joint начинается путь
                     cur_dir = plan.paths[path_index].dir;
+                    if (reversed_path)
+                        cur_dir = (cur_dir + 2) % 4;
                     new_dir = plan.paths[plan.points[route[j]].path].dir;
-                   // console.log(plan.points[route[j]]);
+                    
+                    if (reversed_new_path) {
+                        new_dir = (new_dir + 2) % 4;
+                    }
+
+                    console.log("reversed_path = " + reversed_path + ", reversed_new_path = " + reversed_new_path);
+                    console.log("cur_dir = " + motionDir[cur_dir] + ", new_dir = " + motionDir[new_dir]);
+
+                    console.log(plan.points[route[j]]);
                    // console.log(cur_dir);
                    // console.log(new_dir);
-                    let rotate_dir = (new_dir - cur_dir + 4) % 4;
-
+                   // let rotate_dir = (new_dir - cur_dir + 4) % 4;
+                    let rotate_dir = (cur_dir - new_dir + 4) % 4; 
                     if (reversed_new_path)
                         rotate_dir = (rotate_dir + 2) % 4;
+
+                   // if (reversed_new_path && !reversed_path)
+                   //     rotate_dir = (rotate_dir + 2) % 4;
+
+                    console.log(reversed_new_path);
+                    console.log(rotate_dir);
 
                     let dir_text = motionDir[rotate_dir];
                     let pt = plan.points[route[j]];
