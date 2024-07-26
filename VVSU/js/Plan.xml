@@ -2,13 +2,10 @@
   <Exit id="2" name="Вход 2" floor="3" />
  
   <Floor num="3">
-    <Path start="2" walls="left_right" dir="right">
+    <Path start="2" dir="right">
       <Joint text_forward="Зайдите в тамбур." text_right="Выйдите в тамбур." text_backward="Зайдите в тамбур."
         photo_right="3/tambur_right.jpg" photo_backward="3/tambur_backward.jpg" />  
 <!-- атрибут walls тега Path - устарел -->
-<!-- text - вперед, rtext - назад (если rtext отсутствует, то копируется text) -->
-<!-- еще смотря по какому пути пришли в этот пункт - если от андеграунда, то получается, ни спереди, ни сзади - 
-       поэтому надо добавить еще атрибуты  -->
 <!-- photo_backward - как идти к выходу через тамбур, photo_right - как выходить из андеграунда - кофейный автомат -->
 <!-- должен быть тег для "не-пунктов" типа кофейного автомата - <Object type="..." /> -->
 <!--      <Joint to="поворота на Андеграунд" /> -->
@@ -18,152 +15,157 @@
     -->
 
 
-
-      <Path rotate="left" walls="no" scheme_text_forward="пройдите прямо" scheme_text_backward="пройдите назад"
+      <Path rotate="left" scheme_text_forward="пройдите прямо" scheme_text_backward="пройдите назад"
             scheme_photo="3/underground.jpg">  <!-- заменить на scheme_photo_forward и scheme_photo_backward -->
         <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" />
       </Path>
-      <Path rotate="forward" walls="left_right">
+      <Path rotate="forward">
         <Room name="Кофейня" wall="left" fav="1" id="коф" to="кофейни" />
   <!--      <Door name="дверь" to="двери" />  -->
         <Joint name="Турникет" to="турникета" text_forward="Пройдите через турникет." photo_forward="3/turniket_forward.jpg"
             text_backward="Выйдите через турникет." photo_backward="3/turniket_backward.jpg"  />
-        <Path rotate="right" walls="right">
-          <Point name="Фотозона" wall="right" />
-          <Point name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" />
-          <Path rotate="left">
-            <Room name="Точка кипения" wall="left" fav="1" id="1305" to="Точки кипения" />
-<!--             <Path rotate="left" text_forward="Двигайтесь налево, выйдите из-за угла." text_backward="Зайдите за угол"> -->
-            <!-- Скрипт должен заменить текст по умолчанию на текст, указанный в атрибуте -->
-         <!--     <Pass text="Выйдите из-за угла" rtext="Зайдите за угол" />   -->
-              <Point id="square1" text_forward="зайдите за угол" text_backward="выйдите из-за угла" />
-          </Path>
-        </Path>
         <Path rotate="forward">
-            <Room name="Лестница" to="лестницы" wall="left" />
-            <Room name="Буфет" to="буфета" wall="left" fav="1" id="буф" />
-            <Point id="square1" text_right="зайдите за угол" />
-            <Room name="Голубиная падь" to="Голубиной пади" wall="left" />
-            <Point wall="right" name="Яма" fav="1" />
-            <Joint to="экрана" name="Экран" fav="1" />
+          <Joint to="" text_forward="Следуйте дальше." photo_forward="3/garden1_forward.jpg"
+              text_left="Следуйте дальше." photo_left="3/garden1_left.jpg" text_right="Следуйте дальше." photo_right="3/garden1_right.jpg"
+              text_backward="Следуйте дальше." photo_backward="3/garden1_backward.jpg" />
+
+          <Path rotate="right" walls="right">
+            <Point name="Фотозона" wall="right" />
+            <Point name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" />
             <Path rotate="left">
-              <Joint to="студотрядов" />
-              <Path rotate="forward">                
-                <Joint to="развилки" />
-                <Path rotate="right">
-                  <Point id="corner2" />
-                  <Stairs id="stairs10" to="лестницы" />
-                </Path>
-                <Path rotate="right">
-                  <Room wall="left" id="1306" name="Мужской туалет" to="мужского туалета" />
-                  <Room wall="left" id="1308" name="Женский туалет" to="женского туалета" />
-                  <Joint to="перехода в 4 корпус" />
-                  <Path rotate="forward">
-                    <Room wall="right" name="Блинная" fav="1" id="блин" />
-                    <Door name="Кафедра маркетинга и торговли" to="кафедры маркетинга и торговли" />
-                    <Path rotate="forward" walls="left_right">
-                      <Room id="4301" wall="right" />
-                      <Room id="4303" wall="right" />
-                      <Room id="4305" wall="right" />
-                      <Room id="4302" wall="right" />
-                      <Room id="4307" wall="right" />
-                      <Room id="4309" wall="right" />
-                      <Room id="4304" wall="right" />
-                      <Room id="4306" wall="right" />
-                      <Joint to="развилки" />
-                      <Path rotate="forward">
-                        <Room id="4311" wall="right" />
-                        <Room id="4313" wall="right" />
-                        <Room id="4315" wall="right" />
-                      </Path>
-                      <Path rotate="left">
-                        <Joint to="развилки" />
-                        <Path rotate="right">
-                          <Stairs id="stairs2" />
-                        </Path>
-                        <Path rotate="left" walls="left_right">
-                          <Room wall="left" id="4302" />
-                        </Path>
-                      </Path>
-                    </Path>
-                  </Path>
-                </Path>
-              </Path>
-              <Path rotate="forward">
-                <Room name="Столовая" to="столовой" wall="left" fav="1" id="стол" />  
-                <Joint to="угла" />
-                <Path rotate="right" walls="left_right">
-                  <Room name="Студотряды" to="студотрядов" wall="right" />
-                  <Stairs id="stairs1" wall="left" />
-                </Path>
-              </Path>
+              <Room name="Точка кипения" wall="left" fav="1" id="1305" to="Точки кипения" />
+  <!--             <Path rotate="left" text_forward="Двигайтесь налево, выйдите из-за угла." text_backward="Зайдите за угол"> -->
+              <!-- Скрипт должен заменить текст по умолчанию на текст, указанный в атрибуте -->
+           <!--     <Pass text="Выйдите из-за угла" rtext="Зайдите за угол" />   -->
+                <Point id="square1" text_forward="зайдите за угол" text_backward="выйдите из-за угла" />
             </Path>
-            <Path rotate="right" wall="left">
-            
-                <Room wall="right" id="1311" />
-                <Room wall="right" id="1313" />
-              <Path start="1313" rotate="left" type="left_right_walls">
-                <Room wall="left" id="1309" />
-                <Room wall="right" id="1312" />
-                <Room wall="left" id="1307" />
-                <Room wall="right" id="1310" />
-          
-              </Path>
-              <Path rotate="forward" walls="left">
-                <Room wall="right" id="1315" />
-                <Room wall="right" id="1317" />
-                <Room wall="left" id="1314" />
-                <Room wall="left" id="1316" />
-                <Room wall="right" id="1319" />
-                <Room wall="left" id="1318" />
-                <Room wall="left" id="1320" />
-                <Room wall="left" id="1322" />
-                <Room wall="left" id="1324" />
-                <Room wall="right" id="1321" />
-                <Room wall="left" id="1326" />
-                <Room wall="right" id="1323" />
-                <Room wall="left" id="1328" />
-                <Room wall="right" id="1325" />
-                <Room wall="left" id="1330" />
-                <Room wall="right" id="1327" />
-                <Room wall="left" id="1332" />
-                <Room wall="right" id="1331" />
-                <Room wall="right" id="1329" />
-                <Room wall="left" id="1334" />
-                <Path rotate="forward" walls="right">
-                  <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
-                  <Path rotate="right" walls="left_right">
-                    <Path rotate="left" walls="left_right">
-                      <Room wall="left" id="1336" />
-                      <Room wall="right" id="1333" />
-                      <Room wall="right" id="1335" />
-                      <Room wall="left" id="1338" />
+          </Path>
+          <Path rotate="forward">
+              <Room name="Лестница" to="лестницы" wall="left" />
+              <Room name="Буфет" to="буфета" wall="left" fav="1" id="буф" />
+              <Point id="square1" text_right="зайдите за угол" />
+              <Room name="Голубиная падь" to="Голубиной пади" wall="left" />
+              <Point wall="right" name="Яма" fav="1" />
+              <Joint to="экрана" name="Экран" fav="1" />
+              <Path rotate="left">
+                <Joint to="студотрядов" />
+                <Path rotate="forward">                
+                  <Joint to="развилки" />
+                  <Path rotate="right">
+                    <Point id="corner2" />
+                    <Stairs id="stairs10" to="лестницы" />
+                  </Path>
+                  <Path rotate="right">
+                    <Room wall="left" id="1306" name="Мужской туалет" to="мужского туалета" />
+                    <Room wall="left" id="1308" name="Женский туалет" to="женского туалета" />
+                    <Joint to="перехода в 4 корпус" />
+                    <Path rotate="forward">
+                      <Room wall="right" name="Блинная" fav="1" id="блин" />
+                      <Door name="Кафедра маркетинга и торговли" to="кафедры маркетинга и торговли" />
+                      <Path rotate="forward" walls="left_right">
+                        <Room id="4301" wall="right" />
+                        <Room id="4303" wall="right" />
+                        <Room id="4305" wall="right" />
+                        <Room id="4302" wall="right" />
+                        <Room id="4307" wall="right" />
+                        <Room id="4309" wall="right" />
+                        <Room id="4304" wall="right" />
+                        <Room id="4306" wall="right" />
+                        <Joint to="развилки" />
+                        <Path rotate="forward">
+                          <Room id="4311" wall="right" />
+                          <Room id="4313" wall="right" />
+                          <Room id="4315" wall="right" />
+                        </Path>
+                        <Path rotate="left">
+                          <Joint to="развилки" />
+                          <Path rotate="right">
+                            <Stairs id="stairs2" />
+                          </Path>
+                          <Path rotate="left" walls="left_right">
+                            <Room wall="left" id="4302" />
+                          </Path>
+                        </Path>
+                      </Path>
                     </Path>
-                    <Joint to="угла" />  
-                    <Room wall="right" id="1337" />
-                    <Room wall="left" id="1340" />
-                    <Room wall="right" id="1339" />
-                    <Room wall="left" id="1342" />
-                    <Room wall="left" id="1344" />
-                    <Room wall="left" id="1346" />
-                    <Room wall="right" id="1341" />
-                    <Joint to="Зоны отдыха" />
-                    <Room wall="left" id="1348" />
-                    <Room wall="right" id="1343" />
-                    <Room wall="left" id="1350" />
-                    <Room wall="right" id="1345" />
-                    <Room wall="left" id="1352" />
-                    <Joint to="Кассы" />
-                    <Room wall="left" id="1354" />
-                    <Room wall="right" id="1349" />
-                    <Room wall="left" id="1356" />
-                    <Room wall="right" id="1351" />
-                    <Room wall="right" id="1353" />
-                    <Room wall="left" id="1358" />
-                    <Stairs id="stairs5" name="Лестница" />
                   </Path>
                 </Path>
-              </Path>     
+                <Path rotate="forward">
+                  <Room name="Столовая" to="столовой" wall="left" fav="1" id="стол" />  
+                  <Joint to="угла" />
+                  <Path rotate="right" walls="left_right">
+                    <Room name="Студотряды" to="студотрядов" wall="right" />
+                    <Stairs id="stairs1" wall="left" />
+                  </Path>
+                </Path>
+              </Path>
+              <Path rotate="right" wall="left">
+              
+                  <Room wall="right" id="1311" />
+                  <Room wall="right" id="1313" />
+                <Path start="1313" rotate="left" type="left_right_walls">
+                  <Room wall="left" id="1309" />
+                  <Room wall="right" id="1312" />
+                  <Room wall="left" id="1307" />
+                  <Room wall="right" id="1310" />
+            
+                </Path>
+                <Path rotate="forward" walls="left">
+                  <Room wall="right" id="1315" />
+                  <Room wall="right" id="1317" />
+                  <Room wall="left" id="1314" />
+                  <Room wall="left" id="1316" />
+                  <Room wall="right" id="1319" />
+                  <Room wall="left" id="1318" />
+                  <Room wall="left" id="1320" />
+                  <Room wall="left" id="1322" />
+                  <Room wall="left" id="1324" />
+                  <Room wall="right" id="1321" />
+                  <Room wall="left" id="1326" />
+                  <Room wall="right" id="1323" />
+                  <Room wall="left" id="1328" />
+                  <Room wall="right" id="1325" />
+                  <Room wall="left" id="1330" />
+                  <Room wall="right" id="1327" />
+                  <Room wall="left" id="1332" />
+                  <Room wall="right" id="1331" />
+                  <Room wall="right" id="1329" />
+                  <Room wall="left" id="1334" />
+                  <Path rotate="forward" walls="right">
+                    <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
+                    <Path rotate="right" walls="left_right">
+                      <Path rotate="left" walls="left_right">
+                        <Room wall="left" id="1336" />
+                        <Room wall="right" id="1333" />
+                        <Room wall="right" id="1335" />
+                        <Room wall="left" id="1338" />
+                      </Path>
+                      <Joint to="угла" />  
+                      <Room wall="right" id="1337" />
+                      <Room wall="left" id="1340" />
+                      <Room wall="right" id="1339" />
+                      <Room wall="left" id="1342" />
+                      <Room wall="left" id="1344" />
+                      <Room wall="left" id="1346" />
+                      <Room wall="right" id="1341" />
+                      <Joint to="Зоны отдыха" />
+                      <Room wall="left" id="1348" />
+                      <Room wall="right" id="1343" />
+                      <Room wall="left" id="1350" />
+                      <Room wall="right" id="1345" />
+                      <Room wall="left" id="1352" />
+                      <Joint to="Кассы" />
+                      <Room wall="left" id="1354" />
+                      <Room wall="right" id="1349" />
+                      <Room wall="left" id="1356" />
+                      <Room wall="right" id="1351" />
+                      <Room wall="right" id="1353" />
+                      <Room wall="left" id="1358" />
+                      <Stairs id="stairs5" name="Лестница" />
+                    </Path>
+                  </Path>
+                </Path>     
+              </Path>
             </Path>
           </Path>
         </Path>
