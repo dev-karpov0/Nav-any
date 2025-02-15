@@ -139,6 +139,24 @@ function process_xml_node (xml_node, path_index, floor_num)
         }
         else if (node_tag == "Joint") {
             point_index = add_point(point);            
+            point.path = path_index;
+            if ("text_forward" in xml_node.attributes)
+                point.text_forward = xml_node.attributes["text_forward"].nodeValue;
+            if ("text_backward" in xml_node.attributes)
+                point.text_backward = xml_node.attributes["text_backward"].nodeValue;
+            if ("text_left" in xml_node.attributes)
+                point.text_left = xml_node.attributes["text_left"].nodeValue;
+            if ("text_right" in xml_node.attributes)
+                point.text_right = xml_node.attributes["text_right"].nodeValue;
+
+            if ("photo_forward" in xml_node.attributes)
+                point.photo_forward = xml_node.attributes["photo_forward"].nodeValue;
+            if ("photo_backward" in xml_node.attributes)
+                point.photo_backward = xml_node.attributes["photo_backward"].nodeValue;
+            if ("photo_left" in xml_node.attributes)
+                point.photo_left = xml_node.attributes["photo_left"].nodeValue;
+            if ("photo_right" in xml_node.attributes)
+                point.photo_right = xml_node.attributes["photo_right"].nodeValue;
         }
         else {
             alert(node_tag);
@@ -181,6 +199,15 @@ function read_path (xml_node, path_index, floor_num)
                 dir: dir, 
                 path_points: [point_index],
             };
+
+            if ("scheme_text_backward" in node_child.attributes)
+                path.scheme_text_backward = node_child.attributes["scheme_text_backward"].nodeValue;
+            if ("scheme_text_forward" in node_child.attributes)
+                path.scheme_text_forward = node_child.attributes["scheme_text_forward"].nodeValue;
+
+            if ("scheme_photo" in node_child.attributes)
+                path.scheme_photo = node_child.attributes["scheme_photo"].nodeValue;
+    
             // добавляем путь
             plan.paths.push(path);
             let new_path_index = plan.paths.length - 1;

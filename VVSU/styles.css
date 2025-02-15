@@ -92,6 +92,11 @@ body {
     color: white;
 }
 
+.output__step-detail-text > img {
+    width: 100%;
+    border-radius: 10px;
+}
+
 .output__step-button-container {
     margin: auto 0;
     padding: 2px 5px;
@@ -100,6 +105,26 @@ body {
     text-align: center;
     overflow: hidden;
     background: url('images/dots.svg') center/100% no-repeat;
+}
+
+.output__step-loupe-container {
+    margin: auto 0;
+    padding: 2px 5px;
+    min-height: 26px;
+    min-width: 24px;
+    text-align: center;
+    overflow: hidden;
+    background: url('images/loupe.png') center/100% no-repeat;
+}
+
+.output__step-scheme-container {
+    margin: auto 0;
+    padding: 2px 5px;
+    min-height: 26px;
+    min-width: 24px;
+    text-align: center;
+    overflow: hidden;
+    background: url('images/map.svg') center/100% no-repeat;
 }
 
 .output__step-line {

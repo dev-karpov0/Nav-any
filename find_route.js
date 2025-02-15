@@ -69,25 +69,34 @@ function get_route_text (route)
             d = motionDirForStr("right");       
     }
 
+    //console.log(plan.points);
     // let start = true;
     route_text.push({route: "Начните движение с " + plan.points[route[0]].name + ".", detailed_route: ""});
     while (i < route.length && j < route.length) {
         j = i + 1;
         let new_path_index;
         let reversed_new_path;
+        let reversed_path;
         while (j < route.length) {
             edge = get_edge(plan.points[route[j - 1]], route[j]);
             new_path_index = edge.path;
             reversed_new_path = edge.reversed_path;
-            if (new_path_index != path_index) {
+            if (new_path_index != path_index) { // && !(reversed_new_path && plan.points[route[j]].type == "Joint")) {
                 j = j - 1;
                 break;
             }
             j = j + 1;
+            reversed_path = reversed_new_path;
         }
         if (j == route.length) {
             j = j - 1;
         }
+        console.log(plan.points[route[i]]);
+        console.log(plan.points[route[j]]);
+        console.log(i + " " + j);
+        console.log("reversed_new_path = " + reversed_new_path);
+        console.log("reversed_path = " + reversed_path);
+       // console.log(plan.paths[path_index]);
         if (path_index == -1) {
             floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
             let stairs_up = (plan.points[route[i]].floor < plan.points[route[j]].floor);
@@ -98,12 +107,94 @@ function get_route_text (route)
             route_text.push({route: "Проехать на лифте.",
                 detailed_route: ""});
         } else {
+            // заглушка
+            if (plan.paths[path_index].scheme_text_backward) {
+                route_text.push({route: plan.paths[path_index].scheme_text_backward,
+                    detailed_route: plan.paths[path_index].scheme_photo, route_scheme: true, scheme_detail_text: ""});
+                // еще добавить scheme_detail_text - например, "мимо ..." как доп. текст в путевой схеме
+            }
+                	
             //console.log(plan.points[route[i]]);
             //console.log(plan.points[route[j]]);
             
             let last_point_str = "";
             let pred_last_point_str = "";
+            let block_text = "";
+            let photo_uri = "";
             if (plan.points[route[j]].type == "Joint") {
+                console.log(plan.points[route[j]].path + " " + path_index + " " + plan.points[route[j]].name);
+                //console.log(reversed_new_path);
+                if (plan.points[route[j]].path == path_index) {  // && !reversed_path) {  // тег Joint в конце текущего пути
+                    console.log("в конце пути");
+//                    if (!reversed_new_path) {
+                        if (plan.points[route[j]].text_forward) {
+                            block_text = plan.points[route[j]].text_forward;
+                        }
+
+                        if (plan.points[route[j]].photo_forward) {
+                            photo_uri = plan.points[route[j]].photo_forward;
+                        }
+//                    }
+//                    else {
+  /*                      console.log("test");
+                        console.log(plan.points[route[j]]);
+                        if (plan.points[route[j]].text_backward) {
+                            block_text = plan.points[route[j]].text_backward;
+                        }
+
+                        if (plan.points[route[j]].photo_backward) {
+                            photo_uri = plan.points[route[j]].photo_backward;
+//                        } 
+                    }*/
+                }
+                else {  // с тега Joint начинается путь
+                    cur_dir = plan.paths[path_index].dir;
+                    if (reversed_path)
+                        cur_dir = (cur_dir + 2) % 4;
+                    new_dir = plan.paths[plan.points[route[j]].path].dir;
+                    
+                    if (reversed_new_path) {
+                        new_dir = (new_dir + 2) % 4;
+                    }
+
+                    console.log("reversed_path = " + reversed_path + ", reversed_new_path = " + reversed_new_path);
+                    console.log("cur_dir = " + motionDir[cur_dir] + ", new_dir = " + motionDir[new_dir]);
+
+                    console.log(plan.points[route[j]]);
+                   // console.log(cur_dir);
+                   // console.log(new_dir);
+                   // let rotate_dir = (new_dir - cur_dir + 4) % 4;
+                    let rotate_dir = (cur_dir - new_dir + 4) % 4; 
+                    if (reversed_new_path)
+                        rotate_dir = (rotate_dir + 2) % 4;
+
+                   // if (reversed_new_path && !reversed_path)
+                   //     rotate_dir = (rotate_dir + 2) % 4;
+
+                    console.log(reversed_new_path);
+                    console.log(rotate_dir);
+
+                    let dir_text = motionDir[rotate_dir];
+                    let pt = plan.points[route[j]];
+                   // console.log(motionDir[rotate_dir]);
+                    if (dir_text == "left") {
+                        block_text = pt.text_left;
+                        photo_uri = pt.photo_left;
+                    }
+                    else if (dir_text == "right") {
+                        block_text = pt.text_right;
+                        photo_uri = pt.photo_right;
+                    }
+                    else if (dir_text == "up") {
+                        block_text = pt.text_forward;
+                        photo_uri = pt.photo_forward;
+                    }
+                    else {
+                        block_text = pt.text_backward;
+                        photo_uri = pt.photo_backward;
+                    }
+                }
+
                 if (plan.points[route[j]].to) {
                     last_point_str = plan.points[route[j]].to;
                 }
@@ -112,6 +203,11 @@ function get_route_text (route)
                         pred_last_point_str = plan.points[route[j-1]].to;
                     else if (plan.points[route[j-1]].name)
                         pred_last_point_str = plan.points[route[j-1]].name;
+                }
+
+                if (block_text) {
+                    last_point_str = pred_last_point_str;
+                    pred_last_point_str = "";
                 }
             }
             else {
@@ -147,7 +243,6 @@ function get_route_text (route)
             else
                 text0 = "Пройдите прямо";
             // text0 += " от " + start_point_str + " до ";
-            text0 += " до ";
             let text1 = "";
             if (last_point_str && pred_last_point_str)
                 text1 = pred_last_point_str + " и " + last_point_str;
@@ -155,8 +250,15 @@ function get_route_text (route)
                 text1 = last_point_str;
             else if (!last_point_str && pred_last_point_str)
                 text1 = pred_last_point_str;
-                        
-            let text = text0 + text1;  //"Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
+
+            let text;
+            if (text1) {
+                text0 += " до ";
+                text = text0 + text1;  //"Пройти " + plan.points[route[i]].name + " - " + plan.points[route[j]].name;
+            }
+            else {
+              text = text0;
+            }
             let detailed_text = "";
             if (j > i + 1) {
                 let hidden = true;
@@ -173,15 +275,18 @@ function get_route_text (route)
                 for (let k = i + 1; k < j; k++) {
                     if (!plan.points[route[k]].hidden) {
                         if (flag) {
-                                detailed_text += ", ";
+                            detailed_text += ", ";
                         }
                         flag = true;
                         detailed_text += plan.points[route[k]].name;
                     }
                 }
             }
+            
             text += ".";
             route_text.push({route: text, detailed_route: detailed_text});
+            if (block_text)
+                route_text.push({route: block_text, detailed_route: photo_uri, route_card: photo_uri !== ""});
         }
         
         if (new_path_index >= 0 && path_index >= 0) {
@@ -205,7 +310,7 @@ function get_route_text (route)
 
         // start = false;       
     }
-    route_text.push({route: "Вы на месте!", detailed_route: ""});
+    route_text.push({route: "Вы на месте!", detailed_route: "", route_card: false});
     return route_text;  // { route: route_text,  detailed_route: detailed_route_text };
 }
 

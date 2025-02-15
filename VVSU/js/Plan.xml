@@ -1,4 +1,3 @@
-let planXML = `
 <Plan object="VVSU">
   <Exit id="2" name="Вход 2" floor="3" />
  
@@ -619,4 +618,3 @@ let planXML = `
  </Floor>
 
 </Plan>
-`
