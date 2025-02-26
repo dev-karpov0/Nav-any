@@ -20,10 +20,10 @@ function getFloorArray() {
     const len = plan.points.length;
     pointsHTMLByFloor['fav'] = '';
     for (let i = 0; i < len; i++) {
-        //console.log(plan.points[i].floor)
         let point = plan.points[i];
-        let floorNumber = Number(point.floor);
-        floorSet.add(floorNumber)
+        //console.log(point.floor + " [" + typeof point.floor + "]");
+        let floorNumber = point.floor;
+        floorSet.add(floorNumber);
 
         if (point.name.length !== 0) {
             let str = pointNameToHTML(point.name, point.id);
