@@ -228,7 +228,7 @@ function read_plan ()
         if (plan_child.tagName == "Exit") {
             // добавляем пункт типа "Выход"
             let point_exit = {
-                floor: plan_child.attributes["floor"].nodeValue,
+                floor: parseInt(plan_child.attributes["floor"].nodeValue),
                 id: plan_child.attributes["id"].nodeValue,
                 name: ("name" in plan_child.attributes ? plan_child.attributes["name"].nodeValue : "Выход"),
                 type: "Exit",
