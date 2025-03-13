@@ -249,6 +249,7 @@
         <Path rotate="forward" walls="left">
           <Stairs id="big_stairs" />
           <Path rotate="right" walls="left_right">
+            <Joint to="Лестничной площадки"/>
             <Path rotate="left" walls="left_right">
               <Room id="1216" wall="right" />
               <Room id="1214" wall="right" />

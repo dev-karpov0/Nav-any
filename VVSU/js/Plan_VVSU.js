@@ -136,6 +136,7 @@ let planXML = `
                   <Path rotate="forward" walls="right">
                     <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
                     <Path rotate="right" walls="left_right">
+                      <Joint to="Лестничной площадки"/>
                       <Path rotate="left" walls="left_right">
                         <Room wall="left" id="1336" />
                         <Room wall="right" id="1333" />
@@ -195,14 +196,15 @@ let planXML = `
           <Room wall="left" id="1123" />
           <Room wall="right" id="1128" />
           <Room wall="right" id="1126" />
-          <Joint to="угла" />
+<!--          <Joint to="угла" />-->
           <Path rotate="left" walls="left_right">
             <Room wall="left" id="1119" />
             <Room wall="right" id="1117" />
           </Path>
           <Path rotate="forward" walls="left">
-            <Stairs id="big_stairs" />
+            <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
             <Path rotate="right" start="big_stairs" walls="left_right">
+              <Joint to="Лестничной площадки"/>
               <Path rotate="left" start="corridor_1_near_stairs" walls="left_right">
                 <Room id="1115" wall="left" />
                 <Room id="1113" wall="left" />
@@ -241,15 +243,16 @@ let planXML = `
         <Room wall="left" id="1225" />
         <Room wall="right" id="1222" />
         <Room wall="left" id="1223" />
-        <Joint to="угла" /> 
+<!--        <Joint to="угла" /> -->
         <Path rotate="left" walls="left_right">
           <Room wall="left" id="1221" />
           <Room wall="right" id="1218" />
           <Room wall="left" id="1219" />
         </Path>
         <Path rotate="forward" walls="left">
-          <Stairs id="big_stairs" />
+          <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
           <Path rotate="right" walls="left_right">
+            <Joint to="Лестничной площадки"/>
             <Path rotate="left" walls="left_right">
               <Room id="1216" wall="right" />
               <Room id="1214" wall="right" />
@@ -312,8 +315,9 @@ let planXML = `
           <Room wall="left" id="1431" />
         </Path> 
         <Path rotate="forward" walls="left">
-          <Stairs id="big_stairs" to="лестницы" />
+          <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
           <Path rotate="right" walls="left_right">
+            <Joint to="Лестничной площадки"/>
             <Path rotate="left" walls="left_right">
               <Room id="1416" wall="right" />
               <Room id="1414" wall="right" />
@@ -389,8 +393,9 @@ let planXML = `
           <Room wall="left" id="1515" />
         </Path>
         <Path rotate="forward" start="near_big_stairs_5" walls="left">
-          <Stairs id="big_stairs" to="лестницы" />
+          <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
           <Path rotate="right" walls="left_right">
+            <Joint to="Лестничной площадки"/>
             <Path rotate="left" walls="left_right">
               <Room id="1516" wall="right" />
               <Room id="1514" wall="right" />
