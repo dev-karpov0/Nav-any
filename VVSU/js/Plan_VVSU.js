@@ -30,6 +30,10 @@ let planXML = `
               text_left="Следуйте дальше." photo_left="3/garden1_left.jpg" text_right="Следуйте дальше." photo_right="3/garden1_right.jpg"
               text_backward="Следуйте дальше." photo_backward="3/garden1_backward.jpg" />
 
+          <Path rotate="left">
+            <Stairs id="stairs_2_korpus" name="Лестница" to="лестницы"/>
+          </Path>
+          
           <Path rotate="right" walls="right">
             <Point name="Фотозона" wall="right" />
             <Joint name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" text_forward="Пройдите до кофейни."
@@ -103,15 +107,14 @@ let planXML = `
               </Path>
               <Path rotate="right" wall="left">
               
-                  <Room wall="right" id="1311" />
-                  <Room wall="right" id="1313" />
+                <Room wall="right" id="1311" />
+                <Room wall="right" id="1313" />
                 <Path start="1313" rotate="left" type="left_right_walls">
                   <Room wall="left" id="1309" />
                   <Room wall="right" id="1312" />
                   <Room wall="left" id="1307" />
                   <Room wall="right" id="1310" />
-            
-                </Path>
+                </Path> 
                 <Path rotate="forward" walls="left">
                   <Room wall="right" id="1315" />
                   <Room wall="right" id="1317" />
@@ -362,6 +365,10 @@ let planXML = `
       </Path>
     </Path>
 
+    <Stairs id="stairs_2_korpus" name="Лестница" to="лестницы"/>
+    <Path dir="right" rotate="right" start="stairs_2_korpus">
+      <Room wall="left" id="2411" />
+    </Path>
   </Floor> 
 
   <Floor num="5">
@@ -461,6 +468,10 @@ let planXML = `
       </Path>         
     </Path>
     
+    <Stairs id="stairs_2_korpus" name="Лестница" to="лестницы"/>
+    <Path dir="right" rotate="right" start="stairs_2_korpus">
+      <Room wall="left" id="2501" />
+    </Path>
   </Floor>
 
 
@@ -498,6 +509,34 @@ let planXML = `
       </Path>
     </Path>
   </Path>
+  
+  <Stairs id="stairs_2_korpus" name="Лестница" to="лестницы"/>
+    <Path dir="right" rotate="right" start="stairs_2_korpus">
+      <Room wall="left" id="2604" />
+      <Path rotate="right">
+        <Room wall="right" id="2600" />
+      </Path>
+      <Path rotate="left">
+        <Room wall="right" id="2601" />
+        <Path rotate="right">
+            <Room wall="left" id="2603" />
+            <Room wall="left" id="2605" />
+            <Room wall="right" id="2606" />
+            <Room wall="left" id="2607" />
+            <Room wall="left" id="2609" />
+            <Room wall="left" id="2609a" />
+            <Room id="2611" />
+            <Path rotate="right">
+<!--                <Joint to="угла"></Joint>-->
+                <Room wall="left" id="2611б" />
+                <Path rotate="left">
+                    <Room wall="left" id="2611в" />
+                    <Room wall="left" id="2611г" />
+                </Path>
+            </Path>
+        </Path>
+      </Path>
+    </Path>
 </Floor>
 
 
