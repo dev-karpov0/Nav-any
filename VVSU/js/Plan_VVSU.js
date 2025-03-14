@@ -375,96 +375,147 @@ let planXML = `
     <Stairs id="stairs5" name="Лестница" />
     <Path start="stairs5" walls="left" dir="up"> 
       <Point id="near_stairs5.5" />
-      <Room wall="left" name="1533" to="1533" />
-      <Room wall="left" name="1531" to="1531" />
+      <Room wall="left" id="1533" />
+      <Room wall="left" id="1531" />
    
       <Path start="near_stairs5.5" rotate="right" walls="left_right" dir="up">
-        <Room wall="right" id="1536" />
-        <Room wall="left" id="1529" />
-        <Room wall="right" id="1534" />
-        <Room wall="right" id="1532" />
-        <Room wall="left" id="1527" />
-        <Room wall="right" id="1530" />
-        <Room wall="left" id="1525" />
-        <Room wall="right" id="1528" />
-        <Room wall="left" id="1523" />
-        <Room wall="right" id="1526" />
-        <Room wall="right" id="1524" />
-        <Room wall="left" id="1521" />
-        <Room wall="right" id="1522" />
-        <Room wall="left" id="1519" />
-        <Joint to="угла" />
-        <Path rotate="left" start="near_big_stairs_5" walls="left_right">
-          <Room wall="left" id="1517" />
-          <Room wall="right" id="1518" />
-          <Room wall="left" id="1515" />
-        </Path>
-        <Path rotate="forward" start="near_big_stairs_5" walls="left">
-          <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
-          <Path rotate="right" walls="left_right">
-            <Joint to="Лестничной площадки"/>
-            <Path rotate="left" walls="left_right">
-              <Room id="1516" wall="right" />
-              <Room id="1514" wall="right" />
-              <Room id="1513" wall="left" />
-              <Room id="1511" wall="left" />
-              <Room id="1509" wall="left" />
-              <Room id="1512" wall="right" />
-              <Room id="1507" wall="left" />
-              <Room id="1510" wall="right" />
-              <Room id="1508" wall="right" />
-              <Room id="1505" wall="left" />
-              <Room id="1506" wall="right" />
-              <Room id="1503" wall="left" />
-              <Room id="1504" wall="right" />
-              <Joint to="угла" />
-              <Path rotate="right" start="near_small_stairs" walls="left_right">
-                <Room wall="left" name="1501" to="1501" />
-              </Path> 
-              <Path rotate="forward" start="near_small_stairs" walls="left">
-                <Stairs id="small_stairs" name="Лестница" to="лестницы" />
-                <Path rotate="right" start="small_stairs" walls="left_right">
-                  <Path rotate="left" start="corridor_6.1_near_stairs" walls="left_right">
-                    <Room wall="left" id="1625" />
-                    <Room wall="left" id="1627" />
-                    <Room wall="right" id="1626" />
-                    <Room wall="left" id="1629" />
-
-                    <Room wall="right" id="1628" />
-                    <Room wall="left" id="1631" />
-                    <Room wall="right" id="1630" />
-                    <Room wall="left" id="1633" />
-
-                    <Room wall="right" id="1632" />
-                    <Room wall="left" id="1635" />
-                    <Room wall="right" id="1634" />
-                    <Room wall="left" id="1637" />
-
-                    <Room wall="right" id="1636" />
-                    <Room wall="left" id="1639" />
-                    <Room wall="right" id="1638" />
-                    <Room wall="left" id="1641" />
-
-                    <Room wall="right" id="1640" />
-                    <Room wall="left" id="1643" />
-                    <Room wall="right" id="1642" />
-                    <Room wall="left" id="1645" />
-
-                    <Room wall="right" id="1644" />
-                    <Room wall="left" id="1647" />
-                    <Room wall="right" id="1646, 1648" />
-                    <Room wall="left" id="1649" />
-
-                    <Room wall="right" id="1650" />
-                    <Room wall="left" id="1651" />
-                    <Room wall="right" id="1652" />
-                    <Room wall="left" id="1653" />
-                  </Path>
+      
+        <Path rotate="right">
+            <Joint id="эскалатор" fav="1" name="Эскалатор" to="эскалатора" text_forward="Поднимитесь по эскалатору." photo_forward="5/escalator_forward.jpg"
+                        text_backward="Спуститесь по эскалатору." photo_backward="5/escalator_backward.jpg" />
+            
+            <Path rotate="forward">
+                <Room wall="left" id="6601" />
+                <Room wall="right" id="6602" />
+                <Room wall="right" id="6604" />
+                <Room wall="left" id="6603" />
+                <Room wall="right" id="6604а" />
+                <Room wall="left" id="6605" />
+                <Room wall="right" id="6606" />
+                <Room wall="left" id="6607" />
+                <Path rotate="forward">
+                    <Joint name="Торговые автоматы" to="торговых автоматов" />
+                    <Room wall="right" id="6610" />
+                    <Path rotate="left">
+                        <Joint to="вывески 'Учебный корпус 8'"></Joint>
+                        <Path rotate="left">
+                            <Room wall="left" id="8119" />
+                            <Joint name="Лестница" to="лестницы" text_forward="Спуститесь вниз"></Joint>
+                            <Path rotate="forward">
+                                <Room wall="left" id="8116" />
+                                <Room wall="right" id="8117" />
+                                <Room wall="left" id="8114" />
+                                <Room wall="right" id="8115" />
+                                <Room wall="left" id="8116" />
+                                <Room wall="right" id="8113" />
+                                <Room wall="left" id="8112" />
+                                <Room wall="right" id="8110" />
+                                <Room wall="left" id="8109" />
+                                <Room wall="left" id="8108" />
+                                <Path rotate="right">
+                                    <Room wall="left" id="8106" name="Женский туалет" to="женского туалета" />
+                                    <Room wall="left" id="8105" name="Мужской туалет" to="мужского туалета" />
+                                    <Room wall="right" id="8104" />
+                                    <Room wall="right" id="8103" />
+                                    <Path rotate="left"> 
+                                        <Room wall="left" id="8102" />
+                                        <Room wall="right" id="8101" />
+                                    </Path>
+                                </Path>
+                            </Path>
+                        </Path>
+                    </Path>
                 </Path>
+            </Path>
+        </Path>
+        <Path rotate="forward">
+            <Room wall="right" id="1536" />
+            <Room wall="left" id="1529" />
+            <Room wall="right" id="1534" />
+            <Room wall="right" id="1532" />
+            <Room wall="left" id="1527" />
+            <Room wall="right" id="1530" />
+            <Room wall="left" id="1525" />
+            <Room wall="right" id="1528" />
+            <Room wall="left" id="1523" />
+            <Room wall="right" id="1526" />
+            <Room wall="right" id="1524" />
+            <Room wall="left" id="1521" />
+            <Room wall="right" id="1522" />
+            <Room wall="left" id="1519" />
+            <Joint to="угла" />
+            <Path rotate="left" start="near_big_stairs_5" walls="left_right">
+              <Room wall="left" id="1517" />
+              <Room wall="right" id="1518" />
+              <Room wall="left" id="1515" />
+            </Path>
+            <Path rotate="forward" start="near_big_stairs_5" walls="left">
+              <Stairs id="big_stairs" name="Большая лестница" to="большой лестницы" />
+              <Path rotate="right" walls="left_right">
+                <Joint to="Лестничной площадки"/>
+                <Path rotate="left" walls="left_right">
+                  <Room id="1516" wall="right" />
+                  <Room id="1514" wall="right" />
+                  <Room id="1513" wall="left" />
+                  <Room id="1511" wall="left" />
+                  <Room id="1509" wall="left" />
+                  <Room id="1512" wall="right" />
+                  <Room id="1507" wall="left" />
+                  <Room id="1510" wall="right" />
+                  <Room id="1508" wall="right" />
+                  <Room id="1505" wall="left" />
+                  <Room id="1506" wall="right" />
+                  <Room id="1503" wall="left" />
+                  <Room id="1504" wall="right" />
+                  <Joint to="угла" />
+                  <Path rotate="right" start="near_small_stairs" walls="left_right">
+                    <Room wall="left" name="1501" to="1501" />
+                  </Path> 
+                  <Path rotate="forward" start="near_small_stairs" walls="left">
+                    <Stairs id="small_stairs" name="Лестница" to="лестницы" />
+                    <Path rotate="right" start="small_stairs" walls="left_right">
+                      <Path rotate="left" start="corridor_6.1_near_stairs" walls="left_right">
+                        <Room wall="left" id="1625" />
+                        <Room wall="left" id="1627" />
+                        <Room wall="right" id="1626" />
+                        <Room wall="left" id="1629" />
+    
+                        <Room wall="right" id="1628" />
+                        <Room wall="left" id="1631" />
+                        <Room wall="right" id="1630" />
+                        <Room wall="left" id="1633" />
+    
+                        <Room wall="right" id="1632" />
+                        <Room wall="left" id="1635" />
+                        <Room wall="right" id="1634" />
+                        <Room wall="left" id="1637" />
+    
+                        <Room wall="right" id="1636" />
+                        <Room wall="left" id="1639" />
+                        <Room wall="right" id="1638" />
+                        <Room wall="left" id="1641" />
+    
+                        <Room wall="right" id="1640" />
+                        <Room wall="left" id="1643" />
+                        <Room wall="right" id="1642" />
+                        <Room wall="left" id="1645" />
+    
+                        <Room wall="right" id="1644" />
+                        <Room wall="left" id="1647" />
+                        <Room wall="right" id="1646, 1648" />
+                        <Room wall="left" id="1649" />
+    
+                        <Room wall="right" id="1650" />
+                        <Room wall="left" id="1651" />
+                        <Room wall="right" id="1652" />
+                        <Room wall="left" id="1653" />
+                      </Path>
+                    </Path>
+                  </Path> 
+                </Path> 
               </Path> 
             </Path> 
-          </Path> 
-        </Path> 
+          </Path>
       </Path>         
     </Path>
     
@@ -472,6 +523,7 @@ let planXML = `
     <Path dir="right" rotate="right" start="stairs_2_korpus">
       <Room wall="left" id="2501" />
     </Path>
+    
   </Floor>
 
 
@@ -510,7 +562,7 @@ let planXML = `
     </Path>
   </Path>
   
-  <Stairs id="stairs_2_korpus" name="Лестница" to="лестницы"/>
+    <Stairs id="stairs_2_korpus" name="Лестница" to="лестницы"/>
     <Path dir="right" rotate="right" start="stairs_2_korpus">
       <Room wall="left" id="2604" />
       <Path rotate="right">
@@ -527,7 +579,7 @@ let planXML = `
             <Room wall="left" id="2609a" />
             <Room id="2611" />
             <Path rotate="right">
-<!--                <Joint to="угла"></Joint>-->
+    <!--                <Joint to="угла"></Joint>-->
                 <Room wall="left" id="2611б" />
                 <Path rotate="left">
                     <Room wall="left" id="2611в" />
@@ -537,6 +589,9 @@ let planXML = `
         </Path>
       </Path>
     </Path>
+    
+<!--    <Stairs id="escalator" name="Эскалатор" to="эскалатора"/>-->
+    
 </Floor>
 
 
