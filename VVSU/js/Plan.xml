@@ -412,6 +412,7 @@
                     <Room wall="right" id="8110" />
                     <Room wall="left" id="8109" />
                     <Room wall="left" id="8108" />
+                    <Stairs id="stairs8korp" name="Лестница" to="лестницы" />
                     <Path rotate="right">
                       <Room wall="left" id="8106" name="Женский туалет" to="женского туалета" />
                       <Room wall="left" id="8105" name="Мужской туалет" to="мужского туалета" />
@@ -589,6 +590,16 @@
         </Path>
       </Path>
     </Path>
+
+    <Stairs id="stairs8korp" name="Лестница" to="лестницы" />
+    <Path dir="right" start="stairs8korp">
+      <Room wall="left" id="8202" />
+      <Room wall="left" id="8205" />
+      <Room wall="left" id="8206" />
+      <Room wall="right" id="студ" name="СтудПространство" to="СтудПространства" fav="1" />
+      <Room wall="left" id="8207" />
+    </Path>
+
 
     <!--    <Stairs id="escalator" name="Эскалатор" to="эскалатора"/>-->
 
