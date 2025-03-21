@@ -316,11 +316,11 @@ function get_route_text (route)
 
 function findRoute (point_from, point_to)
 {
-    if (!point_from || !point_to)
-        throw new Error('Пункты не могут быть пустыми');
-
     point_from = point_from.trim();
     point_to = point_to.trim();
+
+    if (!point_from || !point_to)
+        throw new Error('Пункты не могут быть пустыми');
 
     //let route_strs = [`Маршрут от ${point_from} до ${point_to}`];
 
