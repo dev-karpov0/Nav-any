@@ -8,10 +8,18 @@ const referencesList = document.querySelector('.references__list');
 
 let displayedIndex = 0;
 let selectedFloorElement = null;
-let pointsHTMLByFloor = new Map()
+let pointsHTMLByFloor = new Map();
+
+function fillFromField(id) {
+    document.getElementById("from").value = id;
+}
+
+function fillToField(id) {
+    document.getElementById("to").value = id;    
+}
 
 function pointNameToHTML(name, id) {
-    return `<li><div>${name}</div><div>(${id})</div></li>`
+    return `<li><div><a href="javascript:fillToField('${id}');">${name}</a></div><div><a href="javascript:fillFromField('${id}');">(${id})</a></div></li>`
 }
 
 function getFloorArray() {
