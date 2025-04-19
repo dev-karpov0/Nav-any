@@ -24,7 +24,8 @@ let plan = {
     paths: [],
     point_by_id: new Map(),
     stairs_by_id: new Map(),
-    elevator_by_id: new Map()
+    elevator_by_id: new Map(),
+    cards: new Map()
 };
 
 const motionDir = ["up", "right", "down", "left"];
@@ -270,6 +271,11 @@ function read_plan ()
                 else if (floor_child.tagName)
                     process_xml_node(floor_child, -1, floor_num);
             }
+        }
+        else if (plan_child.tagName == "Card") {
+            let point_id = plan_child.attributes["point"].nodeValue;
+            let card_text = plan_child.innerHTML;
+            plan.cards.set(point_id, card_text);
         }
     }
 }

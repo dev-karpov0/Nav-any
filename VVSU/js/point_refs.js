@@ -19,7 +19,10 @@ function fillToField(id) {
 }
 
 function pointNameToHTML(name, id) {
-    return `<li><div><a href="javascript:fillToField('${id}');">${name}</a></div><div><a href="javascript:fillFromField('${id}');">(${id})</a></div></li>`
+    let s = ``;
+    if (plan.cards.has(id))
+        s = `&nbsp;<a href="card.html?point=${id}" target="_blank">[к]</a>`;
+    return `<li><div><a href="javascript:fillToField('${id}');">${name}${s}</a></div><div><a href="javascript:fillFromField('${id}');">(${id})</a></div></li>`;
 }
 
 function getFloorArray() {

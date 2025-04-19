@@ -212,10 +212,14 @@ li.references__floors_selected {
     margin: 20px 0 0 0;
 }
 
-.references__list li, .references__list li a {
+.references__list li {
     color: white;
     display: flex;
     justify-content: space-between;
+}
+
+.references__list li a {
+    color: white;
 }
 
 /**/

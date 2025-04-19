@@ -1,4 +1,5 @@
 let planXML = `
+
 <Plan object="VVSU">
   <Exit id="2" name="Вход 2" floor="3" />
 
@@ -728,5 +729,8 @@ let planXML = `
     </Path>
   </Floor>
 
-</Plan>
-`
+  <Card point="1443">
+    Кафедра математики и моделирования
+  </Card>
+
+</Plan>`
