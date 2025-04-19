@@ -1,7 +1,11 @@
 let planXML = `
-
 <Plan object="VVSU">
-  <Exit id="2" name="Вход 2" floor="3" />
+  <Category id="food" name="Точки питания" />
+  <Category id="exit" name="Выходы" />
+  <Category id="space" name="Пространства" />
+  <Category id="toilet" name="Туалеты" />
+
+  <Exit id="2" name="Вход 2" floor="3" cat="exit" />
 
   <Floor num="3">
     <Path start="2" dir="right">
@@ -19,10 +23,10 @@ let planXML = `
 
       <Path rotate="left" scheme_text_forward="пройдите прямо" scheme_text_backward="пройдите назад"
             scheme_photo="3/underground.jpg">  <!-- заменить на scheme_photo_forward и scheme_photo_backward -->
-        <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" />
+        <Room name="Андеграунд" to="Андеграунда" fav="1" id="анд" cat="space" />
       </Path>
       <Path rotate="forward">
-        <Room name="Кофейня" wall="left" fav="1" id="коф" to="кофейни" />
+        <Room name="Кофейня" wall="left" fav="1" id="коф" to="кофейни" cat="food" />
         <!--      <Door name="дверь" to="двери" />  -->
         <Joint name="Турникет" to="турникета" text_forward="Пройдите через турникет." photo_forward="3/turniket_forward.jpg"
                text_backward="Выйдите через турникет." photo_backward="3/turniket_backward.jpg"  />
@@ -38,9 +42,9 @@ let planXML = `
           <Path rotate="right" walls="right">
             <Point name="Фотозона" wall="right" />
             <Joint name="Кофейня" id="коф2" fav="1" to="кофейни" wall="right" text_forward="Пройдите до кофейни."
-                   text_right="Продвигайтесь к выходу." />
+                   text_right="Продвигайтесь к выходу." cat="food" />
             <Path rotate="left">
-              <Room name="Точка кипения" wall="left" fav="1" id="1305" to="Точки кипения" />
+              <Room name="Точка кипения" wall="left" fav="1" id="1305" to="Точки кипения" cat="space" />
               <!--             <Path rotate="left" text_forward="Двигайтесь налево, выйдите из-за угла." text_backward="Зайдите за угол"> -->
               <!-- Скрипт должен заменить текст по умолчанию на текст, указанный в атрибуте -->
               <!--     <Pass text="Выйдите из-за угла" rtext="Зайдите за угол" />   -->
@@ -67,7 +71,7 @@ let planXML = `
                   <Room wall="left" id="1308" name="Женский туалет" to="женского туалета" />
                   <Joint to="перехода в 4 корпус" />
                   <Path rotate="forward">
-                    <Room wall="right" name="Блинная" fav="1" id="блин" />
+                    <Room wall="right" name="Блинная" fav="1" id="блин" cat="food" />
                     <Door name="Кафедра маркетинга и торговли" to="кафедры маркетинга и торговли" />
                     <Path rotate="forward" walls="left_right">
                       <Room id="4301" wall="right" />
@@ -98,10 +102,10 @@ let planXML = `
                 </Path>
               </Path>
               <Path rotate="forward">
-                <Room name="Столовая" to="столовой" wall="left" fav="1" id="стол" />
+                <Room name="Столовая" to="столовой" wall="left" fav="1" id="стол" cat="food" />
                 <Joint to="угла" />
                 <Path rotate="right" walls="left_right">
-                  <Room name="Студотряды" to="студотрядов" wall="right" />
+                  <Room name="Студотряды" to="студотрядов" wall="right" cat="space" />
                   <Stairs id="stairs1" wall="left" />
                 </Path>
               </Path>
@@ -180,7 +184,7 @@ let planXML = `
   </Floor>
 
 
-  <Exit id="1" name="Вход 1" floor="1" />
+  <Exit id="1" name="Вход 1" floor="1" cat="exit" />
   <Floor num="1">
     <Stairs id="stairs5" name="Лестница" />
     <Path start="1" walls="right" dir="up">
@@ -189,7 +193,7 @@ let planXML = `
         <Room wall="right" name="Лотос" to="Лотоса" fav="1" id="лотос" />
       </Path>
       <Path rotate="left" walls="right">
-        <Room wall="right" name="Гардероб" to="гардероба" fav="1" id="гард" />
+        <Room wall="right" name="Гардероб" to="гардероба" fav="1" id="гард" cat="exit" />
         <Room wall="right" id="1140" />
         <Room wall="left" id="1131" />
         <Room wall="left" id="1129" />
@@ -230,7 +234,7 @@ let planXML = `
     <Stairs id="stairs5" name="Лестница" />
     <Path start="stairs5" walls="left_right" dir="up">
       <Point id="near_stairs5.2" />
-      <Room wall="left" name="Библиотека" to="библиотеки" />
+      <Room wall="left" name="Библиотека" to="библиотеки" cat="space" />
 
       <Path start="stairs5" rotate="right" walls="left_right" dir="up">
         <Room wall="right" id="1236" />
@@ -415,8 +419,8 @@ let planXML = `
                     <Room wall="left" id="8108" />
                     <Stairs id="stairs8korp" name="Лестница" to="лестницы" />
                     <Path rotate="right">
-                      <Room wall="left" id="8106" name="Женский туалет" to="женского туалета" />
-                      <Room wall="left" id="8105" name="Мужской туалет" to="мужского туалета" />
+                      <Room wall="left" id="8106" name="Женский туалет" to="женского туалета" cat="toilet" />
+                      <Room wall="left" id="8105" name="Мужской туалет" to="мужского туалета" cat="toilet" />
                       <Room wall="right" id="8104" />
                       <Room wall="right" id="8103" />
                       <Path rotate="left">
@@ -597,7 +601,7 @@ let planXML = `
       <Room wall="left" id="8202" />
       <Room wall="left" id="8205" />
       <Room wall="left" id="8206" />
-      <Room wall="right" id="студ" name="СтудПространство" to="СтудПространства" fav="1" />
+      <Room wall="right" id="студ" name="СтудПространство" to="СтудПространства" fav="1" cat="space" />
       <Room wall="left" id="8207" />
     </Path>
 
@@ -731,6 +735,10 @@ let planXML = `
 
   <Card point="1443">
     Кафедра математики и моделирования
+  </Card>
+
+  <Card point="коф">
+    [фото, описание кофейни]
   </Card>
 
 </Plan>`

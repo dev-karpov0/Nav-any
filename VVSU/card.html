@@ -17,9 +17,11 @@
 <body>
   <script>
     let queryDict = {};
-    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = decodeURIComponent(item.split("=")[1])});
     let point_id = queryDict['point'];
+    console.log(point_id);
     let point_index = plan.point_by_id.get(point_id);
+    console.log(point_index);
     let point_name = plan.points[point_index].name;
     let card_text = plan.cards.get(point_id);
   </script>
