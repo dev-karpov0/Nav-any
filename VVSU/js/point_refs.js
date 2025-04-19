@@ -25,6 +25,10 @@ function pointNameToHTML(name, id) {
     return `<li><div><a href="javascript:fillToField('${id}');">${name}${s}</a></div><div><a href="javascript:fillFromField('${id}');">(${id})</a></div></li>`;
 }
 
+function categoryNameToHTML(name) {
+    return `<li><div><br/><b>${name}</b><br/><br/></div><div>&nbsp;</div></li>`;
+}
+
 function getFloorArray() {
     let floorSet = new Set()
 
@@ -48,6 +52,13 @@ function getFloorArray() {
         if (point.fav) {
             pointsHTMLByFloor['fav'] += pointNameToHTML(point.name, point.id);
         }
+    }
+
+    for (c of plan.categories) {
+         pointsHTMLByFloor['fav'] += categoryNameToHTML(c.name);
+         for (p of c.points) {
+             pointsHTMLByFloor['fav'] += pointNameToHTML(plan.points[p].name, plan.points[p].id);
+         }
     }
 
     return Array.from(floorSet).sort();
