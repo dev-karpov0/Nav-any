@@ -248,7 +248,7 @@ function read_plan ()
                 hidden: false,
                 edges: [],
                 fav: true,
-                cat: plan_child.attributes["cat"].nodeValue
+                cat: ("cat" in plan_child.attributes ? plan_child.attributes["cat"].nodeValue : "")
             };
             add_point(point_exit);
         }
