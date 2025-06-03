@@ -15,6 +15,7 @@
   <script type="text/javascript" src="../find_route.js"></script>
   <script type="text/javascript" src="js/show_route.js" defer></script>
   <script type="text/javascript" src="js/point_refs.js" defer></script>
+  <script type="text/javascript" src="js/autocomplete.js" defer></script>
 </head>
 
 <body>
@@ -63,6 +64,7 @@
             <input type="text" id="to" placeholder="Куда" class="form__input"/>
             <button type="button" id="button" onclick="showRoute();" class="form__button">Проложить маршрут</button>
           </form>
+          <div id="autocomplete" class="autocomplete"></div>
           <div id="output" class="output" hidden>
             <div class="output__header">
               <div class="output__line"></div>
