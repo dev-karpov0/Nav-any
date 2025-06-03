@@ -27,7 +27,7 @@ body {
     background: #002962;
     border: 2px solid rgba(255, 116, 51, 0.87);
     border-radius: 0 0 10px 10px;
-    max-height: 200px;
+    max-height: 240px;
     overflow-y: auto;
     z-index: 1000;
     display: none;
