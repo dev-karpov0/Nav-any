@@ -93,11 +93,14 @@ function showAutocomplete(items, inputElement) {
         itemElement.className = 'autocomplete__item';
         itemElement.textContent = item.id;
 
-        itemElement.addEventListener('click', () => {
+        const handleSelect = (e) => {
             inputElement.value = item.id;
             hideAutocomplete();
             inputElement.focus();
-        });
+        }
+
+        itemElement.addEventListener('mousedown', handleSelect);
+        itemElement.addEventListener('click', handleSelect);
 
         autocomplete.appendChild(itemElement);
     });
