@@ -285,6 +285,10 @@ li.references__floors_selected {
     justify-content: space-between;
 }
 
+.references__list li a {
+    color: white;
+}
+
 /**/
 .container {
     font-family: Roboto, sans-serif;

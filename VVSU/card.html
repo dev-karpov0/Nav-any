@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>Карточка пункта</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+  <link rel="stylesheet" href="nullstyle.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="text/javascript" src="js/Plan_VVSU.js"></script>
+  <script type="text/javascript" src="../read_plan.js"></script>
+  <script type="text/javascript" src="../process_plan.js"></script>
+</head>
+
+<body>
+  <script>
+    let queryDict = {};
+    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = decodeURIComponent(item.split("=")[1])});
+    let point_id = queryDict['point'];
+    console.log(point_id);
+    let point_index = plan.point_by_id.get(point_id);
+    console.log(point_index);
+    let point_name = plan.points[point_index].name;
+    let card_text = plan.cards.get(point_id);
+  </script>
+
+  <div class="background"> </div>
+  <div class="container">
+    <div class="header__logo">
+      <img src="images/logo.svg" alt=""/>
+    </div>
+    <div class="content">
+
+      <div class="navigator">
+        <div class="header">
+          <div class="header__title-line">
+            <div class="header__title">Ориентир</div>
+          </div>
+          <div class="header__subtitle">Упрощенный навигатор по университету</div>
+        </div>
+        <div class="form" style="color: white">
+            <h2><b><script> document.write(point_name); </script></b></h2>
+            <script> document.write(card_text); </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -91,11 +91,13 @@ function get_route_text (route)
         if (j == route.length) {
             j = j - 1;
         }
+/*
         console.log(plan.points[route[i]]);
         console.log(plan.points[route[j]]);
         console.log(i + " " + j);
         console.log("reversed_new_path = " + reversed_new_path);
         console.log("reversed_path = " + reversed_path);
+*/
        // console.log(plan.paths[path_index]);
         if (path_index == -1) {
             floorText =  " с " + plan.points[route[i]].floor +  " этажа до " + plan.points[route[j]].floor + " этажа.";
@@ -316,11 +318,11 @@ function get_route_text (route)
 
 function findRoute (point_from, point_to)
 {
-    if (!point_from || !point_to)
-        throw new Error('Пункты не могут быть пустыми');
-
     point_from = point_from.trim();
     point_to = point_to.trim();
+
+    if (!point_from || !point_to)
+        throw new Error('Пункты не могут быть пустыми');
 
     //let route_strs = [`Маршрут от ${point_from} до ${point_to}`];
 

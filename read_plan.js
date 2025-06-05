@@ -24,7 +24,10 @@ let plan = {
     paths: [],
     point_by_id: new Map(),
     stairs_by_id: new Map(),
-    elevator_by_id: new Map()
+    elevator_by_id: new Map(),
+    cards: new Map(),
+    categories: [],
+    category_by_id: new Map()
 };
 
 const motionDir = ["up", "right", "down", "left"];
@@ -66,6 +69,15 @@ function add_point (point)
     plan.points.push(point);
     let point_index = plan.points.length - 1;
     plan.point_by_id.set(point.id, point_index);
+    
+    if (point.cat) {
+        //console.log(plan.category_by_id.get(point.cat));
+        let category_index = plan.category_by_id.get(point.cat);
+        //console.log(point.cat);
+        //console.log(category_index);
+        plan.categories[category_index].points.push(point_index);
+    }
+
     return point_index;
 }
 
@@ -87,7 +99,8 @@ function process_xml_node (xml_node, path_index, floor_num)
         hidden: false,  //(xml_node.attributes["show_name"] != "1"),
         edges: [],
         to: ("to" in xml_node.attributes ? xml_node.attributes["to"].nodeValue : ""),
-        fav: ("fav" in xml_node.attributes)
+        fav: ("fav" in xml_node.attributes),
+        cat: ("cat" in xml_node.attributes ? xml_node.attributes["cat"].nodeValue : "")
     };    
     // добавляем новый пункт
     let point_index;
@@ -234,7 +247,8 @@ function read_plan ()
                 type: "Exit",
                 hidden: false,
                 edges: [],
-                fav: true
+                fav: true,
+                cat: ("cat" in plan_child.attributes ? plan_child.attributes["cat"].nodeValue : "")
             };
             add_point(point_exit);
         }
@@ -270,6 +284,23 @@ function read_plan ()
                 else if (floor_child.tagName)
                     process_xml_node(floor_child, -1, floor_num);
             }
+        }
+        else if (plan_child.tagName == "Card") {
+            let point_id = plan_child.attributes["point"].nodeValue;
+            let card_text = plan_child.innerHTML;
+            plan.cards.set(point_id, card_text);
+        }
+        else if (plan_child.tagName == "Category") {
+            let category_id = plan_child.attributes["id"].nodeValue;
+            let category_name = plan_child.attributes["name"].nodeValue;
+            let category = {
+                id: category_id,
+                name: category_name,
+                points: []
+            };
+            plan.categories.push(category);
+            let category_index = plan.categories.length - 1;
+            plan.category_by_id.set(category_id, category_index);
         }
     }
 }
